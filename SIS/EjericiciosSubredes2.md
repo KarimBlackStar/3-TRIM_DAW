@@ -31,9 +31,12 @@ NO→a,d
 
 ### 4. Identificación de Clases y Hosts
 Indica la máscara por defecto, la dirección de red e el número de hosts que se pueden incluir en cada red para las siguientes direcciones IP:
+
 4 SUBREDES = 2^2 -> 2 bits a mayores del 4 octeto para hacer las 4 subredes 
 [192.168.10.00][000000] 
+
 32-26= 6 bits para hosts
+
 Red 1: [192.168.10.00][000000] Dir red -> 192.168.10.0   Dir BoradCast -> 192.168.10.63 [192.168.10.00][111111] 
    Rango [192.168.10.0 - 192.168.10.62]
    
@@ -45,6 +48,7 @@ Red 3: [192.168.10.10][000000] Dir red -> 192.168.10.128   Dir BoradCast -> 192.
    
 Red 4: [192.168.10.11][000000] Dir red -> 192.168.10.192   Dir BoradCast -> 192.168.10.255 [192.168.10.11][111111]
    Rango [192.168.10.193 - 192.168.10.254]
+
    
 | Dir. IP | Clase | Máscara defecto | Dir. Rede | Hosts / Rede |
 | :--- | :--- | :--- | :--- | :--- |
