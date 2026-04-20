@@ -6,4 +6,4 @@
 * **Requisitos:** El enlace debe mostrar el texto "Ir a Example.com" y añadirse al body[cite: 21, 22].
 
 #### Solución:
-![Captura Ejercicio 1](Captura%20de%20pantalla%202026-04-20%20112613.png.png)
+![Captura Ejercicio 1](Captura%20de%20pantalla%202026-04-20%20112613.png)
