@@ -77,18 +77,45 @@ Red 4: [192.168.10.11][000000] Dir red -> 192.168.10.192   Dir BoradCast -> 192.
 
 ### 5. Establecimiento de Direcciones IP
 Establece las direcciones IP de una red que conste de la siguientes subredes (usa una dirección de red Clase A, B o C que se ajuste a las necesidades):
+
 * 10 subredes de 310 equipos -> 3.100 equipos
+   310 equipos -> 2<sup>n</sup> -> n=9 -> 32-9=23 bits para red
+  ***Subred 1***
+  [172.16.0000000][0.00000000] -> 172.16.0.0 Dir Red
+  [172.16.0000000][1.11111111] -> 172.16.1.255 Dir BroadCast
+  Rango [172.16.0.1 - 172.16.1.254]
+
+   ***Subred 2***
+  [172.16.0000001][0.00000000] -> 172.16.2.0 Dir Red
+  [172.16.0000001][1.11111111] -> 172.16.3.255 Dir BroadCast
+  Rango [172.16.2.1 - 172.16.3.254]
+   ***Subred 3***
+  [172.16.0000010][0.00000000] -> 172.16.4.0 Dir Red
+  [172.16.0000010][1.11111111] -> 172.16.5.255 Dir BroadCast
+  ***Subred 4***
+  [172.16.0000000][0.00000000] -> 172.16.4.0 Dir Red
+  [172.16.0000000][1.11111111] -> 172.16.5.255 Dir BroadCast
+   
 * 18 subredes de 90 equipos -> 1.620 equipos
+  
 * 23 subredes de 110 equipos -> 2.530 equipos
+  
 * 12 subredes de 40 equipos -> 480 equipos
 
-**Se pide:**
-1. La dirección IP de la red y la clase (escoger una red cualquiera de la clase adecuada).
-2. Direcciones de los **5 primeros segmentos** de red de cada tipo, sus direcciones de broadcast y el rango de direcciones para los equipos en cada una de ellas.
+Total de equipos a direccionar -> 7730 equipos
+
+2<sup>16</sup>
+
+
+   **Se pide:**
+   1. La dirección IP de la red y la clase (escoger una red cualquiera de la clase adecuada).
+   2. Direcciones de los **5 primeros segmentos** de red de cada tipo, sus direcciones de broadcast y el rango de               direcciones para los equipos en cada una de ellas.
 
 ---
 
 ### 6. Casos Prácticos
 * **División VLSM:** A partir de la dirección de red `172.16.0.0/16` realizar la división de subredes para la topología del gráfico.
+
+  
 * **Administrador de Colegio:** El ISP proporciona la dirección `177.19.156.0` con la máscara `255.255.252.0`.
     * **Nota:** Empieza a asignar IPs en la dirección: `177.19.157.0`.
