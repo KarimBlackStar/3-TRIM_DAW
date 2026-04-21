@@ -95,6 +95,10 @@ Establece las direcciones IP de una red que conste de la siguientes subredes (us
   ***Subred 4***
   [172.16.0000000][0.00000000] -> 172.16.4.0 Dir Red
   [172.16.0000000][1.11111111] -> 172.16.5.255 Dir BroadCast
+  ***Subred 10***
+  [172.16.0000000][0.00000000] -> 172.16.18.0 Dir Red 
+  [172.16.0000000][1.11111111] -> 172.16.19.255 Dir BroadCast
+  Rango [172.16.18.1 - 172.16.3.254]
    
 * 18 subredes de 90 equipos -> 1.620 equipos
   
