@@ -78,7 +78,7 @@ Red 4: [192.168.10.11][000000] Dir red -> 192.168.10.192   Dir BoradCast -> 192.
 ### 5. Establecimiento de Direcciones IP
 Establece las direcciones IP de una red que conste de la siguientes subredes (usa una dirección de red Clase A, B o C que se ajuste a las necesidades):
 
-* 10 subredes de 310 equipos -> 3.100 equipos
+* **10 subredes de 310 equipos -> 3.100 equipos**
    310 equipos -> 2<sup>n</sup> -> n=9 -> 32-9=23 bits para red
   ***Subred 1***
   [172.16.0000000][0.00000000] -> 172.16.0.0 Dir Red
@@ -100,14 +100,55 @@ Establece las direcciones IP de una red que conste de la siguientes subredes (us
   [172.16.0000000][1.11111111] -> 172.16.19.255 Dir BroadCast
   Rango [172.16.18.1 - 172.16.3.254]
    
-* 18 subredes de 90 equipos -> 1.620 equipos
+* **18 subredes de 90 equipos -> 1.620 equipos**
+18 subredes de 90 equipos
+  2<sup>n </sup>>=90 -> n=7 bits para HOST; 32-7=25 bits para RED
+  ***subred 1***
+  [172.16.40.0][0000000]-> 172.16.31.128 --> Dir RED
+  [172.16.40.0][1111111]-> 172.16.31.255 --> Broadcast
+
+| Subred | Direc Red | Rango de IPs | Boradcast|
+| :--- | :--- | :--- | :--- |
+| 1 | 172.16.31.128 | | 172.16.31.255 |
+| 2 | 172.16.32.192 | | 172.16.32.127 |
+| 3 | 172.16.32.128 | | 172.16.32.255 |
+| 4 | 172.16.33.192 | | 172.16.33.127 |
+|...| | | | |
+| 18| 172.16.40.0| |127.16.30.127|  
   
-* 23 subredes de 110 equipos -> 2.530 equipos
-  
-* 12 subredes de 40 equipos -> 480 equipos
+* **23 subredes de 110 equipos -> 2.530 equipos**
+  23 subredes de 110 equipos
+  2<sup>n </sup>>=110 -> n=7 bits para HOST; 32-7=25 bits para RED
+  ***subred 1***
+  [172.16.20.0][0000000]-> 172.16.20.0
+  [172.16.20.0][1111111]-> 172.16.20.127
+
+| Subred | Direc Red | Rango de IPs | Boradcast|
+| :--- | :--- | :--- | :--- |
+| 1 | 172.16.20.0 | | 172.16.20.127 |
+| 2 | 172.16.20.128 | | 172.16.20.255 |
+| 3 | 172.16.21.0 | | 172.16.21.127 |
+| 4 | 172.16.21.255| | 172.16.21.255 |
+|...| | | | |
+| 23| 172.16.31.0| |127.16.31.127|  
+
+* **12 subredes de 40 equipos -> 480 equipos**
+12 subredes de 40 equipos
+  2<sup>n </sup>>=40 -> n=6 bits para HOST; 32-6=26 bits para RED
+  ***subred 1***
+  [172.16.40.00][000000]-> 172.16.40.0
+  [172.16.40.00][111111]-> 172.16.40.63
+
+| Subred | Direc Red | Rango de IPs | Boradcast|
+| :--- | :--- | :--- | :--- |
+| 1 | 172.16.40.128 | | 172.16.40.255 |
+| 2 | 172.16.40.192 | | 172.16.41.121 |
+| 3 | 172.16.41.128 | | 172.16.21.127 |
+| 4 | 172.16.41.192 | | 172.16.21.255 |
+|...| | | | |
+| 12| 172.16.31.0| |127.16.31.127|  
 
 Total de equipos a direccionar -> 7730 equipos
-
 2<sup>16</sup>
 
 
@@ -123,3 +164,4 @@ Total de equipos a direccionar -> 7730 equipos
   
 * **Administrador de Colegio:** El ISP proporciona la dirección `177.19.156.0` con la máscara `255.255.252.0`.
     * **Nota:** Empieza a asignar IPs en la dirección: `177.19.157.0`.
+s
