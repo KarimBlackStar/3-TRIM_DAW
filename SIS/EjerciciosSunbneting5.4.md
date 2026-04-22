@@ -78,4 +78,12 @@ Tabla enrutamiento del router R1
 | 172.16.3.64 | /30     |          | -           |
 | 172.16.3.68 | /30     |          | 172.16.3.66 |
 
-Tabla enrutamiento del router R2
+Tabla enrutamiento del router R2 ***POR HACER***
+
+| Red         | Máscara | Interfaz | Gateway     |
+|:------------|:--------|:---------|:------------|
+| 172.16.0.0  | /23     | Eth2     | 172.16.3.66 |
+| 172.16.2.0  | /24     | Eth1     | -           |
+| 172.16.3.0  | /26     |          | 172.16.3.66 |
+| 172.16.3.64 | /30     |          | -           |
+| 172.16.3.68 | /30     |          | 172.16.3.66 |
