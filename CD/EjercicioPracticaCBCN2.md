@@ -75,6 +75,8 @@ Realiza un análisis completo del flujo del método. En tu documento debes inclu
 * **Caminos independientes:** Identifica todos los recorridos posibles.  
 * **Casos de prueba:** Diseña una tabla con los valores de entrada (`precioBase`, `edad`, `equipajeExtra`) necesarios para cubrir cada camino.  
 
+![alt text](image.png)
+
 ---
 
 ### Tarea 2: Análisis de Caja Negra (Método `validarPasajero`)
