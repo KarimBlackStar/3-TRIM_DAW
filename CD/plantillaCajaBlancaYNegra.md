@@ -18,7 +18,7 @@ public class PlanticaTestCajaBlanca {
     @Test
     public void cp1(){
         //double param1 = 0.0;
-        //String param2 = 0;
+        //String param2 = "";
         //boolean param3 = false;
         //assertEquals(//valorEsperado,nomreAtrib.nombreMetodo(param1,param2,param3));
     }
@@ -26,7 +26,7 @@ public class PlanticaTestCajaBlanca {
     @Test
     public void cp2(){
         //double param1 = 0.0;
-        //String param2 = 0;
+        //String param2 = "";
         //boolean param3 = false;
         //assertTrue(nombreAtrib.nombreMetodo(param1,param2,param3));
     }
@@ -34,7 +34,7 @@ public class PlanticaTestCajaBlanca {
     @Test
     public void cp3(){
         //double param1 = 0.0;
-        //String param2 = 0;
+        //String param2 = "";
         //boolean param3 = false;
         //assertFalse(nombreAtrib.nombreMetodo(param1,param2,param3));
     }
@@ -43,7 +43,7 @@ public class PlanticaTestCajaBlanca {
     public void cp4(){
         //double[] param1 = {};
         //int[] param2 = {};
-        //String[] param3 = false;
+        //String[] param3 = "";
         //assertFalse(nombreAtrib.nombreMetodo(param1,param2,param3));
     }
 
