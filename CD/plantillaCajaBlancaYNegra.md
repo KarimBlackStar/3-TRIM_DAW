@@ -77,7 +77,7 @@ public class PlantillaTestCajaNegra {
         //assertEquals(valorEsperado, nombreAtrib.nombreMetodo("", X));
     }
 @Test
-    public void CP_NV_02() {
+    public void CP_NV_01() {
         /*EN CASO DE NO HABER ARRAY, SERÍA LO MISMO QUE EN CAJA BLANCA*/
         //double[] param1 = {};
         //int[] param2 = {};
