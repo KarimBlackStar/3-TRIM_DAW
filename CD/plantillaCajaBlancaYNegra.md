@@ -51,6 +51,9 @@ public class PlanticaTestCajaBlanca {
 ```
 
 ## PLANTILLA CAJA NEGRA
+### VIP
+Acordarse de que en caja negra haremos tantos caminos como clases no validas + 1(todas validas).
+Además en el test pondremos alguno con valor límite.
 
 ```java
 import org.junit.jupiter.api.BeforeEach;
@@ -63,7 +66,8 @@ public class PlantillaTestCajaNegra {
     public void setUp() {
         //nombreAtrib = new NombreClase;
         /*EL SIGUIENTE SOLO NOS INTERESA SI QUEREMOS SIMPLEMENTE TENER SIEMPRE EL ARRAY INICIALIZADO
-        * Y */
+        * LA CAJA BLANCA TAMBIÉN PUEDE TENER UN ARRAY
+        */
         //nombreAtrib.nombreMetodo(new tipoArray[]{valoresTipoArray}, new tipoArray[]{valoresTipoArray});
     }
     @Test
@@ -71,6 +75,22 @@ public class PlantillaTestCajaNegra {
         /*SI TUVIERAMOS UN ARRAY DIRECTAMENTE INICIALIZAMOS LOS VALORES EN LOS PARAMETROS
         * PARA ESO NOS HEMOS MOLESTADO EN INICIALIZAR EL ARRAY EN EL BeforeEach*/
         //assertEquals(valorEsperado, nombreAtrib.nombreMetodo("", X));
+    }
+@Test
+    public void CP_NV_02() {
+        /*EN CASO DE NO HABER ARRAY, SERÍA LO MISMO QUE EN CAJA BLANCA*/
+        //double[] param1 = {};
+        //int[] param2 = {};
+        //String[] param3 = false;
+        //assertFalse(nombreAtrib.nombreMetodo(param1,param2,param3));
+    }
+@Test
+    public void CP_NV_02() {
+        /*EN CASO DE NO HABER ARRAY, SERÍA LO MISMO QUE EN CAJA BLANCA*/
+        //double[] param1 = {};
+        //int[] param2 = {};
+        //String[] param3 = false;
+        //assertFalse(nombreAtrib.nombreMetodo(param1,param2,param3));
     }
 }
 ```
