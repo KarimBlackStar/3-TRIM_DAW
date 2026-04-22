@@ -44,25 +44,21 @@ public class GestorVuelos {
     }
 
     /**
-     * MÉTODO PARA CAJA NEGRA: Validar datos de pasajero.
-     */
-    public boolean validarPasajero(String pasaporte, int edad) {
-        // Edad válida: entre 0 y 120 años
-        if (edad < 0 || edad > 120) {
-            return false;
-        }
-
-        // Pasaporte: debe tener exactamente 9 caracteres alfanuméricos
-        if (pasaporte == null || pasaporte.length() != 9) {
-            return false;
-        }
-
-        if (!pasaporte.matches("[A-Z0-9]{9}")) {
-            return false;
-        }
-
-        return true;
+ * MÉTODO PARA CAJA NEGRA: Validar datos de vuelo.
+ */
+public boolean validarVuelo(String codigoVuelo, String puerta) {
+    // Código de vuelo: 2 letras mayúsculas + 3 o 4 números (ej: IB123 o FR4567)
+    if (codigoVuelo == null || !codigoVuelo.matches("[A-Z]{2}[0-9]{3,4}")) {
+        return false;
     }
+
+    // Puerta de embarque: letra + número entre 1 y 50 (ej: A12, B3)
+    if (puerta == null || !puerta.matches("[A-Z][1-9]|[A-Z][1-4][0-9]|[A-Z]50")) {
+        return false;
+    }
+
+    return true;
+}
 }
 ```
 ## 3. Tareas a realizar
