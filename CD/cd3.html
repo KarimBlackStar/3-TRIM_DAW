@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen UD5: Pruebas de Software - Nivel Medio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fdfdfd;
+            color: #444;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 25px;
+        }
+        h1 {
+            text-align: center;
+            color: #2980b9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .question-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 4px solid #2980b9;
+        }
+        .question-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        button {
+            padding: 12px;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.2s;
+        }
+        button:hover:not([disabled]) {
+            background-color: #ecf0f1;
+        }
+        button.correct {
+            background-color: #27ae60 !important;
+            color: white;
+            border-color: #2ecc71;
+        }
+        button.incorrect {
+            background-color: #c0392b !important;
+            color: white;
+            border-color: #e74c3c;
+        }
+        #score-container {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #2980b9;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Evaluación UD5: Diseño y Realización de Pruebas</h1>
+    <div id="quiz-area"></div>
+    <div id="score-container"></div>
+
+    <script>
+        const quizData = [
+            {
+                q: "Un sistema de reservas no permite completar la compra por una consulta SQL errónea. ¿Cómo se clasifica este evento?",
+                options: ["Error", "Defecto", "Fallo", "Bug"],
+                ans: 2 // Fallo [cite: 66]
+            },
+            {
+                q: "¿Qué comprueba específicamente la Verificación en el desarrollo de software?",
+                options: ["Si el cliente está satisfecho con la interfaz", "Si la aplicación cumple con los requisitos técnicos", "Si se está construyendo la aplicación correcta", "Si el rendimiento es óptimo en producción"],
+                ans: 1 // Requisitos técnicos [cite: 29]
+            },
+            {
+                q: "La regla '80/20' en el agrupamiento de defectos establece que:",
+                options: ["El 80% de los fallos se encuentran en el 20% del código", "El 80% de los fallos los encuentra el usuario", "Solo el 20% de los fallos son críticos", "El 80% de los fallos se corrigen en el 20% del tiempo"],
+                ans: 0 // [cite: 86]
+            },
+            {
+                q: "¿Qué actividad tiene por objetivo localizar y corregir la causa de un defecto identificado?",
+                options: ["QA", "Testing", "Depuración", "Validación"],
+                ans: 2 // [cite: 18]
+            },
+            {
+                q: "Las pruebas de 'Caja Blanca' también son conocidas como:",
+                options: ["Pruebas funcionales", "Pruebas estructurales", "Pruebas de aceptación", "Pruebas exploratorias"],
+                ans: 1 // [cite: 34]
+            },
+            {
+                q: "En el nivel Foundation de ISTQB, ¿qué se estudia principalmente?",
+                options: ["Gestión de proyectos de prueba", "Conceptos fundamentales de pruebas de software", "Automatización técnica avanzada", "Mejora de procesos y liderazgo"],
+                ans: 1 // [cite: 123]
+            },
+            {
+                q: "¿Qué tipo de prueba verifica que los módulos interactúan correctamente entre sí?",
+                options: ["Prueba unitaria", "Prueba de sistema", "Prueba de integración", "Prueba de regresión"],
+                ans: 2 // [cite: 37]
+            },
+            {
+                q: "El desarrollo guiado por pruebas (TDD) consiste en:",
+                options: ["Escribir las pruebas después de compilar", "Escribir las pruebas antes de implementar el código", "Hacer pruebas manuales al final del sprint", "Dejar que el cliente escriba los tests"],
+                ans: 1 // [cite: 46]
+            },
+            {
+                q: "En JUnit 5, ¿qué anotación usarías para métodos que liberan recursos después de cada test?",
+                options: ["@AfterAll", "@PostTest", "@AfterEach", "@End"],
+                ans: 2
+            },
+            {
+                q: "¿Cuál es la función principal de Maven o Gradle en las pruebas?",
+                options: ["Generar código automáticamente", "Gestionar dependencias externas como JUnit", "Sustituir al compilador de Java", "Depurar el código paso a paso"],
+                ans: 1 // [cite: 193]
+            },
+            {
+                q: "Si aplicas la partición de equivalencia al campo 'Edad' (rango 18-65), un valor de clase válida sería:",
+                options: ["17", "66", "40", "-5"],
+                ans: 2 // [cite: 1371]
+            },
+            {
+                q: "En la pirámide de tests, ¿dónde se sitúan los 'Tests de GUI'?",
+                options: ["En la base", "En la capa intermedia", "En la cima", "Fuera de la pirámide"],
+                ans: 2 // [cite: 1925]
+            },
+            {
+                q: "¿Qué herramienta es un analizador estático avanzado integrable en IntelliJ?",
+                options: ["Selenium", "SonarQube", "Jenkins", "GitLab"],
+                ans: 1 // [cite: 635]
+            },
+            {
+                q: "¿Qué indica la 'Complejidad Ciclomática'?",
+                options: ["El número de líneas de código", "La cantidad de caminos independientes en el programa", "El número de clases por paquete", "El tiempo de ejecución del bucle más largo"],
+                ans: 1 // [cite: 1578]
+            },
+            {
+                q: "Un 'Aseguramiento de Calidad' (QA) se enfoca principalmente en:",
+                options: ["El producto final", "Los procesos", "La detección de bugs específicos", "La interfaz de usuario"],
+                ans: 1 // [cite: 98]
+            },
+            {
+                q: "¿Cómo se llama el proceso de probar el software simultáneamente mientras se diseña el caso de prueba?",
+                options: ["Pruebas de regresión", "Pruebas exploratorias", "Pruebas de humo", "Pruebas de estrés"],
+                ans: 1 // [cite: 1758]
+            },
+            {
+                q: "En el archivo 'pom.xml' de Maven, ¿qué etiqueta define el alcance para librerías de test?",
+                options: ["<test>", "<scope>test</scope>", "<library>test</library>", "<mode>unit</mode>"],
+                ans: 1 // [cite: 209]
+            },
+            {
+                q: "¿Cuál es el límite máximo de caracteres por línea en la guía de estilo de Google?",
+                options: ["80", "120", "100", "150"],
+                ans: 2 // [cite: 297]
+            },
+            {
+                q: "En un script de pre-commit de Git, ¿qué acción se suele automatizar?",
+                options: ["El despliegue a producción", "El formato de código (linter)", "La escritura de requisitos", "El envío de correos"],
+                ans: 1 // [cite: 696]
+            },
+            {
+                q: "¿Qué es 'Jira' en el contexto de desarrollo de software?",
+                options: ["Un framework de testing", "Una herramienta de gestión de proyectos e incidencias", "Un servidor de integración continua", "Una librería de aserciones"],
+                ans: 1 // [cite: 768]
+            }
+        ];
+
+        let currentScore = 0;
+        let answered = 0;
+
+        function renderQuiz() {
+            const area = document.getElementById('quiz-area');
+            quizData.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = 'question-container';
+                div.innerHTML = `<div class="question-title">${idx + 1}. ${item.q}</div>
+                                <div class="options" id="opt-container-${idx}">
+                                    ${item.options.map((opt, i) => `<button onclick="check(${idx}, ${i}, this)">${opt}</button>`).join('')}
+                                </div>`;
+                area.appendChild(div);
+            });
+        }
+
+        window.check = function(qIdx, sIdx, btn) {
+            const container = document.getElementById(`opt-container-${qIdx}`);
+            const buttons = container.getElementsByTagName('button');
+            const correct = quizData[qIdx].ans;
+
+            for (let b of buttons) b.disabled = true;
+
+            if (sIdx === correct) {
+                btn.classList.add('correct');
+                currentScore++;
+            } else {
+                btn.classList.add('incorrect');
+                buttons[correct].classList.add('correct');
+            }
+
+            answered++;
+            if (answered === quizData.length) showFinalScore();
+        }
+
+        function showFinalScore() {
+            const container = document.getElementById('score-container');
+            const note = ((currentScore / quizData.length) * 10).toFixed(2);
+            container.style.display = 'block';
+            container.innerHTML = `Tu nota: ${note} / 10 <br> (${currentScore} correctas de ${quizData.length})`;
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        renderQuiz();
+    </script>
+</body>
+</html>

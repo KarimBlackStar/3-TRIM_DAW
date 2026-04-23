@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Diseño y Realización de Pruebas de Software</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #7f8c8d;
+        }
+        .question-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #3498db;
+        }
+        .question-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            background-color: #fdfdfd;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        button:hover:not([disabled]) {
+            background-color: #ebf5fb;
+            border-color: #3498db;
+        }
+        button.correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724;
+            font-weight: bold;
+        }
+        button.incorrect {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24;
+        }
+        #score-container {
+            margin-top: 30px;
+            padding: 30px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .result-note {
+            font-size: 2em;
+            margin: 10px 0;
+            color: #3498db;
+        }
+        #btn-final {
+            display: block;
+            margin: 40px auto;
+            padding: 15px 40px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cuestionario: Diseño y Realización de Pruebas</h1>
+    <p class="intro-text">Basado en el temario de Java, JUnit y metodologías de QA.</p>
+
+    <div id="quiz-container"></div>
+
+    <div id="score-container"></div>
+
+    <script>
+        const quizData = [
+            { q: "¿Cuál de las siguientes afirmaciones sobre las pruebas de software es correcta?", options: ["Las pruebas de software garantizan que no hay errores en el código.", "Las pruebas de software solo son necesarias en proyectos grandes.", "Las pruebas ayudan a detectar defectos, pero no pueden garantizar un software 100% libre de errores.", "Solo los testers deben realizar pruebas, los desarrolladores no."], correct: 2 },
+            { q: "¿Qué tipo de prueba se basa en la ejecución del código para detectar defectos?", options: ["Pruebas estáticas", "Pruebas dinámicas", "Análisis de código", "Inspecciones"], correct: 1 },
+            { q: "¿Cuál de las siguientes opciones describe una prueba de caja negra?", options: ["Se basa en la estructura interna del código fuente.", "Solo prueba unidades individuales del sistema.", "Evalúa la funcionalidad sin conocer la implementación interna.", "Se centra en la cobertura del código."], correct: 2 },
+            { q: "¿Qué técnica de prueba se enfoca en evaluar caminos de ejecución del código?", options: ["Prueba de equivalencia", "Prueba basada en experiencia", "Prueba de caja blanca", "Prueba de regresión"], correct: 2 },
+            { q: "¿Cuál de las siguientes no es una ventaja de las pruebas unitarias?", options: ["Detectan errores en la integración de múltiples módulos.", "Facilitan la detección temprana de fallos en funciones individuales.", "Mejoran la mantenibilidad del código.", "Ayudan a evitar la propagación de errores a niveles superiores."], correct: 0 },
+            { q: "¿Qué tipo de prueba se realiza antes de la entrega final para validar que cumple con los requisitos del cliente?", options: ["Pruebas de integración", "Pruebas de aceptación", "Pruebas unitarias", "Pruebas de caja blanca"], correct: 1 },
+            { q: "¿Qué técnica de prueba de caja negra divide los datos de entrada en grupos que deben comportarse de manera similar?", options: ["Análisis de valores límite", "Clases de equivalencia", "Cobertura de decisiones", "Pruebas de integración"], correct: 1 },
+            { q: "¿Cuál de los siguientes tipos de prueba se enfoca en verificar la interacción entre diferentes módulos del sistema?", options: ["Pruebas unitarias", "Pruebas de integración", "Pruebas de regresión", "Pruebas de caja blanca"], correct: 1 },
+            { q: "¿Qué herramienta se usa comúnmente en Java para realizar pruebas unitarias?", options: ["Selenium", "JUnit", "Postman", "Git"], correct: 1 },
+            { q: "¿Qué técnica de caja blanca mide el número de caminos de ejecución en un código?", options: ["Pruebas de partición de equivalencia", "Análisis de valores límite", "Complejidad ciclomática", "Pruebas de regresión"], correct: 2 },
+            { q: "¿Qué documento describe el conjunto de pruebas a realizar, los criterios de aceptación y los recursos necesarios?", options: ["Plan de pruebas", "Informe de defectos", "Especificación de requisitos", "Caso de uso"], correct: 0 },
+            { q: "¿Cuál de los siguientes es un beneficio de la automatización de pruebas?", options: ["Reduce el número total de pruebas necesarias.", "Permite ejecutar pruebas repetitivas de forma rápida y eficiente.", "Elimina la necesidad de pruebas manuales.", "Solo se usa en entornos ágiles."], correct: 1 },
+            { q: "¿Qué tipo de prueba se enfoca en asegurar que un cambio en el código no ha afectado funcionalidades previas?", options: ["Pruebas de integración", "Pruebas de aceptación", "Pruebas unitarias", "Pruebas de regresión"], correct: 3 },
+            { q: "¿Cuál de las siguientes opciones describe mejor las pruebas exploratorias?", options: ["Son pruebas completamente automatizadas.", "No siguen un plan predefinido y dependen de la experiencia del tester.", "Solo se usan en sistemas críticos.", "No requieren interacción humana."], correct: 1 },
+            { q: "¿Qué tipo de prueba se realiza sin ejecutar el código?", options: ["Pruebas estáticas", "Pruebas de integración", "Pruebas funcionales", "Pruebas de caja blanca"], correct: 0 },
+            { q: "¿Qué técnica de prueba evalúa los valores máximos y mínimos de un sistema?", options: ["Partición de equivalencia", "Análisis de valores límite", "Pruebas de integración", "Pruebas de regresión"], correct: 1 },
+            { q: "En una prueba de caja blanca, ¿qué criterio asegura que cada instrucción del código se ejecuta al menos una vez?", options: ["Cobertura de sentencias", "Cobertura de condiciones", "Cobertura de partición de datos", "Pruebas funcionales"], correct: 0 },
+            { q: "¿Cuál de los siguientes es un criterio de finalización de pruebas?", options: ["Se han ejecutado al menos 10 casos de prueba.", "No se han encontrado más errores en la última prueba.", "Se ha alcanzado un nivel de cobertura y los defectos encontrados han sido corregidos.", "El cliente ha solicitado detener las pruebas."], correct: 2 },
+            { q: "¿Cuál de los siguientes niveles de prueba se realiza primero en un ciclo de vida de desarrollo tradicional?", options: ["Pruebas unitarias", "Pruebas de integración", "Pruebas de sistema", "Pruebas de aceptación"], correct: 0 },
+            { q: "¿Qué técnica de prueba permite evaluar el comportamiento del software sin conocimiento previo del código?", options: ["Pruebas de caja blanca", "Pruebas de caja negra", "Análisis estático", "Pruebas de cobertura"], correct: 1 },
+            { q: "¿Qué es JUnit en el contexto del desarrollo en Java?", options: ["Un compilador de Java.", "Un framework para la ejecución de código en producción.", "Un framework para escribir y ejecutar pruebas unitarias en Java.", "Un depurador de código para encontrar errores."], correct: 2 },
+            { q: "¿Qué anotación en JUnit indica que un método es una prueba?", options: ["@Test", "@JUnit", "@UnitTest", "@Check"], correct: 0 },
+            { q: "¿Cuál de las siguientes afirmaciones sobre JUnit es correcta?", options: ["JUnit solo se puede usar con Maven.", "JUnit requiere que todas las pruebas sean ejecutadas manualmente.", "JUnit permite la automatización de pruebas en Java.", "JUnit no admite la ejecución de múltiples pruebas en paralelo."], correct: 2 },
+            { q: "¿Qué método de JUnit se usa para verificar que dos valores son iguales?", options: ["assertTrue()", "assertEquals()", "assertSame()", "assertIdentical()"], correct: 1 },
+            { q: "¿Qué ocurre si una prueba en JUnit falla?", options: ["El programa se detiene automáticamente.", "Se genera un error en la ejecución de las pruebas, pero el programa sigue corriendo.", "Se reinicia la máquina virtual de Java.", "Se ignora la prueba fallida."], correct: 1 },
+            { q: "¿Cuál es el propósito de la anotación @BeforeEach en JUnit 5?", options: ["Ejecutar una prueba después de cada caso de prueba.", "Ejecutar código antes de cada prueba individual.", "Ignorar una prueba específica.", "Indicar que una prueba es opcional."], correct: 1 },
+            { q: "¿Cómo se puede agrupar varias pruebas en JUnit 5?", options: ["Con la anotación @TestGroup.", "Usando @Nested o @Tag.", "Creando un archivo .junit.", "Definiendo una clase estática con pruebas."], correct: 1 },
+            { q: "¿Qué anotación en JUnit permite ignorar una prueba temporalmente?", options: ["@SkipTest", "@Disabled", "@Ignore", "@Inactive"], correct: 1 },
+            { q: "¿Qué significa cuando una prueba de JUnit lanza una excepción?", options: ["La prueba siempre se considera exitosa.", "La prueba falla a menos que la excepción esperada haya sido definida.", "Se detiene la ejecución de todas las demás pruebas.", "Se ejecuta nuevamente la prueba."], correct: 1 },
+            { q: "¿Qué método de aserción en JUnit verifica si una condición booleana es verdadera?", options: ["assertFalse()", "assertTrue()", "assertNull()", "assertSame()"], correct: 1 }
+        ];
+
+        let score = 0;
+        let answered = 0;
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            quizData.forEach((data, index) => {
+                const div = document.createElement('div');
+                div.className = 'question-container';
+                div.innerHTML = `
+                    <div class="question-title">${index + 1}. ${data.q}</div>
+                    <div class="options" id="opts-${index}">
+                        ${data.options.map((opt, i) => `<button onclick="check(${index}, ${i}, this)">${opt}</button>`).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        window.check = function(qIdx, sIdx, btn) {
+            const container = document.getElementById(`opts-${qIdx}`);
+            const buttons = container.querySelectorAll('button');
+            const correct = quizData[qIdx].correct;
+
+            buttons.forEach(b => b.disabled = true);
+
+            if (sIdx === correct) {
+                btn.classList.add('correct');
+                score++;
+            } else {
+                btn.classList.add('incorrect');
+                buttons[correct].classList.add('correct');
+            }
+
+            answered++;
+            if (answered === quizData.length) {
+                const finalBtn = document.createElement('button');
+                finalBtn.id = "btn-final";
+                finalBtn.innerText = "Ver Resultado Final";
+                finalBtn.onclick = showScore;
+                document.body.appendChild(finalBtn);
+            }
+        }
+
+        function showScore() {
+            const container = document.getElementById('score-container');
+            const total = quizData.length;
+            const note = ((score / total) * 10).toFixed(2);
+            container.style.display = 'block';
+            
+            let message = "";
+            if(note >= 9) message = "🚀 ¡Excelente! Estás listo para el examen real.";
+            else if(note >= 5) message = "✅ Aprobado, pero revisa los fallos para asegurar el 10.";
+            else message = "📖 Necesitas repasar un poco más los conceptos básicos.";
+
+            container.innerHTML = `
+                <h2>Resultado Final</h2>
+                <div class="result-note">${note} / 10</div>
+                <p>Has acertado ${score} de ${total} preguntas.</p>
+                <p>${message}</p>
+            `;
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            document.getElementById('btn-final').style.display = 'none';
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

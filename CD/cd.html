@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Diseño y Realización de Pruebas (UD5)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+        .question-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            padding: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        button:hover:not([disabled]) {
+            background-color: #e1f5fe;
+            border-color: #3498db;
+        }
+        button.correct {
+            background-color: #c8e6c9 !important;
+            border-color: #4caf50 !important;
+            color: #2e7d32;
+        }
+        button.incorrect {
+            background-color: #ffcdd2 !important;
+            border-color: #f44336 !important;
+            color: #c62828;
+        }
+        #score-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            display: none;
+        }
+        .header-info {
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Examen de Pruebas y Calidad de Software</h1>
+    <p class="header-info">Basado en el temario de la UD5: JUnit, Maven, ISTQB y Documentación.</p>
+
+    <div id="quiz-container"></div>
+
+    <div id="score-container"></div>
+
+    <script>
+        const quizData = [
+            {
+                q: "¿Qué es un 'error' según el estándar de pruebas?",
+                options: ["Un defecto físico en el código", "Una acción humana que produce un resultado incorrecto", "La manifestación externa de un fallo", "Un problema de hardware"],
+                correct: 1
+            },
+            {
+                q: "La 'Paradoja del Pesticida' indica que:",
+                options: ["Si se repiten las mismas pruebas, dejarán de encontrar nuevos defectos", "Cuantos más errores encuentras, más quedan por descubrir", "Es imposible probar todo el software", "Las pruebas deben empezar lo antes posible"],
+                correct: 0
+            },
+            {
+                q: "¿Cuál es el objetivo principal de las pruebas estáticas?",
+                options: ["Ejecutar el código con datos de entrada", "Verificar requisitos y código sin ejecutar el sistema", "Medir el tiempo de respuesta", "Asegurar que el servidor soporta carga"],
+                correct: 1
+            },
+            {
+                q: "En la pirámide de pruebas, ¿qué nivel debe tener mayor volumen?",
+                options: ["Pruebas de Interfaz (UI)", "Pruebas de Integración", "Pruebas Unitarias", "Pruebas de Sistema"],
+                correct: 2
+            },
+            {
+                q: "¿Qué herramienta es un gestor de dependencias estándar en Java?",
+                options: ["IntelliJ IDEA", "Maven", "JUnit", "SonarQube"],
+                correct: 1
+            },
+            {
+                q: "En JUnit 5, la anotación para indicar que un método es una prueba es:",
+                options: ["@TestInstance", "@Test", "@BeforeEach", "@RunTest"],
+                correct: 1
+            },
+            {
+                q: "¿Qué mide la complejidad ciclomática de McCabe?",
+                options: ["El número de líneas de código", "El número de caminos independientes en el flujo", "La cantidad de variables globales", "El tiempo de compilación"],
+                correct: 1
+            },
+            {
+                q: "¿Cuál es la diferencia entre Verificación y Validación?",
+                options: ["Son sinónimos", "Verificación mira si el producto es correcto; Validación si es el producto correcto para el cliente", "Verificación es dinámica; Validación es estática", "La hace el mismo equipo de desarrollo siempre"],
+                correct: 1
+            },
+            {
+                q: "El análisis de 'Valores Límite' se centra en:",
+                options: ["El centro de las particiones de equivalencia", "Los extremos de los rangos de entrada", "Cualquier valor aleatorio", "Solo valores negativos"],
+                correct: 1
+            },
+            {
+                q: "¿Qué archivo utiliza Maven para configurar el proyecto?",
+                options: ["build.gradle", "settings.json", "pom.xml", "manifest.mf"],
+                correct: 2
+            },
+            {
+                q: "Según la Guía de Estilo de Google para Java, la indentación debe ser de:",
+                options: ["4 espacios", "8 espacios", "1 tabulación", "2 espacios"],
+                correct: 3
+            },
+            {
+                q: "¿Qué es el análisis estático de código?",
+                options: ["Ejecutar el programa en un entorno de pruebas", "Examinar el código fuente sin ejecutarlo para buscar fallos de estilo o lógica", "Una prueba de carga", "Revisión manual por el cliente"],
+                correct: 1
+            },
+            {
+                q: "La técnica de 'Caja Negra' se basa en:",
+                options: ["Conocer el código fuente", "Probar la lógica interna", "Probar según los requisitos y entradas/salidas sin ver el código", "Analizar la base de datos"],
+                correct: 2
+            },
+            {
+                q: "Un 'Fallo' ocurre cuando:",
+                options: ["El programador se equivoca", "El defecto en el código se ejecuta y el sistema se desvía del comportamiento esperado", "Se documenta mal un requisito", "El código no compila"],
+                correct: 1
+            },
+            {
+                q: "¿Cuál es la función de 'JUnit Platform Console Standalone'?",
+                options: ["Crear interfaces gráficas", "Ejecutar pruebas JUnit 5 desde la consola sin necesidad de Maven/Gradle completo", "Sustituir a IntelliJ", "Gestionar la base de datos de pruebas"],
+                correct: 1
+            },
+            {
+                q: "En el diseño de casos de prueba, la 'Partición de Equivalencia' sirve para:",
+                options: ["Probar todos los números posibles", "Dividir las entradas en grupos que se espera que el sistema trate igual", "Solo para probar errores", "Medir la velocidad"],
+                correct: 1
+            },
+            {
+                q: "¿Qué anotación de JUnit se ejecuta antes de CADA método de prueba?",
+                options: ["@BeforeAll", "@BeforeEach", "@Setup", "@Start"],
+                correct: 1
+            },
+            {
+                q: "¿Qué herramienta se usa para análisis de calidad continua y 'Clean Code'?",
+                options: ["Jenkins", "Git", "SonarQube", "Docker"],
+                correct: 2
+            },
+            {
+                q: "Un 'Walkthrough' o revisión guiada es:",
+                options: ["Una prueba dinámica", "Una revisión informal o semiformal dirigida por el autor del artefacto", "Una inspección formal de la ISO", "Un test de estrés"],
+                correct: 1
+            },
+            {
+                q: "¿Para qué sirve el método 'assertEquals(esperado, actual)'?",
+                options: ["Para asignar un valor", "Para comprobar que el resultado de la prueba coincide con el valor esperado", "Para imprimir en consola", "Para borrar la base de datos"],
+                correct: 1
+            },
+            {
+                q: "Las pruebas de 'Regresión' se hacen para:",
+                options: ["Probar nuevas funcionalidades", "Asegurar que cambios nuevos no han roto lo que ya funcionaba", "Eliminar el código antiguo", "Acelerar el programa"],
+                correct: 1
+            },
+            {
+                q: "¿Qué es un Pipeline en CI/CD?",
+                options: ["Un túnel de datos", "Una secuencia automatizada de pasos (compilar, testear, desplegar)", "Un tipo de cable de red", "Una base de datos"],
+                correct: 1
+            },
+            {
+                q: "En Maven, el 'Scope' <scope>test</scope> significa que:",
+                options: ["La librería se usa en todo el proyecto", "La librería solo está disponible para compilar y ejecutar los tests", "La librería es opcional", "Es una librería de sistema"],
+                correct: 1
+            },
+            {
+                q: "¿Qué nivel de prueba se enfoca en la interacción entre módulos?",
+                options: ["Unitarias", "Integración", "Aceptación", "Usabilidad"],
+                correct: 1
+            },
+            {
+                q: "La técnica de 'Caja Blanca' requiere:",
+                options: ["No ver el código", "Conocer la estructura interna y lógica del código fuente", "Ser el cliente final", "Usar solo herramientas manuales"],
+                correct: 1
+            },
+            {
+                q: "¿Qué es el ISTQB?",
+                options: ["Un lenguaje de programación", "Un organismo internacional que estandariza certificaciones de testing", "Un tipo de servidor", "Una herramienta de automatización"],
+                correct: 1
+            },
+            {
+                q: "En el análisis de cobertura, ¿qué es 'cobertura de sentencias'?",
+                options: ["Probar todos los comentarios", "Porcentaje de líneas de código ejecutadas por los tests", "Número de clases creadas", "Número de desarrolladores en el equipo"],
+                correct: 1
+            },
+            {
+                q: "¿Qué es una 'Matriz de Trazabilidad'?",
+                options: ["Una tabla que relaciona requisitos con casos de prueba", "Un gráfico de rendimiento", "Un esquema de la base de datos", "Una lista de correos"],
+                correct: 0
+            },
+            {
+                q: "La depuración (debugging) es:",
+                options: ["Un tipo de prueba dinámica", "El proceso de encontrar, analizar y eliminar la causa de un fallo", "Escribir documentación", "Instalar el software"],
+                correct: 1
+            },
+            {
+                q: "En IntelliJ, el atajo de teclado para generar un test de una clase es:",
+                options: ["Alt + F4", "Ctrl + Shift + T", "Ctrl + S", "Alt + Insert"],
+                correct: 1
+            },
+            {
+                q: "¿Qué es un 'Linter'?",
+                options: ["Un virus", "Una herramienta que analiza el código en busca de errores de estilo o bugs potenciales", "Un compilador rápido", "Un gestor de bases de datos"],
+                correct: 1
+            },
+            {
+                q: "Las siglas CI/CD significan:",
+                options: ["Código Interno / Código Directo", "Integración Continua / Despliegue Continuo", "Computación Integrada / Datos Compartidos", "Control de Inspección / Datos de Calidad"],
+                correct: 1
+            },
+            {
+                q: "¿Qué nivel de prueba suele realizar el usuario final?",
+                options: ["Unitarias", "Sistema", "Aceptación (UAT)", "Caja Blanca"],
+                correct: 2
+            },
+            {
+                q: "¿Cuál es el beneficio de automatizar pruebas?",
+                options: ["Elimina todos los errores", "Ahorra tiempo en pruebas repetitivas y regresiones", "Hace que el código sea más corto", "No requiere mantenimiento"],
+                correct: 1
+            },
+            {
+                q: "Un proyecto que no usa Maven ni Gradle se considera un proyecto de construcción:",
+                options: ["Automática", "Basado en IDE (IntelliJ nativo)", "Cloud", "Legacy"],
+                correct: 1
+            }
+        ];
+
+        let score = 0;
+        let answeredQuestions = 0;
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            quizData.forEach((data, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-container';
+                qDiv.innerHTML = `
+                    <div class="question-title">${index + 1}. ${data.q}</div>
+                    <div class="options" id="options-${index}">
+                        ${data.options.map((opt, i) => `
+                            <button onclick="checkAnswer(${index}, ${i}, this)">${opt}</button>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(qDiv);
+            });
+        }
+
+        window.checkAnswer = function(qIndex, selectedIndex, btn) {
+            const buttons = document.getElementById(`options-${qIndex}`).getElementsByTagName('button');
+            const correctIndex = quizData[qIndex].correct;
+
+            // Deshabilitar botones después de responder
+            for (let b of buttons) {
+                b.disabled = true;
+            }
+
+            if (selectedIndex === correctIndex) {
+                btn.classList.add('correct');
+                score++;
+            } else {
+                btn.classList.add('incorrect');
+                buttons[correctIndex].classList.add('correct');
+            }
+
+            answeredQuestions++;
+            if (answeredQuestions === quizData.length) {
+                showScore();
+            }
+        }
+
+        function showScore() {
+            const scoreContainer = document.getElementById('score-container');
+            const total = quizData.length;
+            const finalNote = ((score / total) * 10).toFixed(2);
+            scoreContainer.style.display = 'block';
+            
+            let msg = "";
+            if(finalNote >= 9) msg = "🏆 ¡Excelente! Estás listo para el examen.";
+            else if(finalNote >= 5) msg = "👍 Aprobado, pero repasa los conceptos de Maven e ISTQB.";
+            else msg = "📚 Necesitas estudiar más los PDFs. ¡Vuelve a intentarlo!";
+
+            scoreContainer.innerHTML = `Resultado: ${score} de ${total} correctas <br> Nota Final: ${finalNote} / 10 <br><br> ${msg}`;
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>
