@@ -46,6 +46,7 @@ public class ValidadorSeguridad {
         return true;
     }
 
+/**
  * MÉTODO PARA CAJA NEGRA: Validar formato de Tarjeta de Embarque.
  * Requisitos:
  * - Longitud: 10 caracteres.
@@ -73,6 +74,7 @@ public boolean validarBoardingPass(String code) {
     }
 
     return true;
+}
 }
 
 ```
