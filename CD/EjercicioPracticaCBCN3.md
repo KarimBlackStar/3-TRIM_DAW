@@ -46,28 +46,35 @@ public class ValidadorSeguridad {
         return true;
     }
 
-    /**
-     * MÉTODO PARA CAJA NEGRA: Validar formato de Tarjeta de Embarque.
-     * Requisitos:
-     * - Debe tener exactamente 10 caracteres.
-     * - Debe empezar por "BORD".
-     * - Debe terminar con un número de asiento (ej: 12A, 01F) que sea: 
-     * dos dígitos (01-99) seguido de una letra (A-F).
-     */
-    public boolean validarBoardingPass(String code) {
-        // Formato esperado: BORD + 3 caracteres + asiento (ej: BORDXYZ22B)
-        if (code == null || code.length() != 10) {
-            return false;
-        }
-        
-        if (!code.startsWith("BORD")) {
-            return false;
-        }
-
-        String asiento = code.substring(7); // Los últimos 3 caracteres
-        return asiento.matches("[0-9]{2}[A-F]");
+ * MÉTODO PARA CAJA NEGRA: Validar formato de Tarjeta de Embarque.
+ * Requisitos:
+ * - Longitud: 10 caracteres.
+ * - Inicio: "BORD".
+ * - Asiento (posiciones 7-9): dos números y una letra (A-F).
+ */
+public boolean validarBoardingPass(String code) {
+    // 1. Validación de longitud y nulos
+    if (code == null || code.length() != 10) {
+        return false;
     }
+    
+    // 2. Validación de prefijo
+    if (!code.startsWith("BORD")) {
+        return false;
+    }
+
+    // Guardamos el atributo asiento para analizarlo
+    String asiento = code.substring(7); 
+
+    // 3. Validación de formato de asiento (más sencillo para Caja Negra)
+    // Comprobamos que tenga 2 números y una letra de la A a la F
+    if (!asiento.matches("[0-9]{2}[A-F]")) {
+        return false;
+    }
+
+    return true;
 }
+
 ```
 ## 3. Tareas a realizar
 
