@@ -173,6 +173,14 @@ Permitir alta de socios con condiciones:
 
 - Provincia gallega: 15, 27, 32, 36
 - Código postal no nulo
+  
+```sql
+create view v_altasocios as
+select * 
+from socios
+where provincia in ("15","27","32","36") and c_postal is not null
+with check option; 
+```
 
 📌 Realiza pruebas de inserción
 
