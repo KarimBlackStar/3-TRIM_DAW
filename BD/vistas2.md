@@ -8,6 +8,7 @@ Haz capturas de pantalla de cada instrucción.
 # 🗄️ Base de Datos: biblioteca
 
 ## Tabla: libros
+
 Información de los libros de la biblioteca.
 
 | Columna      | Tipo | Tamaño | Clave | Nulos | Observaciones |
@@ -22,6 +23,7 @@ Información de los libros de la biblioteca.
 ---
 
 ## Tabla: socios
+
 Información de los lectores.
 
 | Columna     | Tipo | Tamaño | Clave | Nulos | Observaciones |
@@ -38,6 +40,7 @@ Información de los lectores.
 ---
 
 ## Tabla: prestamos
+
 Información de los préstamos realizados.
 
 | Columna    | Tipo | Tamaño | Clave | Nulos | Observaciones |
@@ -50,6 +53,7 @@ Información de los préstamos realizados.
 ---
 
 ## Tabla: provincias
+
 Información de provincias.
 
 | Columna   | Tipo | Tamaño | Clave | Nulos | Observaciones |
@@ -60,7 +64,7 @@ Información de provincias.
 
 ---
 
-#Ejercicios
+# Ejercicios
 
 ## 1️⃣ Vista v_lugo
 
@@ -70,11 +74,14 @@ Crear una vista con el nombre, apellidos y población de socios de la provincia 
 ---
 
 ## 2️⃣ Vista v_prestamos
+
 Crear una vista con:
+
 - Nombre y apellidos del socio
 - Provincia del socio
 - Número del libro
 - Título y autor
+
 ```sql
 create view v_prestamos as
 select nombre, apellidos, nombrep, l.nlibro, titulo, autor
@@ -86,6 +93,7 @@ and pr.nlibro=l.nlibro
 ```
 
 📌 Preguntas:
+
 - ¿Se puede insertar datos desde esta vista?
 - ¿Por qué?
 - Compruébalo
@@ -93,15 +101,17 @@ and pr.nlibro=l.nlibro
 Solo en 1 , no se pueden insertar en varias tablas a la vez.
 No puedo dar de alta un préstamo ni la provincia(la provincia no tiene la clave autoincrement), pero por separado sí puedo dar de alta un socio o un libro.
 
-
 ---
 
 ## 3️⃣ Vista v_top3
+
 Crear una vista con:
+
 - Título
 - Autor
 - Editorial
 - Comentarios
+
 ```sql
 create view v_top3 as
 select titulo, autor, editorial, comentarios, count(p.nlibro) as veces
@@ -116,16 +126,17 @@ limit 3
 Solo los **3 libros más prestados**, ordenados por número de préstamos.
 
 📌 Preguntas:
+
 - ¿Se puede insertar datos desde esta vista?
 - ¿Por qué?
 - Compruébalo
 
 Tiene una función de grupo(```count, avg, sum,etc...```), entonces NO puedes actualizable(```insert into```).
 
-
 ---
 
 ## 4️⃣ Estructura de vista
+
 - Visualiza la estructura de la vista anterior
 - ¿Cómo se puede ver el código SQL de creación?
 
@@ -136,7 +147,9 @@ describe v_top3;
 ---
 
 ## 5️⃣ Vista v_gusta
+
 Mostrar libros prestados más de una vez por el mismo socio:
+
 - Nombre del socio
 - Título del libro
 - Editorial
@@ -155,7 +168,9 @@ having count(*) > 1
 ---
 
 ## 6️⃣ Vista v_altasocios
+
 Permitir alta de socios con condiciones:
+
 - Provincia gallega: 15, 27, 32, 36
 - Código postal no nulo
 
@@ -164,6 +179,7 @@ Permitir alta de socios con condiciones:
 ---
 
 ## 7️⃣ Eliminar vista v_lugo
+
 Eliminar la vista sin error si no existe:
 
 ```sql

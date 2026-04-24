@@ -61,6 +61,7 @@ public boolean validarVuelo(String codigoVuelo, String puerta) {
 }
 }
 ```
+
 ## 3. Tareas a realizar
 
 ### Tarea 1: Análisis de Caja Blanca (Método `calcularTarifa`)
@@ -75,7 +76,7 @@ Realiza un análisis completo del flujo del método. En tu documento debes inclu
 * **Caminos independientes:** Identifica todos los recorridos posibles.  
 * **Casos de prueba:** Diseña una tabla con los valores de entrada (`precioBase`, `edad`, `equipajeExtra`) necesarios para cubrir cada camino.  
 
-![alt text](image.png)
+![alt text](Capturas/image.png)
 
 ---
 
