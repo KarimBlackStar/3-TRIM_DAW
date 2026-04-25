@@ -18,17 +18,17 @@
 
 ## 1. Interacción y Salida de Datos
 
-**console.log()**
+**console.log()** → Muestra información en la consola (para depurar)
 ```javascript
 console.log("Hola mundo");
 ```
 
-**alert()**
+**alert()** → Muestra una ventana emergente al usuario
 ```javascript
 alert("Esto es una alerta");
 ```
 
-**console.dir()**
+**console.dir()** → Muestra un objeto con todas sus propiedades
 ```javascript
 const obj = { nombre: "Juan", edad: 25 };
 console.dir(obj);
@@ -38,18 +38,18 @@ console.dir(obj);
 
 ## 2. Variables y Tipos
 
-**let**
+**let** → Variable que puede cambiar
 ```javascript
 let edad = 20;
 edad = 25;
 ```
 
-**const**
+**const** → Variable que no se puede reasignar
 ```javascript
 const nombre = "Carlos";
 ```
 
-**typeof**
+**typeof** → Devuelve el tipo de dato
 ```javascript
 console.log(typeof 42);
 ```
@@ -58,23 +58,23 @@ console.log(typeof 42);
 
 ## 3. Strings
 
-**length**
+**length** → Devuelve la longitud del texto
 ```javascript
 let texto = "Hola";
 console.log(texto.length);
 ```
 
-**toUpperCase()**
+**toUpperCase()** → Convierte a mayúsculas
 ```javascript
 console.log("hola".toUpperCase());
 ```
 
-**indexOf()**
+**indexOf()** → Devuelve la posición de un carácter
 ```javascript
 console.log("hola".indexOf("o"));
 ```
 
-**trim()**
+**trim()** → Elimina espacios al inicio y final
 ```javascript
 console.log(" hola ".trim());
 ```
@@ -83,43 +83,43 @@ console.log(" hola ".trim());
 
 ## 4. Arrays
 
-**push()**
+**push()** → Añade elemento al final
 ```javascript
 let arr = [1, 2];
 arr.push(3);
 ```
 
-**pop()**
+**pop()** → Elimina el último elemento
 ```javascript
 arr.pop();
 ```
 
-**shift()**
+**shift()** → Elimina el primero
 ```javascript
 arr.shift();
 ```
 
-**unshift()**
+**unshift()** → Añade al inicio
 ```javascript
 arr.unshift(0);
 ```
 
-**sort()**
+**sort()** → Ordena el array
 ```javascript
 arr.sort();
 ```
 
-**includes()**
+**includes()** → Comprueba si existe un valor
 ```javascript
 arr.includes(2);
 ```
 
-**concat()**
+**concat()** → Une arrays
 ```javascript
 let nuevo = arr.concat([4, 5]);
 ```
 
-**splice()**
+**splice()** → Añade o elimina elementos en una posición
 ```javascript
 arr.splice(1, 1);
 ```
@@ -128,6 +128,7 @@ arr.splice(1, 1);
 
 ## 5. Condicionales
 
+**if / else** → Ejecuta código según condición
 ```javascript
 if (edad >= 18) {
   console.log("Mayor");
@@ -136,10 +137,12 @@ if (edad >= 18) {
 }
 ```
 
+**Operador ternario** → Versión corta de if/else
 ```javascript
 let mensaje = edad >= 18 ? "Mayor" : "Menor";
 ```
 
+**switch** → Evalúa múltiples casos
 ```javascript
 switch(dia) {
   case 1:
@@ -154,18 +157,21 @@ switch(dia) {
 
 ## 6. Funciones
 
+**function** → Define una función
 ```javascript
 function saludar() {
   console.log("Hola");
 }
 ```
 
+**return** → Devuelve un valor
 ```javascript
 function suma(a, b) {
   return a + b;
 }
 ```
 
+**Arrow function** → Forma corta de función
 ```javascript
 const suma = (a, b) => a + b;
 ```
@@ -174,22 +180,26 @@ const suma = (a, b) => a + b;
 
 ## 7. Bucles
 
+**for** → Repite un bloque un número de veces
 ```javascript
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 ```
 
+**for...of** → Recorre valores de un array
 ```javascript
 for (let valor of [1,2,3]) {
   console.log(valor);
 }
 ```
 
+**forEach()** → Ejecuta una función por cada elemento
 ```javascript
 [1,2,3].forEach(num => console.log(num));
 ```
 
+**while** → Repite mientras se cumpla una condición
 ```javascript
 let i = 0;
 while (i < 5) {
@@ -202,6 +212,7 @@ while (i < 5) {
 
 ## 8. Objetos
 
+→ Estructura para guardar datos en clave-valor
 ```javascript
 const persona = {
   nombre: "Ana",
@@ -215,19 +226,19 @@ console.log(persona.nombre);
 
 ## 9. DOM
 
-**Selección**
+**Selección** → Buscar elementos en HTML
 ```javascript
 document.getElementById("id");
 document.querySelector(".clase");
 ```
 
-**Modificar**
+**Modificar** → Cambiar contenido
 ```javascript
 element.innerText = "Texto";
 element.innerHTML = "<b>HTML</b>";
 ```
 
-**Estilos**
+**Estilos** → Cambiar CSS
 ```javascript
 element.style.color = "red";
 ```
@@ -236,6 +247,7 @@ element.style.color = "red";
 
 ## 10. Eventos
 
+→ Detecta acciones del usuario (click, teclado, etc.)
 ```javascript
 document.addEventListener("click", () => {
   console.log("Click");
