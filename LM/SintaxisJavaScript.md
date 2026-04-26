@@ -11,36 +11,36 @@
 - Funciones
 - Bucles
 - Objetos
-- DOM (básico y avanzado)
+- DOM
 - Eventos
 - BOM
-- Creación dinámica (IMPORTANTE)
+- Creación dinámica
 
 ---
 
 ## 1. Interacción y Salida de Datos
 
-**console.log()** → Muestra información en la consola  
+**console.log()** → Muestra información en la consola (debug)
 ```javascript
 console.log("Hola mundo");
 ```
 
-**alert()** → Ventana emergente  
+**alert()** → Muestra una ventana emergente
 ```javascript
 alert("Esto es una alerta");
 ```
 
-**console.dir()** → Ver estructura de objetos  
+**console.dir()** → Muestra un objeto con todas sus propiedades
 ```javascript
 console.dir({nombre: "Juan"});
 ```
 
-**prompt()** → Pide datos al usuario  
+**prompt()** → Pide datos al usuario
 ```javascript
 let nombre = prompt("Tu nombre:");
 ```
 
-**confirm()** → Pregunta (true/false)  
+**confirm()** → Devuelve true/false según la respuesta
 ```javascript
 let ok = confirm("¿Seguro?");
 ```
@@ -49,22 +49,22 @@ let ok = confirm("¿Seguro?");
 
 ## 2. Variables y Tipos
 
-**let** → Variable modificable  
+**let** → Variable modificable
 ```javascript
 let edad = 20;
 ```
 
-**const** → No se puede reasignar  
+**const** → No se puede reasignar
 ```javascript
 const nombre = "Ana";
 ```
 
-**typeof** → Tipo de dato  
+**typeof** → Devuelve el tipo de dato
 ```javascript
-console.log(typeof "Hola");
+console.log(typeof 42);
 ```
 
-**Number()** → Convierte a número  
+**Number()** → Convierte texto a número
 ```javascript
 let n = Number("123");
 ```
@@ -73,22 +73,22 @@ let n = Number("123");
 
 ## 3. Strings
 
-**length** → Longitud  
+**length** → Longitud del texto
 ```javascript
 "Hola".length;
 ```
 
-**toUpperCase()** → Mayúsculas  
+**toUpperCase()** → Convierte a mayúsculas
 ```javascript
 "hola".toUpperCase();
 ```
 
-**indexOf()** → Posición  
+**indexOf()** → Posición de un carácter
 ```javascript
 "hola".indexOf("o");
 ```
 
-**trim()** → Quita espacios  
+**trim()** → Elimina espacios
 ```javascript
 " hola ".trim();
 ```
@@ -97,47 +97,47 @@ let n = Number("123");
 
 ## 4. Arrays
 
-**push()** → Añade al final  
+**push()** → Añade al final
 ```javascript
 arr.push(3);
 ```
 
-**pop()** → Quita último  
+**pop()** → Elimina el último
 ```javascript
 arr.pop();
 ```
 
-**shift()** → Quita primero  
+**shift()** → Elimina el primero
 ```javascript
 arr.shift();
 ```
 
-**unshift()** → Añade al inicio  
+**unshift()** → Añade al inicio
 ```javascript
 arr.unshift(1);
 ```
 
-**sort()** → Ordena  
+**sort()** → Ordena el array
 ```javascript
 arr.sort();
 ```
 
-**includes()** → Comprueba valor  
+**includes()** → Comprueba si existe un valor
 ```javascript
 arr.includes(2);
 ```
 
-**concat()** → Une arrays  
+**concat()** → Une arrays
 ```javascript
 arr.concat([4,5]);
 ```
 
-**splice()** → Modifica posiciones  
+**splice()** → Añade o elimina elementos en una posición
 ```javascript
 arr.splice(1,1);
 ```
 
-**indexOf() / lastIndexOf()** → Buscar posición  
+**indexOf() / lastIndexOf()** → Busca posiciones
 ```javascript
 arr.indexOf(2);
 arr.lastIndexOf(2);
@@ -147,6 +147,7 @@ arr.lastIndexOf(2);
 
 ## 5. Condicionales
 
+**if / else** → Ejecuta código según condición
 ```javascript
 if (edad >= 18) {
   console.log("Mayor");
@@ -155,10 +156,12 @@ if (edad >= 18) {
 }
 ```
 
+**Operador ternario** → Versión corta de if/else
 ```javascript
 let msg = edad >= 18 ? "Mayor" : "Menor";
 ```
 
+**switch** → Evalúa múltiples casos
 ```javascript
 switch(dia) {
   case 1:
@@ -173,18 +176,21 @@ switch(dia) {
 
 ## 6. Funciones
 
+**function** → Define una función
 ```javascript
 function saludar() {
   console.log("Hola");
 }
 ```
 
+**return** → Devuelve un valor
 ```javascript
 function suma(a, b) {
   return a + b;
 }
 ```
 
+**Arrow function** → Forma corta
 ```javascript
 const suma = (a,b) => a + b;
 ```
@@ -193,22 +199,26 @@ const suma = (a,b) => a + b;
 
 ## 7. Bucles
 
+**for** → Repite un número de veces
 ```javascript
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 ```
 
+**for...of** → Recorre valores
 ```javascript
 for (let x of [1,2,3]) {
   console.log(x);
 }
 ```
 
+**forEach()** → Ejecuta función por elemento
 ```javascript
 [1,2].forEach(n => console.log(n));
 ```
 
+**while** → Repite mientras se cumpla condición
 ```javascript
 while (i < 5) {
   i++;
@@ -219,6 +229,7 @@ while (i < 5) {
 
 ## 8. Objetos
 
+→ Estructura clave-valor
 ```javascript
 const persona = {
   nombre: "Ana",
@@ -231,47 +242,75 @@ persona["edad"];
 
 ---
 
-## 9. DOM (Básico)
+## 9. DOM (Selección)
 
-**Selección**
+👉 Permite acceder a elementos HTML
+
+**getElementById()** → Selecciona por ID (rápido)
 ```javascript
 document.getElementById("id");
+```
+
+**getElementsByClassName()** → Devuelve varios elementos
+```javascript
 document.getElementsByClassName("clase");
+```
+
+**getElementsByTagName()** → Por etiqueta
+```javascript
 document.getElementsByTagName("p");
+```
+
+**querySelector()** → Primer elemento que coincida con CSS
+```javascript
 document.querySelector(".clase");
+```
+
+**querySelectorAll()** → Todos los que coincidan
+```javascript
 document.querySelectorAll("p");
 ```
 
-**Contenido**
-```javascript
-element.innerText = "Texto";
-element.textContent = "Texto";
-element.innerHTML = "<b>HTML</b>";
-```
+💡 Diferencia clave:
+- `getElementById` → más rápido, pero limitado a ID
+- `querySelector` → más flexible (usa CSS), pero más general
 
 ---
 
-## 10. DOM (Atributos y estilos)
+## 10. DOM (Contenido y atributos)
 
-**Atributos**
+**innerText / textContent** → Cambiar texto
 ```javascript
-element.getAttribute("src");
+element.innerText = "Texto";
+```
+
+**innerHTML** → Insertar HTML
+```javascript
+element.innerHTML = "<b>HTML</b>";
+```
+
+**getAttribute / setAttribute** → Leer/modificar atributos
+```javascript
 element.setAttribute("src", "img.png");
 ```
 
-**Propiedades**
+**Propiedades directas**
 ```javascript
 element.value;
 element.src;
 element.href;
 ```
 
-**Estilos**
+---
+
+## 11. DOM (Estilos y clases)
+
+**style** → Modificar CSS
 ```javascript
 element.style.color = "red";
 ```
 
-**Clases**
+**classList** → Gestionar clases
 ```javascript
 element.classList.add("activo");
 element.classList.toggle("activo");
@@ -279,22 +318,26 @@ element.classList.toggle("activo");
 
 ---
 
-## 11. DOM (Estructura y nodos)
+## 12. DOM (Estructura)
 
+**parentElement / children**
 ```javascript
 element.parentElement;
 element.children;
 ```
 
+**createElement / appendChild / remove**
 ```javascript
-const div = document.createElement("div");
+let div = document.createElement("div");
 document.body.appendChild(div);
 div.remove();
 ```
 
 ---
 
-## 12. Eventos
+## 13. Eventos
+
+→ Detectan acciones del usuario
 
 ```javascript
 element.addEventListener("click", () => {
@@ -304,106 +347,59 @@ element.addEventListener("click", () => {
 
 ---
 
-## 13. BOM
+## 14. BOM
+
+→ Interacción con el navegador
 
 ```javascript
 console.log(window);
 console.log(window.location);
 ```
 
+**Redirección**
+```javascript
+window.location.href = "https://example.com";
+```
+
 ---
 
-## 14. Creación dinámica (MUY IMPORTANTE)
+## 15. Creación dinámica
 
-👉 Esto es lo que más entra en ejercicios del PDF
+→ Crear HTML desde JavaScript
 
-**Crear enlace**
+**Enlace**
 ```javascript
 let a = document.createElement("a");
 a.setAttribute("href", "https://example.com");
-a.innerText = "Ir a página";
+a.innerText = "Ir";
 document.body.appendChild(a);
 ```
 
----
-
-**Crear imagen**
+**Imagen**
 ```javascript
 let img = document.createElement("img");
-img.setAttribute("src", "imagen.jpg");
-img.setAttribute("alt", "Imagen de prueba");
+img.setAttribute("src", "img.jpg");
+img.setAttribute("alt", "Imagen");
 document.body.appendChild(img);
 ```
 
----
-
-**Crear estructura HTML**
+**Estructura**
 ```javascript
 let div = document.createElement("div");
-div.className = "caja";
-
 let p = document.createElement("p");
-p.textContent = "Contenido interno";
-
+p.textContent = "Texto";
 div.appendChild(p);
 document.body.appendChild(div);
 ```
 
 ---
 
-**Crear elementos con bucle**
-```javascript
-for (let i = 1; i <= 5; i++) {
-  let p = document.createElement("p");
-  p.textContent = `Párrafo ${i}`;
-  document.body.appendChild(p);
-}
-```
-
----
-
-**Lista dinámica**
-```javascript
-let ul = document.createElement("ul");
-
-for (let i = 1; i <= 3; i++) {
-  let li = document.createElement("li");
-  li.className = `item${i}`;
-  li.textContent = `Elemento ${i}`;
-  ul.appendChild(li);
-}
-
-document.body.appendChild(ul);
-```
-
----
-
-**Tabla dinámica**
-```javascript
-let table = document.createElement("table");
-
-for (let i = 0; i < 3; i++) {
-  let tr = document.createElement("tr");
-
-  for (let j = 0; j < 3; j++) {
-    let td = document.createElement("td");
-    td.textContent = `${i},${j}`;
-    tr.appendChild(td);
-  }
-
-  table.appendChild(tr);
-}
-
-document.body.appendChild(table);
-```
-
----
-
-## 💡 Tips (DAW)
+## 💡 Tips
 
 - Usa siempre `===`
-- `const` en arrays/objetos sí permite modificar contenido
-- `innerHTML` puede ser peligroso (XSS)
-- DOM + eventos = lo más importante del curso
+- `const` no hace inmutables los objetos
+- `querySelector` = flexible
+- `getElementById` = rápido
+- DOM + eventos = lo más importante
 
 ---
