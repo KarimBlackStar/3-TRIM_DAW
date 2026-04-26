@@ -1,4 +1,4 @@
-# 📘 Resumen JavaScript
+# 📘 Resumen JavaScript (Completo)
 
 ---
 
@@ -11,124 +11,142 @@
 - Funciones
 - Bucles
 - Objetos
-- DOM
+- DOM (básico y avanzado)
 - Eventos
+- BOM
+- Creación dinámica (IMPORTANTE)
 
 ---
 
 ## 1. Interacción y Salida de Datos
 
-**console.log()** → Muestra información en la consola (para depurar)
+**console.log()** → Muestra información en la consola  
 ```javascript
 console.log("Hola mundo");
 ```
 
-**alert()** → Muestra una ventana emergente al usuario
+**alert()** → Ventana emergente  
 ```javascript
 alert("Esto es una alerta");
 ```
 
-**console.dir()** → Muestra un objeto con todas sus propiedades
+**console.dir()** → Ver estructura de objetos  
 ```javascript
-const obj = { nombre: "Juan", edad: 25 };
-console.dir(obj);
+console.dir({nombre: "Juan"});
+```
+
+**prompt()** → Pide datos al usuario  
+```javascript
+let nombre = prompt("Tu nombre:");
+```
+
+**confirm()** → Pregunta (true/false)  
+```javascript
+let ok = confirm("¿Seguro?");
 ```
 
 ---
 
 ## 2. Variables y Tipos
 
-**let** → Variable que puede cambiar
+**let** → Variable modificable  
 ```javascript
 let edad = 20;
-edad = 25;
 ```
 
-**const** → Variable que no se puede reasignar
+**const** → No se puede reasignar  
 ```javascript
-const nombre = "Carlos";
+const nombre = "Ana";
 ```
 
-**typeof** → Devuelve el tipo de dato
+**typeof** → Tipo de dato  
 ```javascript
-console.log(typeof 42);
+console.log(typeof "Hola");
+```
+
+**Number()** → Convierte a número  
+```javascript
+let n = Number("123");
 ```
 
 ---
 
 ## 3. Strings
 
-**length** → Devuelve la longitud del texto
+**length** → Longitud  
 ```javascript
-let texto = "Hola";
-console.log(texto.length);
+"Hola".length;
 ```
 
-**toUpperCase()** → Convierte a mayúsculas
+**toUpperCase()** → Mayúsculas  
 ```javascript
-console.log("hola".toUpperCase());
+"hola".toUpperCase();
 ```
 
-**indexOf()** → Devuelve la posición de un carácter
+**indexOf()** → Posición  
 ```javascript
-console.log("hola".indexOf("o"));
+"hola".indexOf("o");
 ```
 
-**trim()** → Elimina espacios al inicio y final
+**trim()** → Quita espacios  
 ```javascript
-console.log(" hola ".trim());
+" hola ".trim();
 ```
 
 ---
 
 ## 4. Arrays
 
-**push()** → Añade elemento al final
+**push()** → Añade al final  
 ```javascript
-let arr = [1, 2];
 arr.push(3);
 ```
 
-**pop()** → Elimina el último elemento
+**pop()** → Quita último  
 ```javascript
 arr.pop();
 ```
 
-**shift()** → Elimina el primero
+**shift()** → Quita primero  
 ```javascript
 arr.shift();
 ```
 
-**unshift()** → Añade al inicio
+**unshift()** → Añade al inicio  
 ```javascript
-arr.unshift(0);
+arr.unshift(1);
 ```
 
-**sort()** → Ordena el array
+**sort()** → Ordena  
 ```javascript
 arr.sort();
 ```
 
-**includes()** → Comprueba si existe un valor
+**includes()** → Comprueba valor  
 ```javascript
 arr.includes(2);
 ```
 
-**concat()** → Une arrays
+**concat()** → Une arrays  
 ```javascript
-let nuevo = arr.concat([4, 5]);
+arr.concat([4,5]);
 ```
 
-**splice()** → Añade o elimina elementos en una posición
+**splice()** → Modifica posiciones  
 ```javascript
-arr.splice(1, 1);
+arr.splice(1,1);
+```
+
+**indexOf() / lastIndexOf()** → Buscar posición  
+```javascript
+arr.indexOf(2);
+arr.lastIndexOf(2);
 ```
 
 ---
 
 ## 5. Condicionales
 
-**if / else** → Ejecuta código según condición
 ```javascript
 if (edad >= 18) {
   console.log("Mayor");
@@ -137,19 +155,17 @@ if (edad >= 18) {
 }
 ```
 
-**Operador ternario** → Versión corta de if/else
 ```javascript
-let mensaje = edad >= 18 ? "Mayor" : "Menor";
+let msg = edad >= 18 ? "Mayor" : "Menor";
 ```
 
-**switch** → Evalúa múltiples casos
 ```javascript
 switch(dia) {
   case 1:
     console.log("Lunes");
     break;
   default:
-    console.log("Otro día");
+    console.log("Otro");
 }
 ```
 
@@ -157,53 +173,44 @@ switch(dia) {
 
 ## 6. Funciones
 
-**function** → Define una función
 ```javascript
 function saludar() {
   console.log("Hola");
 }
 ```
 
-**return** → Devuelve un valor
 ```javascript
 function suma(a, b) {
   return a + b;
 }
 ```
 
-**Arrow function** → Forma corta de función
 ```javascript
-const suma = (a, b) => a + b;
+const suma = (a,b) => a + b;
 ```
 
 ---
 
 ## 7. Bucles
 
-**for** → Repite un bloque un número de veces
 ```javascript
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 ```
 
-**for...of** → Recorre valores de un array
 ```javascript
-for (let valor of [1,2,3]) {
-  console.log(valor);
+for (let x of [1,2,3]) {
+  console.log(x);
 }
 ```
 
-**forEach()** → Ejecuta una función por cada elemento
 ```javascript
-[1,2,3].forEach(num => console.log(num));
+[1,2].forEach(n => console.log(n));
 ```
 
-**while** → Repite mientras se cumpla una condición
 ```javascript
-let i = 0;
 while (i < 5) {
-  console.log(i);
   i++;
 }
 ```
@@ -212,55 +219,191 @@ while (i < 5) {
 
 ## 8. Objetos
 
-→ Estructura para guardar datos en clave-valor
 ```javascript
 const persona = {
   nombre: "Ana",
   edad: 30
 };
 
-console.log(persona.nombre);
+persona.nombre;
+persona["edad"];
 ```
 
 ---
 
-## 9. DOM
+## 9. DOM (Básico)
 
-**Selección** → Buscar elementos en HTML
+**Selección**
 ```javascript
 document.getElementById("id");
+document.getElementsByClassName("clase");
+document.getElementsByTagName("p");
 document.querySelector(".clase");
+document.querySelectorAll("p");
 ```
 
-**Modificar** → Cambiar contenido
+**Contenido**
 ```javascript
 element.innerText = "Texto";
+element.textContent = "Texto";
 element.innerHTML = "<b>HTML</b>";
 ```
 
-**Estilos** → Cambiar CSS
+---
+
+## 10. DOM (Atributos y estilos)
+
+**Atributos**
+```javascript
+element.getAttribute("src");
+element.setAttribute("src", "img.png");
+```
+
+**Propiedades**
+```javascript
+element.value;
+element.src;
+element.href;
+```
+
+**Estilos**
 ```javascript
 element.style.color = "red";
 ```
 
+**Clases**
+```javascript
+element.classList.add("activo");
+element.classList.toggle("activo");
+```
+
 ---
 
-## 10. Eventos
+## 11. DOM (Estructura y nodos)
 
-→ Detecta acciones del usuario (click, teclado, etc.)
 ```javascript
-document.addEventListener("click", () => {
+element.parentElement;
+element.children;
+```
+
+```javascript
+const div = document.createElement("div");
+document.body.appendChild(div);
+div.remove();
+```
+
+---
+
+## 12. Eventos
+
+```javascript
+element.addEventListener("click", () => {
   console.log("Click");
 });
 ```
 
 ---
 
-## 💡 Tips (importante para DAW)
+## 13. BOM
 
-- `const` no significa inmutable (en objetos/arrays)
-- `==` vs `===` → usa siempre `===`
-- `forEach` no rompe (no usar con `break`)
+```javascript
+console.log(window);
+console.log(window.location);
+```
+
+---
+
+## 14. Creación dinámica (MUY IMPORTANTE)
+
+👉 Esto es lo que más entra en ejercicios del PDF
+
+**Crear enlace**
+```javascript
+let a = document.createElement("a");
+a.setAttribute("href", "https://example.com");
+a.innerText = "Ir a página";
+document.body.appendChild(a);
+```
+
+---
+
+**Crear imagen**
+```javascript
+let img = document.createElement("img");
+img.setAttribute("src", "imagen.jpg");
+img.setAttribute("alt", "Imagen de prueba");
+document.body.appendChild(img);
+```
+
+---
+
+**Crear estructura HTML**
+```javascript
+let div = document.createElement("div");
+div.className = "caja";
+
+let p = document.createElement("p");
+p.textContent = "Contenido interno";
+
+div.appendChild(p);
+document.body.appendChild(div);
+```
+
+---
+
+**Crear elementos con bucle**
+```javascript
+for (let i = 1; i <= 5; i++) {
+  let p = document.createElement("p");
+  p.textContent = `Párrafo ${i}`;
+  document.body.appendChild(p);
+}
+```
+
+---
+
+**Lista dinámica**
+```javascript
+let ul = document.createElement("ul");
+
+for (let i = 1; i <= 3; i++) {
+  let li = document.createElement("li");
+  li.className = `item${i}`;
+  li.textContent = `Elemento ${i}`;
+  ul.appendChild(li);
+}
+
+document.body.appendChild(ul);
+```
+
+---
+
+**Tabla dinámica**
+```javascript
+let table = document.createElement("table");
+
+for (let i = 0; i < 3; i++) {
+  let tr = document.createElement("tr");
+
+  for (let j = 0; j < 3; j++) {
+    let td = document.createElement("td");
+    td.textContent = `${i},${j}`;
+    tr.appendChild(td);
+  }
+
+  table.appendChild(tr);
+}
+
+document.body.appendChild(table);
+```
+
+---
+
+## 💡 Tips (DAW)
+
+- Usa siempre `===`
+- `const` en arrays/objetos sí permite modificar contenido
 - `innerHTML` puede ser peligroso (XSS)
+- DOM + eventos = lo más importante del curso
 
 ---
