@@ -1,183 +1,74 @@
-# 📘 JavaScript DOM — Ejercicios y Apuntes
+# 🧠 Ejercicios JavaScript DOM (Bloque 10)
 
 ---
 
-## 🔹 1. Selección de elementos
+## 🔹 10.1 Crear un enlace
+
+👉 Crear un enlace dinámicamente
 
 ```javascript
-let elemento = document.getElementById("miId");
-console.log(elemento);
-```
+let enlace = document.createElement("a");
+enlace.setAttribute("href", "https://www.google.com");
+enlace.textContent = "Ir a Google";
 
-```javascript
-let elementos = document.getElementsByClassName("miClase");
-console.log(elementos);
-```
-
-```javascript
-let elementos = document.getElementsByTagName("p");
-console.log(elementos);
-```
-
-```javascript
-let elemento = document.querySelector("#miId");
-console.log(elemento);
-```
-
-```javascript
-let elementos = document.querySelectorAll(".miClase");
-console.log(elementos);
+document.body.appendChild(enlace);
 ```
 
 ---
 
-## 🔹 2. Modificar contenido
+## 🔹 10.2 Crear una imagen
+
+👉 Crear una imagen con atributos
 
 ```javascript
-elemento.innerHTML = "Nuevo contenido";
-```
+let img = document.createElement("img");
+img.setAttribute("src", "imagen.jpg");
+img.setAttribute("alt", "Imagen de prueba");
 
-```javascript
-elemento.textContent = "Nuevo texto";
-```
-
----
-
-## 🔹 3. Modificar atributos
-
-```javascript
-elemento.setAttribute("href", "https://www.google.com");
-```
-
-```javascript
-let valor = elemento.getAttribute("href");
+document.body.appendChild(img);
 ```
 
 ---
 
-## 🔹 4. Manipulación de estilos
+## 🔹 10.3 Crear una estructura HTML
+
+👉 Crear un div con un párrafo dentro
 
 ```javascript
-elemento.style.color = "red";
-```
+let div = document.createElement("div");
+div.className = "contenedor";
 
-```javascript
-elemento.style.backgroundColor = "yellow";
-```
+let p = document.createElement("p");
+p.textContent = "Texto dentro del div";
 
----
-
-## 🔹 5. Clases
-
-```javascript
-elemento.classList.add("clase");
-```
-
-```javascript
-elemento.classList.remove("clase");
-```
-
-```javascript
-elemento.classList.toggle("clase");
+div.appendChild(p);
+document.body.appendChild(div);
 ```
 
 ---
 
-## 🔹 6. Eventos
+## 🔹 10.4 Crear múltiples párrafos
+
+👉 Usar un bucle para generar varios elementos
 
 ```javascript
-elemento.addEventListener("click", function() {
-    console.log("Click en el elemento");
-});
+for (let i = 1; i <= 5; i++) {
+    let p = document.createElement("p");
+    p.textContent = "Párrafo " + i;
+    document.body.appendChild(p);
+}
 ```
 
 ---
 
-## 🔹 7. Creación de elementos
+## 🔹 10.5 Crear una lista
 
-```javascript
-let nuevo = document.createElement("p");
-nuevo.textContent = "Hola mundo";
-document.body.appendChild(nuevo);
-```
-
----
-
-## 🔹 8. Eliminación de elementos
-
-```javascript
-elemento.remove();
-```
-
----
-
-## 🔹 9. Navegación en el DOM
-
-```javascript
-elemento.parentElement;
-elemento.children;
-elemento.firstElementChild;
-elemento.lastElementChild;
-```
-
----
-
-## 🔹 10. Ejercicio 1
-
-👉 Cambiar el texto de un elemento con id "titulo"
-
-```javascript
-let titulo = document.getElementById("titulo");
-titulo.textContent = "Nuevo título";
-```
-
----
-
-## 🔹 11. Ejercicio 2
-
-👉 Cambiar el color de todos los párrafos
-
-```javascript
-let parrafos = document.querySelectorAll("p");
-
-parrafos.forEach(p => {
-    p.style.color = "blue";
-});
-```
-
----
-
-## 🔹 12. Ejercicio 3
-
-👉 Añadir un nuevo elemento a la página
-
-```javascript
-let nuevo = document.createElement("div");
-nuevo.textContent = "Elemento añadido";
-document.body.appendChild(nuevo);
-```
-
----
-
-## 🔹 13. Ejercicio 4
-
-👉 Eliminar un elemento con id "eliminar"
-
-```javascript
-let el = document.getElementById("eliminar");
-el.remove();
-```
-
----
-
-## 🔹 14. Ejercicio 5
-
-👉 Crear una lista dinámica
+👉 Generar una lista dinámica
 
 ```javascript
 let ul = document.createElement("ul");
 
-for (let i = 1; i <= 5; i++) {
+for (let i = 1; i <= 3; i++) {
     let li = document.createElement("li");
     li.textContent = "Elemento " + i;
     ul.appendChild(li);
@@ -188,9 +79,9 @@ document.body.appendChild(ul);
 
 ---
 
-## 🔹 15. Ejercicio 6
+## 🔹 10.6 Crear una tabla
 
-👉 Crear una tabla dinámica
+👉 Crear una tabla con bucles
 
 ```javascript
 let table = document.createElement("table");
@@ -212,12 +103,21 @@ document.body.appendChild(table);
 
 ---
 
-## 💡 Notas importantes
+## 🔹 10.7 Crear elementos con clases
 
-- `querySelector` usa selectores CSS
-- `getElementById` es más rápido pero menos flexible
-- `innerHTML` permite HTML, `textContent` solo texto
-- `classList` es la forma correcta de manejar clases
-- DOM + eventos = base del desarrollo web
+👉 Añadir clases dinámicamente
+
+```javascript
+let ul = document.createElement("ul");
+
+for (let i = 1; i <= 3; i++) {
+    let li = document.createElement("li");
+    li.className = "item" + i;
+    li.textContent = "Elemento " + i;
+    ul.appendChild(li);
+}
+
+document.body.appendChild(ul);
+```
 
 ---
