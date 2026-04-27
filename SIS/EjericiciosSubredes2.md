@@ -139,7 +139,7 @@ Establece las direcciones IP de una red que conste de la siguientes subredes (us
   [172.16.40.00][000000]-> 172.16.40.0
   [172.16.40.00][111111]-> 172.16.40.63
 
-| Subred | Direc Red | Rango de IPs | Boradcast|
+| Subred | Direc Red | Rango de IPs | Boradcast |
 | :--- | :--- | :--- | :--- |
 | 1 | 172.16.40.128 | | 172.16.40.191 |
 <<<<<<< HEAD
@@ -152,7 +152,11 @@ Establece las direcciones IP de una red que conste de la siguientes subredes (us
 | 4 | 172.16.41.192 | | 172.16.41.255 |
 >>>>>>> 4f55c4b18f81a1bdc4148d86830dd5c98d59ebd6
 |...| | | | |
+<<<<<<< HEAD
+| 12 | 172.16.31.0 | | 127.16.31.127 |  
+=======
 | 12| 172.16.43.64 | | 127.16.43.127 |  
+>>>>>>> 83848dec25fb4d99eb37ac30441337df09d5744d
 
 Total de equipos a direccionar -> 7730 equipos
 2<sup>16</sup>
@@ -171,6 +175,11 @@ Total de equipos a direccionar -> 7730 equipos
 * **Administrador de Colegio:** El ISP proporciona la dirección `177.19.156.0` con la máscara `255.255.252.0`.
     * **Nota:** Empieza a asignar IPs en la dirección: `177.19.157.0`.
 <<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
 =======
 s
 >>>>>>> 4f55c4b18f81a1bdc4148d86830dd5c98d59ebd6
+
+>>>>>>> 83848dec25fb4d99eb37ac30441337df09d5744d
