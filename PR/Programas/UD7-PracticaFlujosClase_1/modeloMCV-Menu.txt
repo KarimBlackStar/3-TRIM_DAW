@@ -1,0 +1,209 @@
+ 
+Archivo generado el 15/04/2026 a las  8:31:29,31 
+======================================== 
+ 
+============================================================ 
+Archivo: D:\IES\11_Vilagarcia\Programacion-Presencial\Plantilla-MVC-Menu\src\daw\cotarelo\controller\Controller.java 
+============================================================ 
+ 
+package daw.cotarelo.controller;
+
+import daw.cotarelo.model.*;
+import daw.cotarelo.view.*;
+
+/**
+ * Orquesta la comunicación entre el modelo y la vista.
+ * 
+ * @author Programación/DAW
+ * @version 1.0
+ */
+public class Controller {
+    // 2. ATRIBUTOS
+    private Modelo modelo;
+    private View vista;
+
+    // 3. CONSTRUCTORES
+    public Controller(Modelo modelo, View vista) {
+        this.modelo = modelo;
+        this.vista = vista;
+    }
+} 
+ 
+============================================================ 
+Archivo: D:\IES\11_Vilagarcia\Programacion-Presencial\Plantilla-MVC-Menu\src\daw\cotarelo\model\Modelo.java 
+============================================================ 
+ 
+package daw.cotarelo.model;
+
+
+/**
+ * Clase que gestiona la lógica de colección de los trabajadores de la organización.
+ * <p>Esta clase permite realizar operaciones CRUD básicas (Crear, Leer, Eliminar)
+ * sobre la lista</p>
+ * 
+ * @author Programación/DAW
+ * @version 1.0
+ */
+public class Modelo {
+// 1. CONSTANTES Y ESTÁTICOS
+    
+// 2. ATRIBUTOS DE INSTANCIA
+    
+// 3. CONSTRUCTORES    
+
+// 4. MÉTODOS ESTÁTICOS    
+    
+// 5. MÉTODOS DE ACCESO (Getters y Setters)     
+    
+// 6. MÉTODOS ABSTRACTOS
+
+// 7. LÒXICA Y OPERACIONES       
+    
+// 8. MÉTODOS SOBRESCRITOS    
+   
+}
+ 
+ 
+============================================================ 
+Archivo: D:\IES\11_Vilagarcia\Programacion-Presencial\Plantilla-MVC-Menu\src\daw\cotarelo\principal\Main.java 
+============================================================ 
+ 
+package daw.cotarelo.principal;
+
+import daw.cotarelo.controller.*;
+import daw.cotarelo.model.*;
+import daw.cotarelo.view.*;
+import gal.cotarelo.menu.controller.*;
+
+/**
+ * Punto de entrada principal de la aplicación.
+ *
+ * @author Programación/DAW
+ * @version 1.0
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        int opcion = 0; // almacena la opción elegida
+        boolean salir = false; // controla si el usuario decidió salir o no del programa
+
+        // 1. Configuramos as opcións do menú
+        String[] opcions = {};
+
+        // 2. Inicializamos el controlador del menú (de la  librería) 
+        MenuController menuControl = new MenuController("Título del menú", opcions);
+
+        // 1. Crear el modelo -> Modelo     
+        Modelo modelo = new Modelo();
+        // 2. Crear la vista
+        View vista = new View();
+        // 3. Crear el controlador que enlaza la vista y el modelo
+        Controller controlador = new Controller(modelo, vista);
+
+        // 4. Bucle principal del menú
+        do {
+            try {
+                // Obtenemos la opción seleccionada por el usuario desde la lógica del menú
+                opcion = menuControl.executar();
+
+                // 4. Switch-case: delegación exclusiva al controlador
+                switch (opcion) {
+                    case 1://Opción 1
+                        break;
+                    case 2://Opción 2
+                        break;
+                    case 3://Opción 3
+                        break;
+                    case 4://Opción de salida
+                        salir = true;
+                }
+
+            } catch (Exception e) {
+                vista.mostrarMensajeError("ERRO INESPERADO: " + e.getMessage());
+            }
+        } while (!salir);
+    }
+}
+ 
+ 
+============================================================ 
+Archivo: D:\IES\11_Vilagarcia\Programacion-Presencial\Plantilla-MVC-Menu\src\daw\cotarelo\view\View.java 
+============================================================ 
+ 
+package daw.cotarelo.view;
+
+import daw.cotarelo.model.*;
+import java.util.Scanner;
+
+/**
+ * Vista responsable de toda la interacción con el usuario.
+ * <p>
+ * Se limita a actuar como interfaz entre el sistema y el operador sin contener
+ * lógica.</p>
+ *
+ * @author Programación/DAW
+ * @version 1.0
+ */
+public class View {
+
+    // 1. CONSTANTES
+    // 2. ATRIBUTOS DE INSTANCIA
+    private final Scanner sc = new Scanner(System.in);
+
+    // 3. MÉTODOS DE ENTRADA DE DATOS
+    /**
+     * Solicita una cadena de texto al usuario.
+     *
+     * @param mensaje Etiqueta descriptiva.
+     * @return Texto introducido.
+     */
+    public String pedirDato(String mensaje) {
+        System.out.print(mensaje + ": ");
+        return sc.nextLine();
+    }
+
+    /**
+     * Solicita y valida la entrada de un dato decimal.
+     *
+     * @param mensaje Etiqueta informativa.
+     * @return Valor decimal validado.
+     */
+    public double pedirDatoDouble(String mensaje) {
+        boolean correcto = false;
+        double dato = 0.0;
+        do {
+            try {
+                System.out.print(mensaje + ": ");
+                dato = Double.parseDouble(sc.nextLine());
+                correcto = true;
+            } catch (NumberFormatException e) {
+                mostrarMensajeError("Tipo de dato decimal no correcto.");
+            }
+        } while (!correcto);
+        return dato;
+    }
+    // 4. MÉTODOS DE SALIDA DE INFORMACIÓN (CABECERAS)
+
+    // 5. MÉTODOS DE LÓGICA DE INTERFAZ
+    /**
+     * Imprime un mensaje est?ndar.
+     *
+     * @param msg Texto a mostrar.
+     */
+    public void mostrarMensaje(String msg) {
+        System.out.println(msg);
+    }
+
+    /**
+     * Imprime un mensaje por el flujo de error.
+     *
+     * @param msg Texto del error.
+     */
+    public void mostrarMensajeError(String msg) {
+        System.err.println(msg);
+    }
+
+    // 6. MÉTODOS PRIVADOS AUXILIARES
+}
+ 
+ 
