@@ -3,6 +3,7 @@ package daw.cotarelo.controller;
 import daw.cotarelo.model.*;
 import daw.cotarelo.view.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -76,6 +77,10 @@ public class InventarioControlador {
         } else {
             vista.mostrarMensaje("El inventario está vacío.");
         }
+    }
+
+    public List<Producto> filtrar(String categoria) {
+        List<Producto> resultado = new ArrayList<>;
     }
 
 }

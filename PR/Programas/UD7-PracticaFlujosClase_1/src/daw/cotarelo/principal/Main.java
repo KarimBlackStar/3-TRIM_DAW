@@ -6,7 +6,6 @@ import daw.cotarelo.view.*;
 import gal.cotarelo.menu.controller.*;
 import java.io.IOException;
 
-
 /**
  * Punto de entrada principal de la aplicación.
  *
@@ -14,20 +13,22 @@ import java.io.IOException;
  * @version 1.0
  */
 public class Main {
+
     /**
      * Ruta relativa al archivo CSV que contiene los datos iniciales.
      */
     private static final String NOMBRE_FICH_CSV = "datos/productos.csv";
-
 
     public static void main(String[] args) {
         int opcion = 0; // almacena la opción elegida
         boolean salir = false; // controla si el usuario decidió salir o no del programa
 
         // 1. Configuramos as opcións do menú
-        String[] opcions = {};
+        String[] opcions = {"Mostrar todos los productos", "Exportar productos filtrados por categoría",
+            "Exportar productos sin stock", "Exportar productos por precio máximo",
+            "Ver metadatos del fichero de datos", "Salir"};
 
-        // 2. Inicializamos el controlador del menú (de la  librería) 
+        // 2. Inicializamos el controlador del menú (de la  librería)
         MenuController menuControl = new MenuController("Gestor de inventario de productos", opcions);
 
         // 3. INSTANCIACIÓN DE COMPONENTES (Arquitectura MVC)
@@ -40,19 +41,17 @@ public class Main {
 
         // Creamos el controlador, inyectando las dependencias necesarias.
         // El controlador "conoce" a los modelos y a la vista para actuar como intermediario.
-        InventarioControlador controlador = 
-                new InventarioControlador(inventarioModelo, ficheroModelo, vista);
-        
-        
-        
+        InventarioControlador controlador
+                = new InventarioControlador(inventarioModelo, ficheroModelo, vista);
+
         //Crea el directorio /salida si ni está creado
         controlador.inicializarDirectorioSalida();
         try {
             controlador.cargarDesdeArchivo(NOMBRE_FICH_CSV);
         } catch (IOException e) {
             salir = true;
-            System.err.println("Se cierra el programa: No se puedo abrir el fichero de productos "+ e.getMessage());
-            
+            System.err.println("Se cierra el programa: No se puedo abrir el fichero de productos " + e.getMessage());
+
         }
         // 4. Bucle principal del menú
         while (!salir) {
@@ -76,6 +75,6 @@ public class Main {
             } catch (Exception e) {
                 vista.mostrarMensajeError("ERRO INESPERADO: " + e.getMessage());
             }
-        } 
+        }
     }
 }
