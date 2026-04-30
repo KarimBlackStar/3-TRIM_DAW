@@ -89,3 +89,7 @@ Para asegurar que tu análisis es correcto, verifica lo siguiente:
 * **En la Complejidad:** Si calculas $V(G)$ y te da un número concreto (por ejemplo, 4), debes ser capaz de encontrar exactamente esa misma cantidad de caminos independientes. Si no coinciden, revisa el grafo.
 * **En JUnit:** Usa `assertEquals(valorEsperado, valorObtenido, 0.001)` para comparar los resultados de tipo `double`, ya que los decimales pueden tener pequeñas variaciones de precisión.
 * **En Caja Negra:** Asegúrate de que el DNI falle si tiene 8 o 10 caracteres, y que la letra final sea validada estrictamente como mayúscula.
+
+Imagen del drawio
+
+![Texto alternativo](eventos.drawio.svg)
