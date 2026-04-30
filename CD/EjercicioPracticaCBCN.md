@@ -93,3 +93,20 @@ Para asegurar que tu análisis es correcto, verifica lo siguiente:
 Imagen del drawio
 
 ![Texto alternativo](eventos.drawio.svg)
+
+~~hola~~
+>[!NOTE]
+> Estudiar CD
+
+
+>[!WARNING]
+> Cuidado
+
+>[!INFO]
+> Espabila
+
+>[!IMPORTANT]
+> Has de recuperar
+
+>[!TIP]
+>Estudia
