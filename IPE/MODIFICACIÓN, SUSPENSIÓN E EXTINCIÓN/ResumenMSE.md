@@ -323,3 +323,28 @@ Incluye:
 | Traslado (rechazo) | 20 días/año (máx. 12 meses) |
 | Incumplimiento empresario | 33 días/año (máx. 24 meses) |
 | Despido improcedente | 33 días/año (máx. 24 meses / 720 días) |
+
+### Fórmulas de Liquidación Laboral
+
+1. **Salario Mensual Bruto (RB):**
+   $$RB = \text{Salario Base} + \sum \text{Pluses}$$
+
+2. **Salario Anual:**
+   $$\text{Salario Anual} = (RB \times 12) + \sum \text{Pagas Extras}$$
+
+3. **Salario Diario (Base de cálculo):**
+   $$SD = \frac{\text{Salario Anual}}{360}$$
+
+4. **Indemnización por Despido:**
+   $$\text{Indemnización} = \text{Años de antigüedad} \times \text{Días según tipo} \times SD$$
+   *Si hay meses adicionales:*
+   $$\text{Indemnización} = \left( \text{Años} + \frac{\text{Meses}}{12} \right) \times \text{Días según tipo} \times SD$$
+
+5. **Vacaciones No Disfrutadas:**
+   $$\text{Vacaciones} = (\text{Meses trabajados en el año} \times 2,5) \times SD$$
+
+6. **Parte Proporcional Pagas Extras (P.P.P.E):**
+   * **Devengo Anual:**
+     $$\text{Paga} = \frac{\text{Meses transcurridos}}{12} \times \text{Importe Paga Extra}$$
+   * **Devengo Semestral:**
+     $$\text{Paga} = \frac{\text{Meses transcurridos en el semestre}}{6} \times \text{Importe Paga Extra}$$
