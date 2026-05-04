@@ -348,3 +348,206 @@ Incluye:
      $$\text{Paga} = \frac{\text{Meses transcurridos}}{12} \times \text{Importe Paga Extra}$$
    * **Devengo Semestral:**
      $$\text{Paga} = \frac{\text{Meses transcurridos en el semestre}}{6} \times \text{Importe Paga Extra}$$
+---
+
+# EJERCICIOS U.D. MODIFICACIÓN, SUSPENSIÓN Y EXTINCIÓN DEL CONTRATO DE TRABAJO
+
+## 1. Movilidad funcional
+
+Los trabajadores de una empresa de conservas cambian de puesto según órdenes del jefe.
+
+### Caso Amparo
+- Categoría: Oficial de 1ª (Grupo VIII)
+- Funciones reales: Oficial de 3ª (Grupo IX)
+
+**Tipo:** Movilidad funcional vertical descendente  
+**Derechos:**
+- Mantiene salario de su categoría original
+- No pueden bajarle el sueldo
+
+**Reclamación:**
+- Debe ser una situación temporal
+- Solo por necesidades urgentes o imprevisibles
+- Puede exigir respeto a su dignidad
+
+---
+
+### Caso Henrique
+- Categoría: Peón
+- Funciones: Oficial de 1ª (Grupo VIII) desde hace 2 meses
+
+**Tipo:** Movilidad funcional vertical ascendente  
+**Derechos:**
+- Derecho a salario superior mientras realice esas funciones
+
+**Ascenso:**
+- No puede aún (mínimo 6 meses en 1 año o 8 en 2 años)
+- Sí puede reclamar diferencias salariales desde el primer día
+
+---
+
+## 2. Cambio de funciones (oficina → almacén)
+
+**Situación:** Un administrativo debe bajar al almacén por accidente de un compañero.
+
+**Tipo:** Movilidad funcional descendente  
+
+**Derechos:**
+- Puede negarse si la orden es arbitraria
+
+**Requisitos legales:**
+- Debe existir causa justificada (sí hay: accidente)
+- Debe ser temporal
+- Debe respetar su formación/capacidad
+- Mantener salario original
+- Comunicación a representantes
+
+---
+
+## 3. Caso Raúl
+
+Cambio de sección (coches → camiones)
+
+**Tipo:** Movilidad funcional horizontal  
+
+**Conclusión:**
+- La empresa tiene razón
+- Está dentro del mismo grupo profesional
+- El empresario puede reorganizar sin justificar causa
+- Debe respetarse dignidad y formación
+
+---
+
+## 4. Caso Susana
+
+- Pasa de Grupo V a Grupo IV (5 meses)
+
+**Tipo:** Movilidad ascendente  
+
+**Salario:**
+- Debe cobrar el superior
+
+**Ascenso:**
+- No puede aún (faltan 6 meses)
+
+**Indemnización:**
+- Si se va → baja voluntaria → sin indemnización
+
+---
+
+## 5. Caso Isaura (traslado a León)
+
+**Preaviso:**
+- Mínimo 30 días
+
+**Traslado del marido:**
+- Tiene derecho preferente si hay vacante
+
+**Gastos:**
+- Viaje y mudanza (ella y familia)
+- No incluye guardería (salvo convenio)
+
+---
+
+## 6. Caso Ricardo (Vigo → Valencia 6 meses)
+
+**Tipo:** Desplazamiento  
+
+**Preaviso:**
+- Mínimo 5 días (más de 3 meses)
+- 2 días → ilegal
+
+**Gastos:**
+- Viaje + dietas (empresa debe pagarlo todo)
+
+**Permisos:**
+- 4 días cada 3 meses
+
+---
+
+## 7. Cambio de horario (turnos)
+
+**Cambio:**
+- Jornada
+- Horario
+- Turnos
+
+**Tipo:**
+- Modificación Sustancial de las Condiciones de Trabajo (MSCT)
+
+---
+
+### Indemnizaciones
+
+**Regla:** 20 días/año (máx. 9 meses)
+
+#### Trabajador 1
+- Salario: 900 + 100
+- SD = 38,33 €/día  
+- Indemnización:
+  - 38,33 × 20 × 7 = **5.366,20 €**
+- Límite: 10.349,10 €
+
+#### Trabajador 2
+- Salario: 1000 + 100
+- SD = 42,22 €/día  
+- Indemnización:
+  - 42,22 × 20 × 15 = **12.666,60 €**
+- Límite: **11.489,30 € (se aplica este)**
+
+---
+
+## 8. Caso Xaime (estudios)
+
+**Posible acuerdo:**
+- Excedencia o adaptación jornada
+
+**Derechos:**
+- Permisos para exámenes
+- Preferencia de turno
+
+**Consecuencias:**
+- Excedencia → no trabaja ni cobra
+- Se mantiene vínculo laboral
+
+---
+
+## 9. Caso Antonio (excedencia voluntaria)
+
+**¿Puede pedirla?**
+- ❌ No (mínimo 1 año de antigüedad)
+
+**Errores:**
+- Cree que puede con 10 meses
+- Cree que puede pedir 3 meses
+
+**Realidad:**
+- Mínimo 4 meses, máximo 5 años
+
+---
+
+## 10. Caso inundación empresa
+
+**Situación:**
+- Empresa cerrada 4 días
+
+**Derechos:**
+- Deben cobrar salario íntegro
+- Art. 30 ET (imposibilidad por causa empresarial)
+
+---
+
+## 11. Conflicto salarios
+
+**Empresario dice:**
+- Suspensión → no paga
+
+**Trabajadores dicen:**
+- No se siguieron requisitos legales
+
+**Conclusión:**
+- Tienen razón los trabajadores
+
+**Motivo:**
+- No se tramitó correctamente suspensión (ERTE, etc.)
+- El salario no puede reducirse
