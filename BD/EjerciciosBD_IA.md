@@ -10,37 +10,38 @@
 
 ---
 
-### 🔹 4.8
-👉 Obtener la lista de todos los autores (ID y Nombre) indicando el número total de libros que tienen registrados.  
-➡️ Deben aparecer incluso los autores que aún no tienen libros asociados.
+## 📚 Base de Datos Biblioteca
+
+### 🔹 4.8B
+👉 Obtener el **ID, nombre y apellidos** de todos los autores y el número total de libros que han escrito.  
+➡️ Ordenar de **más a menos obras**.
 
 ---
 
-### 🔹 4.9
-👉 Visualizar los nombres y apellidos de todos los usuarios y la fecha de su primer préstamo.  
-➡️ Aquellos que no hayan realizado préstamos deben aparecer con valor **NULL**.
+### 🔹 4.9B
+👉 Mostrar el **nombre de todas las áreas** y la cantidad de ejemplares que tienen.  
+➡️ Deben aparecer incluso las áreas sin ejemplares.  
+➡️ Ordenar por **nombre**.
 
 ---
-
-## 🗄️ Consultas Externas — BD Prueba
 
 ### 🔹 4.10B
-👉 Obtener la lista de todos los productos (`PRODUCTO_NO`) indicando el número de pedidos diferentes en los que aparece.  
-➡️ Ordenar por número de pedidos de mayor a menor.
+👉 Obtener el **nombre de todos los departamentos**, su **presupuesto** y el **nombre de su director**.  
+➡️ Ordenar por presupuesto de forma **descendente**.
 
 ---
 
 ### 🔹 4.11B
-👉 Obtener la lista de todos los departamentos indicando:  
-- salario máximo  
-- salario mínimo  
+👉 Visualizar el **código y título de todos los libros**, junto a:  
+- su precio original  
+- una columna nueva con el **precio rebajado un 15%**
 
-➡️ Si un departamento no tiene empleados, mostrar `0.00` usando funciones.
+➡️ Ordenar **alfabéticamente**.
 
 ---
 
 ### 🔹 4.12B
-👉 Visualizar el nombre de todos los empleados y el nombre del departamento al que pertenecen.  
-➡️ Incluir también a los empleados sin departamento asignado.
+👉 Obtener la lista de todos los usuarios indicando cuántos **préstamos distintos** han realizado.  
+➡️ Ordenar por **número de socio**.
 
 ---
