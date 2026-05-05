@@ -1,114 +1,105 @@
-# 📘 Ejercicios SQL
+# 🚗 Base de Datos — Taller de Coches
 
 ---
 
-## 📚 Base de Datos Biblioteca
+## 🗄️ Tablas
 
-### 🔹 4.7B
-👉 Obtener los códigos y títulos de todos los libros y el número de usuarios distintos que los han solicitado en préstamo.  
-➡️ Ordenar por título de la A a la Z.
+### 👤 Clientes
+```sql
+Clientes (IdCliente, Nombre, Apellido, Direccion, Telefono, Correo_e)
+```
 
----
+### 🚙 Vehículos
+```sql
+Vehiculos (IdVehiculo, Cliente, Marca, Modelo, Año, Num_chasis, Color)
+```
 
-## 📚 Base de Datos Biblioteca
+### 🔧 Reparaciones
+```sql
+Reparaciones (IdReparacion, Vehiculo, Descripcion, Fec_ingreso, Fec_salida, Importe)
+```
+> 💡 `Fec_salida` es `NULL` mientras la reparación está activa
 
-### 🔹 4.8B
-👉 Obtener el **ID, nombre y apellidos** de todos los autores y el número total de libros que han escrito.  
-➡️ Ordenar de **más a menos obras**.
+### 👨‍🔧 Empleados
+```sql
+Empleados (IdEmpleado, Nombre, Apellido, Direccion, Telefono, Correo_e, Especialidad)
+```
 
----
-
-### 🔹 4.9B
-👉 Mostrar el **nombre de todas las áreas** y la cantidad de ejemplares que tienen.  
-➡️ Deben aparecer incluso las áreas sin ejemplares.  
-➡️ Ordenar por **nombre**.
-
----
-
-### 🔹 4.10B
-👉 Obtener el **nombre de todos los departamentos**, su **presupuesto** y el **nombre de su director**.  
-➡️ Ordenar por presupuesto de forma **descendente**.
-
----
-
-### 🔹 4.11B
-👉 Visualizar el **código y título de todos los libros**, junto a:  
-- su precio original  
-- una columna nueva con el **precio rebajado un 15%**
-
-➡️ Ordenar **alfabéticamente**.
+### 🔗 Asignaciones
+```sql
+Asignaciones (Reparacion, Empleado)
+```
 
 ---
 
-### 🔹 4.12B
-👉 Obtener la lista de todos los usuarios indicando cuántos **préstamos distintos** han realizado.  
-➡️ Ordenar por **número de socio**.
+## ⚙️ Creación de la BD
+
+```sql
+source /ruta_al_archivo/BDTallerCoches.sql;
+```
 
 ---
 
-# 📘 Consultas SQL (Subconsultas y Vistas)
+## 🧠 Ejercicios SQL
 
 ---
 
-## 🔄 Consultas dentro de otras instrucciones
-
-### 🔹 5.12
-👉 Dar de alta un nuevo autor llamado **"Lucía García"** sin correo electrónico.  
-➡️ Ejecutar la consulta **dos veces**.
+### 🔹 1. Cliente con más vehículos
+👉 Mostrar el nombre y apellidos del cliente con más vehículos registrados y el número de éstos.
 
 ---
 
-### 🔹 5.13
-👉 Crear una copia de la tabla `libros` llamada **LibrosCaros**  
-➡️ Solo con los libros cuyo precio sea **mayor a 40**.
+### 🔹 2. Empleados y reparaciones terminadas
+👉 Obtener los datos de los empleados y la cantidad de reparaciones terminadas que ha realizado cada uno.
 
 ---
 
-### 🔹 5.14
-👉 Borrar de la tabla **LibrosCaros** todos los libros de la editorial **"Anaya"**.
+### 🔹 3. Vehículos con más de una reparación
+👉 Listar los datos de los vehículos que tienen o han tenido más de una reparación.
 
 ---
 
-### 🔹 5.15
-👉 Insertar en **LibrosCaros** todos los libros de la tabla original  
-➡️ que hayan sido editados en el **año actual**.
+### 🔹 4. Empleado con más reparaciones
+👉 Obtener los datos del empleado que ha trabajado en más reparaciones y el número de éstas.
 
 ---
 
-### 🔹 5.16
-👉 Actualizar el presupuesto del departamento con `NumDpto = 10`  
-➡️ Igualarlo al **presupuesto medio** de todos los departamentos.
+### 🔹 5. Año con más reparaciones
+👉 Obtener el año con más reparaciones realizadas y el número de éstas.
 
 ---
 
-### 🔹 5.17
-👉 Aumentar en **1 año** la `FechaEdicion` en **LibrosCaros**  
-➡️ Solo para libros cuyo precio sea superior al **precio medio de su formato**.
+### 🔹 6. Cliente con más reparaciones completadas
+👉 Obtener la clave del cliente con más reparaciones completadas y el importe total de éstas.
 
 ---
 
-## 👁️ Vistas
-
-### 🔹 5.18
-👉 Crear la vista **LibrosInformatica**  
-➡️ Con libros cuyo `CodLocalizacion` empiece por `'INF'`  
-➡️ Usar `WITH CHECK OPTION`
+### 🔹 7. Reparación más costosa
+👉 Obtener los datos del cliente y del vehículo con la reparación más costosa.
 
 ---
 
-### 🔹 5.19
-👉 Crear la vista **ResumenPrestamos** que muestre:  
-- nombre del usuario  
-- título del libro  
-- fecha del préstamo  
-
-➡️ Insertar un registro y comprobar el efecto en las tablas originales
+### 🔹 8. Clientes sin reparaciones
+👉 Listar los clientes que no han realizado ninguna reparación.
 
 ---
 
-### 🔹 5.20
-👉 Eliminar mediante SQL:  
-- la tabla **LibrosCaros**  
-- la vista **LibrosInformatica**
+### 🔹 9. Empleados con más de 2 reparaciones (sin JOIN)
+👉 Obtener los datos de los empleados que han trabajado en más de 2 reparaciones sin usar JOIN.
+
+---
+
+### 🔹 10. Reparaciones por especialidad
+👉 Mostrar el número total de reparaciones completadas y el importe medio por especialidad de empleados.
+
+---
+
+### 🔹 11. Vehículos reparados este año (sin JOIN)
+👉 Listar la marca, modelo y año de los vehículos que han finalizado la reparación este año, ordenados por marca y modelo.
+
+---
+
+### 🔹 12. Vehículos con más de 7 días en reparación (sin JOIN)
+👉 Mostrar los vehículos que han pasado más de 7 días en reparación sin usar JOIN.
 
 ---
