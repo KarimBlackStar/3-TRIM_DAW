@@ -97,8 +97,7 @@ SELECT c.*
 FROM Clientes c
 LEFT JOIN Vehiculos v ON c.IdCliente = v.Cliente
 LEFT JOIN Reparaciones r ON v.IdVehiculo = r.Vehiculo
-GROUP BY c.IdCliente
-HAVING COUNT(r.IdReparacion) = 0;
+WHERE r.IdReparacion IS NULL;
 ```
 
 ---
