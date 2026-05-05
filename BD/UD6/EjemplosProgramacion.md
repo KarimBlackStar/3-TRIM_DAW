@@ -153,3 +153,78 @@ BEGIN
 END $$
 
 DELIMITER ;
+-- ==========================================
+-- 10. iterate-bucle
+-- ==========================================
+delimiter $$
+begin
+	declare i tinyiny unsigned;
+    set i=0;
+    mibucle: loop
+		set i = i+1;
+        if i = 3 then
+			iterate mibucle;
+		end if;
+		select 'Valor de i =' + i as i;
+        if i=4 then
+			leave mibucle;
+	end if;
+end loop mibucle;
+delimiter ;
+-- ==========================================
+-- 11. repeat-bucle
+-- ==========================================
+delimiter $$
+
+drop procedure if exists bucle3 $$
+create procedure bucle3 ()
+begin 
+	declare i tinyint unsigned;
+    set i=0;
+    mibucle: repeat
+    set i=i+1;
+    select 'Valor de i=' +i as i;
+    until i=4
+end repeat mibucle;
+end $$
+delimiter ;
+-- ==========================================
+-- 12. while-bucle
+-- ==========================================
+delimiter $$
+drop procedure if exists bucle4 $$
+create procedure bucle4 ()
+begin
+	declare i tinyint unsigned;
+    set i=0;
+    mibucle: while i<4 do
+		set i=i+1;
+        select 'Valor de i='+i as i;
+	end while mibucle;
+end $$
+delimiter ;
+-- ==========================================
+-- 13. bucle-anidado
+-- ==========================================
+
+delimiter $$
+drop procedure if exists bucle4 $$
+create procedure bucle5 ()
+begin
+    declare i,j tinyint unsigned default 1;
+    bucle_externo: loop
+        set j=1;
+        bucle_interno:loop
+            select concat('Valor de i y j: ', i, '-',j) as i_j;
+            set j=j+1;
+            if j>2 then
+                leave bucle_interno;
+            end if;
+        end loop bucle_interno;
+        set i=i+1;
+        if i>2 then
+            leave bucle_externo;
+        end if;
+    end loop bucle_externo;
+end $$
+delimiter ;
