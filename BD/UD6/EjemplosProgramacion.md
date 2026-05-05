@@ -228,3 +228,34 @@ begin
     end loop bucle_externo;
 end $$
 delimiter ;
+-- ==========================================
+-- 14. DML
+-- ==========================================
+delimiter $$
+drop procedure if exists procedimiento1 $$
+create procedure procedimiento1 ()
+begin
+	declare i tinyint unsigned default 1;
+    drop table if exists alumnos;
+    create table alumnos
+		(id int primary key,
+        alumno varchar(30))
+	engine=InnoDB;
+    while (i<=5) do
+		insert into alumnos values(i, concat('alumno ',i));
+        set i=i+1;
+	end while;
+end $$
+delimiter ;
+-- ==========================================
+-- 15. Procedimiento almacenado
+-- ==========================================
+delimiter $$
+drop procedure if exists resultset1 $$
+create procedure resultset1 (in p_numce integer)
+begin
+	select numde,nomde,presu
+		from departamentos
+	where numce = p_numce;
+end $$
+delimiter ;
