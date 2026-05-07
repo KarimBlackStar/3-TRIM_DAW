@@ -12,6 +12,40 @@
    - Cuota: 0  
    - Debe devolver el nº de usuario o -1 si no se insertó  
 
+```sql
+delimiter $$
+
+delimiter $$
+
+drop procedure if exists ejercicio1 $$
+create procedure ejercicio1 (midni varchar(9), minombre varchar(20), miapellidos varchar(20), mifechanacimiento datetime,
+mitipousuario varchar(2), out salida int)
+begin
+declare tipo varchar(2);
+declare miclave int;
+
+-- comprobar si el tipo de usuario existe
+
+select tipousuario
+into tipo
+from tiposusuarios
+where tipousuario = mitipousuario;
+
+	if tipo is null then
+		set salida = -1; -- no existe --> fin
+	else -- si existe --> buscar el utlimo usuario e insertar
+		select ifnull(max(numsocio),0)
+		into miclave
+		from usuarios;
+		set miclave = miclave+1;
+
+		insert into usuarios values(miclave,midni,minombre,miapellidos,mifechanacimiento,
+		mitipousuario,curdate(),0,default);
+		set salida = miclave;
+	end if;
+end
+```
+
 2. Crear un procedimiento que devuelva el número de ejemplares disponibles y en préstamo de un libro (búsqueda por código o por título).
 
 3. Procedimiento que cree una tabla nueva **ProfeDepto** con:
