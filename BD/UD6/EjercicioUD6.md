@@ -48,6 +48,30 @@ end
 
 2. Crear un procedimiento que devuelva el número de ejemplares disponibles y en préstamo de un libro (búsqueda por código o por título).
 
+```sql
+delimiter $$
+
+drop procedure if exists ejercicio2 $$
+create procedure ejercicio2(
+		micodigo varchar(75),
+        out disponibles int,
+        out prestables int
+)
+begin
+	
+		select count(prestable)
+        into disponible
+        from ejemplares
+        where prestable = 0 and CodLocalizacion = micodigo;
+        
+        select count(prestable)
+        into prestado
+        from ejemplares
+        where prestable = -1 and CodLocalizacion = micodigo;
+
+end
+```
+
 3. Procedimiento que cree una tabla nueva **ProfeDepto** con:
    - Profesores (Código, Nombre, Apellidos)
    - Departamentos (Número y Nombre)
