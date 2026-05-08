@@ -70,18 +70,98 @@ begin
         where prestable = -1 and CodLocalizacion = micodigo;
 
 end
+/*
+select count(prestable)
+        into disponible
+        from ejemplares e join libros l
+        on e.codlocalizacion = l.codlocalizacion
+        where prestable = 0 and titulo like concat("%",mititulo,"%");
+
+select count(prestable)
+        into disponible
+        from ejemplares e join libros l
+        on e.codlocalizacion = l.codlocalizacion
+        where prestable = -1 and titulo like concat("%",mititulo,"%");
+*/
+/*
+delimiter $$
+
+drop procedure if exists ejercicio2 $$
+
+create procedure ejercicio2( mitituloOcodigo varchar(75), out disponible int, out prestamo int)
+begin
+-- Declaramos una variable para guardar el código real del libro
+DECLARE v_codigo VARCHAR(6);
+
+-- PASO 1: Comprobamos lo que nos mete el usuario (título o código)
+-- y guardamos su código en nuestra variable
+SELECT codlocalizacion INTO v_codigo
+FROM libros
+WHERE titulo like concat("%",mitituloOcodigo,"%") OR codlocalizacion = mitituloOcodigo
+LIMIT 1; -- Limit 1 asegura que no dé error si hay más de un resultado
+
+-- PASO 2: Contamos cuántos están disponibles usando ese código
+-- (Asumo que tienes una columna 'estado' o similar en la tabla ejemplares)
+SELECT COUNT(*)
+INTO disponible
+FROM ejemplares
+WHERE codlocalizacion = v_codigo AND prestable = 0;
+
+
+-- PASO 3: Contamos cuántos están prestados usando ese código
+SELECT COUNT(*)
+INTO prestamo
+FROM ejemplares
+WHERE codlocalizacion = v_codigo AND prestable = -1;
+
+end
+*/
 ```
 
 3. Procedimiento que cree una tabla nueva **ProfeDepto** con:
    - Profesores (Código, Nombre, Apellidos)
    - Departamentos (Número y Nombre)
    - Asignar clave primaria  
-
+```sql
+delimiter $$
+drop procedure if exists ejercicio3 $$
+create procedure ejercicio3()
+begin
+	drop table if exists profedepto;
+    create table ProfeDepto (primary key(numsocio)) as
+    select u.numsocio, u.nombreusuario, u.apellidosusuario,
+		d.numdpto, d.nombredpto
+    from usuarios u join profesores o join areas a join departamentos d
+    on u.NumSocio=p.NumSocio and p.CodArea=a.CodArea and a.numdpto=d.numdpto
+    where u.TipoUsuario = 'P'
+    ;
+	
+end
+```
+```sql
 4. Crear un procedimiento que devuelva:
    - Edad de un usuario  
    - Antigüedad como socio  
    - Cuota mensual total  
 
+delimiter $$
+drop procedure if exists ejercicio4 $$
+create procedure ejercicio4(
+minumsocio int,
+out edad int, 
+out antig int,
+out cuotaTotal decimal(20,4))
+
+begin
+	select  year(curdate())-year(fechanacimiento),
+			year(curdate())-year(fechaalta),
+            cuotamensual + ifnull(cuotaextra,0)
+    into edad, antig, cuotatotal
+    from usuario
+    where numsocio=minumsocio
+    ;
+end
+```
 5. Crear un procedimiento para consultas con múltiples criterios sobre la tabla **Usuarios**:
    - DNI (=)  
    - Apellidos (LIKE)  
