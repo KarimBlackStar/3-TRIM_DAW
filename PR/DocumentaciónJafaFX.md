@@ -1,100 +1,132 @@
-# 🛠️ Guía de Configuración: JavaFX en NetBeans (PC Local)
-
-Esta guía resume los pasos necesarios para configurar el entorno de desarrollo de JavaFX 25 utilizando el JDK 23.
+# 🛠️ Manual de Configuración JavaFX: El Protocolo Completo
 
 ---
 
-## 1. Instalación del Motor (JDK)
+# 1. ⚙️ El Motor (JDK) y el IDE
 
-Desde el JDK 11, JavaFX no está incluido por defecto en Java.
+Para que NetBeans 23 funcione correctamente y no dé errores al arrancar, debe utilizar el **JDK 23**.
 
-- **Versión instalada:** JDK 23
-- **Ruta de instalación:**  
-  ```text
-  C:\Program Files\Java\jdk-23
-  ```
+## 📍 Ubicación del JDK
 
-### 🔧 Configuración de NetBeans
-
-Se modificó el archivo `netbeans.conf` para que el IDE use este JDK.
-
-- **Ruta del archivo:**  
-  ```text
-  C:\Program Files\NetBeans-23\netbeans\etc\netbeans.conf
-  ```
-
-- **Línea clave:**  
-  ```text
-  netbeans_jdkhome="C:\Program Files\Java\jdk-23"
-  ```
-
-> ⚠️ **IMPORTANTE:**  
-> Para guardar cambios en este archivo, debes abrir el Bloc de Notas como **Administrador**.
+```text
+C:\Program Files\Java\jdk-23
+```
 
 ---
 
-## 2. Ubicación del SDK de JavaFX
+## 🔧 Configuración crítica de NetBeans
 
-- **Versión utilizada:** JavaFX SDK 25.0.3
-- **Ruta permanente:**  
-  ```text
-  C:\Program Files\Java\javafx-sdk-25.0.3
-  ```
+Debes abrir el archivo:
 
-### 📁 Carpeta importante
+```text
+C:\Program Files\NetBeans-23\netbeans\etc\netbeans.conf
+```
 
-La subcarpeta `lib` contiene todos los archivos `.jar` necesarios para ejecutar JavaFX.
+> ⚠️ IMPORTANTE:  
+> Abre el editor como **Administrador** para poder guardar los cambios.
+
+Busca esta línea:
+
+```text
+netbeans_jdkhome="C:\Program Files\Java\jdk-23"
+```
+
+> 💡 Si esta ruta es incorrecta, NetBeans puede no abrir proyectos correctamente.
 
 ---
 
-## 3. Registro de Librería Global en NetBeans
+# 2. 📦 El Almacén de Piezas (SDK JavaFX)
 
-Para que NetBeans reconozca JavaFX en cualquier proyecto:
+Desde Java 11, JavaFX ya no viene incluido dentro del JDK y debe instalarse aparte.
+
+## 📥 SDK utilizado
+
+```text
+JavaFX SDK 25.0.3
+```
+
+## 📍 Ubicación
+
+```text
+C:\Program Files\Java\javafx-sdk-25.0.3
+```
+
+---
+
+## 📁 Carpeta importante
+
+Dentro del SDK existe la carpeta:
+
+```text
+lib
+```
+
+Ahí se encuentran:
+
+- Archivos `.jar` → bibliotecas de JavaFX
+- Archivos `.dll` → motores internos necesarios
+
+---
+
+# 3. 🧰 Registro Global en NetBeans (Caja de Herramientas)
+
+Para no tener que añadir manualmente los `.jar` en cada proyecto:
+
+## 📌 Pasos
 
 1. Ir a:
-   ```text
-   Tools > Libraries
-   ```
+
+```text
+Tools > Libraries
+```
 
 2. Pulsar:
-   ```text
-   New Library
-   ```
+
+```text
+New Library
+```
 
 3. Crear una librería llamada:
-   ```text
-   JavaFX25
-   ```
-
-4. En la pestaña **Classpath**, añadir todos los `.jar` de:
-
-   ```text
-   C:\Program Files\Java\javafx-sdk-25.0.3\lib
-   ```
-
----
-
-## 4. Configuración del Scene Builder
-
-Scene Builder permite diseñar interfaces JavaFX visualmente mediante archivos FXML.
-
-### 🔌 Activar el plugin JavaFX
-
-Ir a:
 
 ```text
-Tools > Plugins > Installed
+JavaFX25
 ```
 
-Y activar:
+4. En la pestaña:
 
 ```text
-JavaFX 2
+Classpath
+```
+
+Pulsar:
+
+```text
+Add JAR/Folder
+```
+
+5. Añadir todos los `.jar` de:
+
+```text
+C:\Program Files\Java\javafx-sdk-25.0.3\lib
 ```
 
 ---
 
-### 🎨 Vincular Scene Builder
+# 4. 🎨 El Diseñador Visual (Scene Builder)
+
+Scene Builder permite crear interfaces JavaFX visualmente mediante FXML.
+
+---
+
+## 📍 Instalación
+
+```text
+C:\Users\GAVKo\AppData\Local\SceneBuilder\
+```
+
+---
+
+## 🔗 Vinculación con NetBeans
 
 Ir a:
 
@@ -102,57 +134,113 @@ Ir a:
 Tools > Options > Java > JavaFX
 ```
 
-En el campo **Scene Builder Home**, seleccionar la carpeta donde está instalado Scene Builder.
-
----
-
-## 5. Check-list para Ejecutar Proyectos JavaFX
-
-Cada vez que crees un proyecto nuevo, revisa estas configuraciones en:
-
-```text
-Properties
-```
-
----
-
-### ✅ 1. Libraries
-
 En:
 
 ```text
-Libraries > Compile
+Scene Builder Home
 ```
 
-Añadir la librería:
-
-```text
-JavaFX25
-```
+Pegar la ruta anterior.
 
 ---
 
-### ✅ 2. Compiling
+## 🔌 Activación del plugin JavaFX
 
-Desactivar:
+Ir a:
+
+```text
+Tools > Plugins
+```
+
+Y comprobar que:
+
+```text
+JavaFX 2
+```
+
+esté:
+- en la pestaña **Installed**
+- con el check verde de **Active**
+
+---
+
+# 5. ✅ Check-list de Cada Proyecto
+
+Cada vez que crees un proyecto nuevo JavaFX, debes seguir estos pasos.
+
+---
+
+## 🅰️ PASO A: Eliminar el bloqueo de módulos
+
+Si existe el archivo:
+
+```text
+module-info.java
+```
+
+👉 **Bórralo**
+
+> ⚠️ Es la causa más común del error:
+>
+> ```text
+> Package not visible
+> ```
+
+---
+
+## 🅱️ PASO B: Añadir las librerías
+
+Ir a:
+
+```text
+Properties > Libraries
+```
+
+⚠️ MUY IMPORTANTE:
+
+Añadir la librería `JavaFX25` en:
+
+```text
+Classpath
+```
+
+❌ NO en `Modulepath`
+
+---
+
+## 🅲 PASO C: Desactivar Compile on Save
+
+Ir a:
+
+```text
+Properties > Build > Compiling
+```
+
+Desmarcar:
 
 ```text
 Compile on Save
 ```
 
-> ⚠️ Esto evita errores relacionados con el bloqueo de módulos.
+> 💡 Evita errores relacionados con módulos bloqueados.
 
 ---
 
-### ✅ 3. Run → VM Options
+## 🅳 PASO D: Configurar VM Options
+
+Ir a:
+
+```text
+Properties > Run
+```
 
 En:
 
 ```text
-Run > VM Options
+VM Options
 ```
 
-Pegar:
+Pegar esta línea:
 
 ```text
 --module-path "C:\Program Files\Java\javafx-sdk-25.0.3\lib" --add-modules javafx.controls,javafx.fxml
@@ -160,13 +248,55 @@ Pegar:
 
 ---
 
-# 🚀 Resultado Final
+# 6. 💻 Estructura de Código que Debe Funcionar
 
-Con esta configuración podrás:
+La clase principal debe tener una estructura similar a esta:
 
-- Crear proyectos JavaFX en NetBeans
-- Diseñar interfaces con Scene Builder
-- Ejecutar aplicaciones JavaFX correctamente
-- Evitar errores típicos de módulos (`javafx.controls not found`)
+```java
+package pruebajavafx;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class PruebaJavaFX extends Application {
+
+    @Override
+    public void start(Stage stage) {
+
+        // 1. Crear contenido
+        Label etiqueta = new Label("¡Entorno configurado correctamente!");
+
+        // 2. Crear contenedor raíz
+        StackPane raiz = new StackPane();
+        raiz.getChildren().add(etiqueta);
+
+        // 3. Crear escena
+        Scene escena = new Scene(raiz, 400, 250);
+
+        // 4. Configurar ventana
+        stage.setTitle("Test JavaFX 25");
+        stage.setScene(escena);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args); // Arranca JavaFX
+    }
+}
+```
+
+---
+
+# 🚀 Resultado Esperado
+
+Si todo está correctamente configurado:
+
+✅ NetBeans reconocerá JavaFX  
+✅ Scene Builder funcionará  
+✅ Los proyectos compilarán sin errores  
+✅ La ventana JavaFX se abrirá correctamente
 
 ---
