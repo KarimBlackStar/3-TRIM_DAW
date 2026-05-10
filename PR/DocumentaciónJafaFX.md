@@ -6,7 +6,7 @@
 
 Para que NetBeans 23 funcione correctamente y no dé errores al arrancar, debe utilizar el **JDK 23**.
 
-En caso de no tenerlo descargado, descárgalo aquí:![Enlace jdk23](https://www.oracle.com/java/technologies/javase/jdk23-archive-downloads.html)
+En caso de no tenerlo descargado, descárgalo aquí:[Enlace jdk23](https://www.oracle.com/java/technologies/javase/jdk23-archive-downloads.html)
 
 ## 📍 Ubicación del JDK
 
@@ -116,7 +116,7 @@ C:\Program Files\Java\javafx-sdk-25.0.3\lib
 
 # 4. 🎨 El Diseñador Visual (Scene Builder)
 
-Scene Builder permite crear interfaces JavaFX visualmente mediante FXML, puedes descargarlo aquí ![Enlace scene builder](https://gluonhq.com/products/scene-builder/)
+Scene Builder permite crear interfaces JavaFX visualmente mediante FXML, puedes descargarlo aquí [Enlace scene builder](https://gluonhq.com/products/scene-builder/)
 
 ---
 
