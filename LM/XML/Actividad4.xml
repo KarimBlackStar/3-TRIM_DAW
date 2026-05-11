@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ciclos>
+    <Primero>
+        <modulos>
+            <CD>
+                <codigo></codigo>
+                <profesor></profesor>
+                <horas></horas>
+            </CD>
+            <LM>
+                <codigo></codigo>
+                <profesor></profesor>
+                <horas></horas>
+            </LM>
+            <PR>
+                <codigo></codigo>
+                <profesor></profesor>
+                <horas></horas>
+            </PR>
+            <BBDD>
+                <codigo></codigo>
+                <profesor></profesor>
+                <horas></horas>
+            </BBDD>
+        </modulos>
+    </Primero>
+
+    <Segundo>
+        <modulos>
+            <Cliente>
+                <codigo></codigo>
+                <profesor></profesor>
+                <horas></horas>
+            </Cliente>
+            <Servidor>
+                <codigo></codigo>
+                <profesor></profesor>
+                <horas></horas>
+            </Servidor>
+        </modulos>
+    </Segundo>
+</ciclos>
