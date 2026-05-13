@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listaclientes SYSTEM "DTD/DTD1.dtd">
+<listaclientes>
+    <cliente>
+        <cif>123456789</cif>
+        <nombre>Ana</nombre>
+    </cliente>
+    <cliente>
+        <cif>000111222</cif>
+        <nombre>Karim</nombre>
+    </cliente>
+</listaclientes>

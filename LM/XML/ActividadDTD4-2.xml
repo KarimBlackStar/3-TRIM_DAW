@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE productos SYSTEM "DTD/DTD4.dtd">
+
+<productos>
+ <teclado>
+    <codigo>T1</codigo>
+    <descripcion>Teclado inalamb.</descripcion>
+ </teclado>
+</productos>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listaventas SYSTEM "DTD/DTD3.dtd">
+<listaventas>
+ <ventapc>100</ventapc>
+ <ventamonitor>200</ventamonitor>
+ <ventapc>300</ventapc>
+ <ventapc>400</ventapc>
+ <ventamonitor>400</ventamonitor>
+</listaventas>

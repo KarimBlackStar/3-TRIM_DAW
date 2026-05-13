@@ -1,0 +1,3 @@
+<!ELEMENT listaventas (ventapc+, ventamonitor+)>
+<!ELEMENT ventapc (#PCDATA)>
+<!ELEMENT ventamonitor (#PCDATA)>

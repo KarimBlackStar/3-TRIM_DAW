@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE productos SYSTEM "DTD/DTD4.dtd">
+
+<productos>
+ <raton>
+ <codigo>R1</codigo>
+ </raton>
+ <teclado>
+ <codigo>T1</codigo>
+ <descripcion>Teclado inalamb.</descripcion>
+ <peso>750</peso>
+ </teclado>
+</productos>

@@ -1,0 +1,4 @@
+<!ELEMENT listaclientes (cliente+)>
+<!ELEMENT cliente (cif,nombre)>
+<!ELEMENT cif (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>

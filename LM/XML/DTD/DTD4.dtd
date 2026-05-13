@@ -1,0 +1,6 @@
+<!ELEMENT productos (teclado|raton)*>
+<!ELEMENT teclado (codigo,descripcion,peso?)>
+<!ELEMENT raton (codigo, descripcion?)>
+<!ELEMENT codigo (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT peso (#PCDATA)>
