@@ -49,6 +49,11 @@ Seguimos dándole a *Siguiente* que nos salga **instalar**
 <img width="455" height="342" alt="image" src="https://github.com/user-attachments/assets/30c5dd22-7b5b-404a-8703-326273d9f610" />
 Y reiniciamos otra vez (***EN PRINCIPIO LO DEBERÍA DE HACER SOLO***)
 
+Vamos a *Herramientas* > DNS 
+<img width="492" height="358" alt="image" src="https://github.com/user-attachments/assets/947a35a6-4bca-43a2-a4ae-ad7322cd1e8d" />
+Botón derecho > Propiedades > Reenviadores > Ponemos la ip 8.8.8.8 > Aplicamos > Aceptamos
+<img width="709" height="604" alt="image" src="https://github.com/user-attachments/assets/313232bf-e4b9-4b51-90b1-592d45de2724" />
+
 ## CLiente 1
 
 
