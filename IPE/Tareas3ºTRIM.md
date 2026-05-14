@@ -11,11 +11,46 @@
 Un trabajador que inicia su vida laboral en enero de 2021 sufre un accidente no laboral el 4 de marzo de 2025 y estuvo de baja hasta el día 30 de abril de 2025. Su salario base mensual es de 1400 euros y cobra las pagas extras prorrateadas por valor de 200 euros mensuales. Durante el año anterior hizo horas extras por valor de 365 euros.
 
 ## Preguntas
-a) ¿Cuánto percibirá por IT?  
+a) ¿Cuánto percibirá por IT?
+*BC mes anterior:*
+
++ Salario base: 1400€
++ Pagas extras prorrateadas: 200€
+
+*BC Total=1600/30=53,33€/d*
+
+*Al ser accidente no laboral:*
+
++ *Del día 1 al 3: no cobra*
++ *Del día 4 al 20: 60%*
++ *Desde el día 21: 75%*
+
 b) Especifica si tiene derecho a alguna prestación.  
+
+*Sí, porque tiene más de 180 días cotizados en los últimos 5 años.*
+
 c) Requisitos.  
+
++ *Estar afiliado y en alta*
++ *Tener 180 días cotizados en los últimos 5 años al tratarse de enfermedad común o accidente laboral*
+
 d) Base reguladora.  
+
+*53,33€/d*
+
 e) Cuantía especificando quién abona la prestación y duración en su caso.
+
+*Días de baja: del 4 de marzo al 30 de abril = 58 días.*
+
+- Días 1-3 → 0 €
+- Días 4-20 → 17 días × 60% × 53,33 = *543,97 €*
+- Días 21-58 → 38 días × 75% × 53,33 = *1519,91 €*
+
+*Total aproximado: 2063,88 €*
+
+- *La empresa paga del día 4 al 15.*
+- *Desde el día 16 paga el INSS o Mutua.*
+- *Duración máxima: 365 días prorrogables 180 más.*
 
 **(0,75 puntos)**
 
