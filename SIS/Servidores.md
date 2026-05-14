@@ -31,6 +31,24 @@ Y veremos que le damos a agregar un nuevo bosque con el nombre de dominio raiz q
 
 Si nos da error volvemos a *Administrar* > *Agregar roles y características* > *Sigueinte* > hasta *Roles de servidor* y marcamos ***Servidor DNS y DHCP*** y los instalamos y reiniciamos!
 
+Refrescar en el botóon en forma de flecha hasta que los servidores y roles estén en verde:
+<img width="1097" height="468" alt="image" src="https://github.com/user-attachments/assets/6be4f634-dc42-4d0d-8597-3b37fa4b5c0b" />
+Volvemos a clicar la bandera, clikamos *Promover dominio*  y le escribimos: **xilgaro.local**
+Posteriormente se nos desplegará una nueva ventana
+<img width="735" height="543" alt="image" src="https://github.com/user-attachments/assets/1a6941ca-54c3-4bc3-bff8-acc5c2f93a94" />
+
+Escribimos la cpontraseña de siempre
+<img width="458" height="328" alt="image" src="https://github.com/user-attachments/assets/38c1ccff-e459-4873-9b0a-6dc14ea02888" />
+Le damos a siguiente hasta llegar a Opciones adicionales y escribimos *XILGARO* > *Siguiente*
+<img width="462" height="338" alt="image" src="https://github.com/user-attachments/assets/474ddda1-6816-4810-8c79-d84c11f708fb" />
+
+Las rutas las dejamos por predeterminadas > *Siguiente*
+<img width="459" height="334" alt="image" src="https://github.com/user-attachments/assets/86ba4459-364c-41b3-a3b3-b983915b5df5" />
+
+Seguimos dándole a *Siguiente* que nos salga **instalar**
+<img width="455" height="342" alt="image" src="https://github.com/user-attachments/assets/30c5dd22-7b5b-404a-8703-326273d9f610" />
+Y reiniciamos otra vez (***EN PRINCIPIO LO DEBERÍA DE HACER SOLO***)
+
 ## CLiente 1
 
 
