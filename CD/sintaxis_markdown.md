@@ -138,6 +138,27 @@ $$
 
 ---
 
+## Alertas
+
+Las **alertas** se utilizan para destacar información crítica. En GitHub, se muestran con colores e iconos distintivos para indicar la importancia del contenido.[cite: 1]
+
+> [!NOTE]
+> Texto
+
+> [!TIP]
+> Texto
+
+> [!IMPORTANT]
+> Texto
+
+> [!WARNING]
+> Texto
+
+> [!CAUTION]
+> Texto
+
+---
+
 ## ⚡ Tips rápidos
 
 - Usa bloques de código para que se vea limpio
