@@ -278,6 +278,8 @@ order by numsocio;
 > [!NOTE]
 > De normal si verifico una *inserción(INSERT)*, también querré aplicar el Trigger en la *modificación(UPDATE)*
 
+<img width="793" height="629" alt="image" src="https://github.com/user-attachments/assets/9ed9c40e-0708-414b-ba2c-57e651f2df80" />
+
 1. Crear triggers para:
    - Poner en mayúsculas nombre y apellidos al insertar o modificar  
 
