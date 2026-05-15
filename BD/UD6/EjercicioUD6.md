@@ -213,7 +213,7 @@ Comprobación:
 select numsocio, NombreCompleto(numsocio)
 from usuarios
 ```
-![Comprobación](image2.png)
+![Comprobación](Capturas/image2.png)
 
 2. Crear una función que devuelva:
    - Número de años completos entre una fecha dada y la actual  
