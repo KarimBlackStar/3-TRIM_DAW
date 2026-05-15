@@ -1,9 +1,5 @@
 # EJERCICIOS U.D. 6 MySQL
 
-(B.D. Ejercicios)
-
----
-
 ## Procedimientos
 
 1. Crear un procedimiento para añadir un usuario calculando la clave correspondiente y comprobando que el tipo de usuario es válido.  
