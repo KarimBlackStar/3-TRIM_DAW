@@ -241,6 +241,36 @@ from usuarios
      - Nombre del departamento  
      - O "No es profesor"  
 
+```sql
+CREATE FUNCTION `Departamento` (miclave int)
+RETURNS varchar(50)
+deterministic
+BEGIN
+	declare resultado varchar(50);
+    
+	select d.nombredpto
+    into resultado
+    from departamentos d join areas a join profesores p join usuarios u
+    on d.numdpto=a.numdpto and a.codarea = p.codarea and p.numsocio = u.numsocio
+    where u.tipousuario = 'P' and u.numsocio=miclave;
+    
+    if resultado is null then
+		set resultado="No es profesor";
+	end if;
+    
+    return resultado;
+END
+```
+
+Comprobación:
+
+```sql
+select numsocio,NombreCompleto(numsocio), tipousuario, Departamento(numsocio)
+from usuarios
+order by numsocio;
+```
+<img width="553" height="578" alt="image" src="https://github.com/user-attachments/assets/51a3bcea-4c42-43fb-a960-3fded5ca84dd" />
+
 ---
 
 ## Triggers
