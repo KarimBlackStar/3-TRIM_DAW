@@ -265,11 +265,18 @@ select numsocio,NombreCompleto(numsocio), tipousuario, Departamento(numsocio)
 from usuarios
 order by numsocio;
 ```
+
 <img width="553" height="578" alt="image" src="https://github.com/user-attachments/assets/51a3bcea-4c42-43fb-a960-3fded5ca84dd" />
 
 ---
 
-## Triggers
+## Triggers 
+
+> [!IMPORTANT] 
+> *Se suele utilizar como *testing*, verificar que antes de insertar/modifique/delete unos datos se comprueben*
+
+> [!NOTE]
+> De normal si verifico una *inserción(INSERT)*, también querré aplicar el Trigger en la *modificación(UPDATE)*
 
 1. Crear triggers para:
    - Poner en mayúsculas nombre y apellidos al insertar o modificar  
