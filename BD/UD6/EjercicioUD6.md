@@ -218,6 +218,23 @@ from usuarios
 2. Crear una función que devuelva:
    - Número de años completos entre una fecha dada y la actual  
 
+```sql
+CREATE DEFINER=`root`@`localhost` FUNCTION `Edad`(miFecha date) RETURNS int
+    DETERMINISTIC
+BEGIN
+	RETURN truncate(datediff(curdate(), miFecha)/365.25,0);
+END
+```
+
+Comprobación:
+
+```sql
+select numsocio,NombreCompleto(numsocio) as NC, edad(fechanacimiento) as Edad, edad(fechaalta) as Antigüedad
+from usuarios
+```
+
+<img width="536" height="568" alt="image" src="https://github.com/user-attachments/assets/f0517b3f-eb00-47af-8da8-bbf987c3ecba" />
+
 3. Crear una función que indique:
    - Departamento de un profesor  
    - Devuelve:
