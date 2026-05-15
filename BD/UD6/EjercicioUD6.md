@@ -194,6 +194,27 @@ end
    - Nombre y apellidos (apellidos, nombre)  
    - A partir de la clave de usuario  
 
+```sql
+CREATE DEFINER=`root`@`localhost` FUNCTION `NombreCompleto`(id int) RETURNS varchar(100)
+    DETERMINISTIC
+BEGIN
+	declare resultado varchar(100);
+	select concat(apellidosusuario, ',', nombreusuario)
+    into resultado
+    from usuarios
+    where numsocio=id;
+RETURN resultado;
+END
+```
+
+Comprobación:
+
+```sql
+select numsocio, NombreCompleto(numsocio)
+from usuarios
+```
+![Comprobación](image2.png)
+
 2. Crear una función que devuelva:
    - Número de años completos entre una fecha dada y la actual  
 
