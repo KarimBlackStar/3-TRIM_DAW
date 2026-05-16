@@ -1,187 +1,462 @@
-# TAREA PRESTACIONES DE LA SEGURIDAD SOCIAL
-
-### INSTRUCCIONES
-- Los ejercicios pueden contestarse en cualquier orden.
-- La puntuación está recogida en cada ejercicio.
+# 📘 TAREA — Prestaciones de la Seguridad Social
 
 ---
 
-## 1. INCAPACIDAD TEMPORAL
+# 1. :medical_symbol: Incapacidad Temporal (Accidente NO laboral)
 
-Un trabajador que inicia su vida laboral en enero de 2021 sufre un accidente no laboral el 4 de marzo de 2025 y estuvo de baja hasta el día 30 de abril de 2025. Su salario base mensual es de 1400 euros y cobra las pagas extras prorrateadas por valor de 200 euros mensuales. Durante el año anterior hizo horas extras por valor de 365 euros.
-
-## Preguntas
-a) ¿Cuánto percibirá por IT?
-*BC mes anterior:*
-
-+ Salario base: 1400€
-+ Pagas extras prorrateadas: 200€
-
-*BC Total=1600/30=53,33€/d*
-
-*Al ser accidente no laboral:*
-
-+ *Del día 1 al 3: no cobra*
-+ *Del día 4 al 20: 60%*
-+ *Desde el día 21: 75%*
-
-b) Especifica si tiene derecho a alguna prestación.  
-
-*Sí, porque tiene más de 180 días cotizados en los últimos 5 años.*
-
-c) Requisitos.  
-
-+ *Estar afiliado y en alta*
-+ *Tener 180 días cotizados en los últimos 5 años al tratarse de enfermedad común o accidente laboral*
-
-d) Base reguladora.  
-
-*53,33€/d*
-
-e) Cuantía especificando quién abona la prestación y duración en su caso.
-
-*Días de baja: del 4 de marzo al 30 de abril = 58 días.*
-
-- Días 1-3 → 0 €
-- Días 4-20 → 17 días × 60% × 53,33 = *543,97 €*
-- Días 21-58 → 38 días × 75% × 53,33 = *1519,91 €*
-
-*Total aproximado: 2063,88 €*
-
-- *La empresa paga del día 4 al 15.*
-- *Desde el día 16 paga el INSS o Mutua.*
-- *Duración máxima: 365 días prorrogables 180 más.*
-
-**(0,75 puntos)**
+## Datos
+- Inicio vida laboral: enero 2021
+- Baja: 4 marzo 2025 → 30 abril 2025
+- Salario base: 1400 €/mes
+- Pagas extra prorrateadas: 200 €/mes
+- Horas extra año anterior: 365 €
 
 ---
 
-## 2. INCAPACIDAD TEMPORAL
+## a) ¿Cuánto percibirá por IT?
 
-¿Qué pasaría si el trabajador del caso anterior hubiera tenido el accidente durante su jornada laboral?
+### Base de cotización mes anterior
+```text
+1400 + 200 = 1600 €
+```
 
-**(0,25 puntos)**
-
----
-
-## 3. INCAPACIDAD TEMPORAL
-
-Trabajador con contrato eventual y antigüedad de 3 años a 31 de enero de 2025. Se rompe el codo el 7 de febrero y está de baja hasta el 29 de marzo. Tiene derecho a 40 euros diarios de salario base, un plus de peligrosidad de 6 euros/día, antigüedad de 5 euros/día y 2 pagas extras, cada una de ellas de 30 días de salario base. El año anterior a la baja hizo horas extras por valor de 460 euros.
-
-### Pregunta
-Especifica, tanto en el caso de que fuera accidente laboral o no laboral, si tiene derecho a prestación y en qué cuantía.
-
-**(1 punto)**
+### Base reguladora diaria
+```text
+1600 / 30 = 53,33 €/día
+```
 
 ---
 
-## 4. INCAPACIDAD TEMPORAL
+## Prestación por accidente NO laboral
 
-Después de terminar los estudios de FP, a Fulanito lo contratan por primera vez el 1 de abril de 2025. El 20 de junio, el médico le da una baja por apendicitis (enfermedad común) que se prolonga hasta el 30 de julio. Tiene derecho a 1100 euros de salario base, 100 euros por turnicidad y 2 pagas extras de salario base. Durante su contrato no hizo horas extras.
-
-### Pregunta
-Especifica si tiene derecho a alguna prestación, requisitos, duración y cuantía.
-
-**(1 punto)**
+- Días 1-3 → no cobra
+- Día 4 al 20 → 60%
+- Desde día 21 → 75%
 
 ---
 
-## 5. INCAPACIDAD PERMANENTE
+## Cálculo
 
-Un trabajador, dado de alta en el Régimen General desde el 15 de enero de 2000, causa baja por accidente laboral el 7 de marzo de 2025, pasando a situación de IT con una base de cotización de 2668 euros en febrero. Ese mismo mes había percibido 246 euros por horas extras y cobró 1200 euros por horas extras en los 12 meses anteriores.
+### Día 4 al 20
+17 días × 60% × 53,33
 
-Una vez finalizado el tratamiento médico, y a solicitud de la Mutua, se emite parte médico de alta con propuesta de incapacidad permanente el 15 de junio de 2023.
+```text
+17 × 31,998 = 543,97 €
+```
 
-Tras la valoración del EVI, se emite dictamen-propuesta el 20 de julio y, a la vista del dictamen, el Director Provincial del INSS dicta resolución el 10 de agosto, declarando al trabajador en situación de incapacidad permanente parcial.
+### Día 21 al 58
+38 días × 75% × 53,33
 
-### Pregunta
-Especifica a qué tiene derecho el trabajador desde la fecha del dictamen del Director Provincial, de qué tipo de prestación se trataría, base reguladora, cuantía y duración en su caso.
-
-**(1 punto)**
-
----
-
-## 6. NACIMIENTO Y CUIDADO
-
-Una trabajadora de 27 años y 2 años de antigüedad en la empresa comienza a disfrutar la baja por nacimiento de hijos el 13 de marzo. El parto se produce el día 27 de marzo. Su BCCC es de 1600 euros/mes.
-
-### Preguntas
-- Especifica si tiene derecho a alguna prestación, requisitos, duración y cuantía.
-- Explica también cómo puede repartir el descanso en caso de tener derecho a él.
-
-**(1 punto)**
+```text
+38 × 39,9975 = 1519,91 €
+```
 
 ---
 
-## 7. NACIMIENTO Y CUIDADO
+## Resultado total
 
-Una trabajadora de un laboratorio farmacéutico está embarazada. El médico emitió un informe conforme la mujer estaba en situación de riesgo durante el embarazo.
-
-### Preguntas
-- ¿Qué puede hacer el empresario?
-- ¿La trabajadora tiene derecho a alguna prestación?
-- En su caso, especifica requisitos, duración y cuantía sabiendo que la mujer tiene una BCCC de 1400 euros/mes y una BCCP en el mes anterior a la baja de 1650 euros/mes. En los últimos 12 meses hizo horas extras por valor de 1250 euros.
-
-**(1 punto)**
+```text
+543,97 + 1519,91 = 2063,88 €
+```
 
 ---
 
-## 8. MUERTE Y SUPERVIVENCIA
+## b) ¿Tiene derecho?
 
-Menganito muere por enfermedad profesional el 13 de marzo de 2025. Tenía derecho a un salario base de 1200 euros mensuales, antigüedad por 350 euros/mes, 2500 euros/año por beneficios y 2000 euros/año por peligrosidad. Además, en los 12 meses anteriores a la fecha de fallecimiento hizo horas extras por valor de 600 euros. Por convenio, tiene derecho a dos pagas extras de salario base más antigüedad. El año anterior se contabilizaron 265 días de trabajo efectivo.
+Sí.
 
-Deja viuda y 2 hijos de 3 y 15 años.
-
-### Pregunta
-Explica los requisitos y las pensiones a solicitar, calculándolas y estableciendo los posibles límites.
-
-**(1 punto)**
+Tiene:
+```text
+Más de 180 días cotizados en los últimos 5 años
+```
 
 ---
 
-## 9. DESEMPLEO
+## c) Requisitos
 
-Pepe dimite por incumplimientos graves de contrato después de 36 años en la empresa el 25 de abril de 2025.
-
-Sus bases de cotización por desempleo de los últimos 180 días suman 28350 euros.
-
-### Preguntas
-- ¿Tiene derecho a prestación?
-- Explica requisitos, duración y cuantía.
-
-**(1 punto)**
+- Estar afiliado y en alta
+- Tener 180 días cotizados (enfermedad común o accidente no laboral)
 
 ---
 
-## 10. DESEMPLEO
+## d) Base reguladora
 
-Brais es contratado en prácticas por una empresa de reparación de dispositivos móviles durante 6 meses.
-
-Sus bases de cotización por desempleo suman 8900 euros.
-
-Cuando finalizó el contrato, el 6 de mayo de 2020, fue a la oficina del SPE 10 días después para inscribirse como demandante de empleo y solicitar la prestación por desempleo.
-
-### Preguntas
-- ¿Tiene derecho a la prestación?
-- En su caso, explica los requisitos, duración y cuantía.
-
-**(1 punto)**
+```text
+53,33 €/día
+```
 
 ---
 
-> ### CUANTÍA MÍNIMA PRESTACIÓN CONTRIBUTIVA
+## e) Quién paga y duración
 
-| Situación | Cuantía |
-|---|---|
-| Sin hijos/as | 560,00 €/mes |
-| 1 hijo o más | 749,00 €/mes |
+### Pago
+- Día 4 al 15 → empresa
+- Desde día 16 → INSS o Mutua
+
+### Duración máxima
+```text
+365 días + prórroga de 180 días
+```
 
 ---
 
-> ### CUANTÍA MÁXIMA PRESTACIÓN CONTRIBUTIVA
+# 2. :construction_worker: ¿Y si fuera accidente laboral?
 
-| Situación | Cuantía |
-|---|---|
-| Sin hijos/as | 1225,00 €/mes |
-| 1 hijo/a | 1400,00 €/mes |
-| 2 hijos/as o más | 1575,00 €/mes |
+## Cambios importantes
+
+- Cobra desde el día siguiente a la baja
+- No necesita cotización mínima
+- Prestación:
+```text
+75% de la BR desde el primer día
+```
+
+---
+
+# 3. :bone: IT — Rotura de codo
+
+## Datos
+- Contrato eventual
+- Antigüedad: 3 años
+- Baja: 7 febrero → 29 marzo
+- Salario base: 40 €/día
+- Plus peligrosidad: 6 €/día
+- Antigüedad: 5 €/día
+- 2 pagas extra de 30 días SB
+- Horas extra año anterior: 460 €
+
+---
+
+# Accidente NO laboral
+
+## Base diaria
+
+```text
+40 + 6 + 5 = 51 €/día
+```
+
+Pagas extra:
+```text
+(40 × 60) / 365 = 6,57 €/día
+```
+
+BR:
+```text
+51 + 6,57 = 57,57 €/día
+```
+
+---
+
+## Prestación
+
+- Día 1-3 → 0 €
+- Día 4-20 → 60%
+- Desde día 21 → 75%
+
+---
+
+# Accidente laboral
+
+## BR
+Horas extra:
+```text
+460 / 365 = 1,26 €/día
+```
+
+BR:
+```text
+57,57 + 1,26 = 58,83 €/día
+```
+
+---
+
+## Prestación
+
+```text
+75% desde el día siguiente
+```
+
+---
+
+# 4. :pill: Apendicitis (Enfermedad común)
+
+## Datos
+- Contrato: 1 abril 2025
+- Baja: 20 junio → 30 julio
+- Salario base: 1100 €
+- Turnicidad: 100 €
+- 2 pagas extra SB
+
+---
+
+## ¿Tiene derecho?
+
+No.
+
+Porque:
+```text
+No tiene 180 días cotizados en los últimos 5 años
+```
+
+---
+
+# 5. :wheelchair: Incapacidad Permanente Parcial
+
+## Datos
+- Alta en RGSS: 15 enero 2000
+- Accidente laboral: 7 marzo 2025
+- BC febrero: 2668 €
+- Horas extra febrero: 246 €
+- Horas extra últimos 12 meses: 1200 €
+
+---
+
+## Prestación
+
+Tiene derecho a:
+```text
+Incapacidad Permanente Parcial
+```
+
+---
+
+## Base reguladora
+
+### BR diaria
+```text
+(2668 - 246) / 28 = 86,50 €/día
+```
+
+### Horas extra
+```text
+1200 / 365 = 3,29 €/día
+```
+
+### Total BR
+```text
+89,79 €/día
+```
+
+---
+
+## Cuantía
+
+```text
+24 mensualidades de la BR
+```
+
+```text
+89,79 × 30 × 24 = 64.648,80 €
+```
+
+---
+
+## Tipo de prestación
+
+Pago único.
+
+---
+
+# 6. :baby: Nacimiento y cuidado
+
+## Datos
+- 27 años
+- 2 años antigüedad
+- Inicio descanso: 13 marzo
+- Parto: 27 marzo
+- BCCC: 1600 €/mes
+
+---
+
+## Derecho
+
+Sí.
+
+Tiene:
+```text
+Más de 180 días cotizados en los últimos 7 años
+```
+
+---
+
+## Duración
+
+```text
+16 semanas
+```
+
+- 6 obligatorias tras parto
+- resto voluntarias
+
+---
+
+## Cuantía
+
+```text
+100% de la base reguladora
+```
+
+BR:
+```text
+1600 / 30 = 53,33 €/día
+```
+
+---
+
+# 7. :pregnant_woman: Riesgo durante el embarazo
+
+## ¿Qué puede hacer el empresario?
+
+- Adaptar puesto
+- Cambiar funciones
+- Suspender contrato si no es posible
+
+---
+
+## Prestación
+
+Sí.
+
+---
+
+## Cuantía
+
+```text
+100% de la BCCP
+```
+
+BCCP:
+```text
+1650 €/mes
+```
+
+BR diaria:
+```text
+1650 / 30 = 55 €/día
+```
+
+---
+
+## Duración
+
+Hasta:
+- inicio maternidad
+- o desaparición del riesgo
+
+---
+
+# 8. :coffin: Muerte y supervivencia
+
+## Beneficiarios
+- Viuda
+- 2 hijos
+
+---
+
+## Base reguladora aproximada
+
+### Salario anual
+```text
+(1200 + 350) × 14 = 21700 €
+```
+
+### Beneficios
+```text
+2500 €
+```
+
+### Peligrosidad
+```text
+2000 €
+```
+
+### Horas extra
+```text
+600 €
+```
+
+---
+
+## Total anual
+```text
+26800 €
+```
+
+---
+
+# Prestaciones
+
+## Viudedad
+```text
+52% BR
+```
+
+## Orfandad
+```text
+20% BR cada hijo
+```
+
+---
+
+# 9. :briefcase: Desempleo — Pepe
+
+## ¿Tiene derecho?
+
+No.
+
+Porque:
+```text
+Ha dimitido voluntariamente
+```
+
+La baja voluntaria:
+```text
+No genera situación legal de desempleo
+```
+
+---
+
+# 10. :office: Desempleo — Brais
+
+## Tiene derecho
+
+Porque:
+- contrato finalizado
+- se inscribe en plazo
+
+---
+
+## Bases desempleo
+
+```text
+8900 / 180 = 49,44 €/día
+```
+
+---
+
+## Cuantía
+
+### Primeros 180 días
+```text
+70%
+```
+
+```text
+49,44 × 70% = 34,61 €/día
+```
+
+Mensual:
+```text
+1038,30 €/mes
+```
+
+---
+
+## Duración
+
+Con 6 meses cotizados:
+```text
+120 días de prestación
+```
+
+---
