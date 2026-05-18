@@ -19,18 +19,14 @@ De la siguientes direcciones IP indica cuáles **sí** y cuáles **no** pertenec
 * `192.168.22.5`
 * `192.168.24.5`
 
-### 3. División en Subredes
-* Divide la siguiente red en **cuatro subredes**: `192.168.10.0/24`.
 192.168.20.0 → [192.168.000101][00.00000000] dir red
 192.168.23.255 → [192.168.000101][11.11111111] dir broadcast
 Rango [192.168.20.1-192.168.23.254]
 SI→b,c
 NO→a,d
 
----
-
-### 4. Identificación de Clases y Hosts
-Indica la máscara por defecto, la dirección de red e el número de hosts que se pueden incluir en cada red para las siguientes direcciones IP:
+### 3. División en Subredes
+* Divide la siguiente red en **cuatro subredes**: `192.168.10.0/24`.
 
 4 SUBREDES = 2^2 -> 2 bits a mayores del 4 octeto para hacer las 4 subredes 
 [192.168.10.00][000000] 
@@ -48,8 +44,12 @@ Red 3: [192.168.10.10][000000] Dir red -> 192.168.10.128   Dir BoradCast -> 192.
    
 Red 4: [192.168.10.11][000000] Dir red -> 192.168.10.192   Dir BoradCast -> 192.168.10.255 [192.168.10.11][111111]
    Rango [192.168.10.193 - 192.168.10.254]
-
    
+---
+
+### 4. Identificación de Clases y Hosts
+Indica la máscara por defecto, la dirección de red e el número de hosts que se pueden incluir en cada red para las siguientes direcciones IP:
+
 | Dir. IP | Clase | Máscara defecto | Dir. Rede | Hosts / Rede |
 | :--- | :--- | :--- | :--- | :--- |
 | :177.100.18.4 | B | 255.255.0.0/16 | 177.100.0.0 | Host: 2<sup>16</sup> |
