@@ -1,0 +1,16 @@
+0. Instalar DHCP
+
+1. Crear las UO
+  Usuario/
+├── Alumnos/
+│   └── Juan/
+└── Profesores/
+    └── Dani/
+
+2. Añadir los equipos clientes en la UO
+
+3. Preparar las máquinas clientes (Nombre maq WS10-04)
+
+4. Unir las máquinas clientes al dominio
+
+5. Delegar funciones G-Profes -> Pueden restablecer la contraseña de los alumnos
