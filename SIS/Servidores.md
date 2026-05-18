@@ -37,7 +37,7 @@ Volvemos a clicar la bandera, clikamos *Promover dominio*  y le escribimos: **xi
 Posteriormente se nos desplegará una nueva ventana
 <img width="735" height="543" alt="image" src="https://github.com/user-attachments/assets/1a6941ca-54c3-4bc3-bff8-acc5c2f93a94" />
 
-Escribimos la cpontraseña de siempre
+Escribimos la contraseña de siempre
 <img width="458" height="328" alt="image" src="https://github.com/user-attachments/assets/38c1ccff-e459-4873-9b0a-6dc14ea02888" />
 Le damos a siguiente hasta llegar a Opciones adicionales y escribimos *XILGARO* > *Siguiente*
 <img width="462" height="338" alt="image" src="https://github.com/user-attachments/assets/474ddda1-6816-4810-8c79-d84c11f708fb" />
@@ -54,8 +54,44 @@ Vamos a *Herramientas* > DNS
 Botón derecho > Propiedades > Reenviadores > Ponemos la ip 8.8.8.8 > Aplicamos > Aceptamos
 <img width="709" height="604" alt="image" src="https://github.com/user-attachments/assets/313232bf-e4b9-4b51-90b1-592d45de2724" />
 
-## CLiente 1
+
+## Cliente 1
 
 
 
 ## Cliente 2
+
+---
+18/05/2026
+Vamos añadiendo las Unidades Organizativas (departamentos, clientes, aulas...)
+
+En caso de borrar las UO [carpetas] debemos seleccionar en *Propiedades* > *Objeto* > Desmarcamos la casilla de protección
+
+Para crear un nuevo equipo click derecho > nuevo > equipo
+
+> [!IMPORTANT] Primero haber seleccionado la UO, y en la parte derecha realizamos los pasos anteriores
+
+<img width="310" height="292" alt="image" src="https://github.com/user-attachments/assets/5a4e8018-7d39-4b54-a775-6ef262e61344" />
+<img width="356" height="300" alt="image" src="https://github.com/user-attachments/assets/1bb60d6c-b2bc-4b3b-94d2-0b5d234e6fc5" />
+
+### Controlador de Dominio 
+
+Creamos la carpeta **Usuarios** > Nueva > UO > Alumnos / Profesores
+
+Usuario/
+├── Alumnos/
+└── Profesores/
+
+También añadiremos grupos dentro de **Users** > Nuevo > Grupo > Alumnos / Profesores
+<img width="335" height="117" alt="image" src="https://github.com/user-attachments/assets/02e7ea96-5e53-4ed1-8446-9accc756afe5" />
+
+Y dentro de **Alumnos** creamos un usuario 
+Alumnos > Nuevo > Usuario
+<img width="273" height="246" alt="image" src="https://github.com/user-attachments/assets/29482deb-4339-430f-8606-46a529dbb480" />
+
+<img width="394" height="279" alt="image" src="https://github.com/user-attachments/assets/1e440d2d-b6d5-4ad1-9d27-f76b844678d2" />
+
+Ahora añadiremos al usuario creado a un grupo
+Click derecho al usuario > Agregar a un grupo
+<img width="453" height="298" alt="image" src="https://github.com/user-attachments/assets/abec223a-35c8-4777-8da0-f87cfec48333" />
+
