@@ -1,0 +1,7 @@
+<!ELEMENT emisor (nombre, volumenventas?)>
+<!ATTLIST emisor cif CDATA #REQUIRED>
+<!ELEMENT pagador (nombre, volumenventas?)>
+<!ATTLIST pagador cif CDATA #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT volumenventas (#PCDATA)>
+<!ELEMENT importe (#PCDATA)>

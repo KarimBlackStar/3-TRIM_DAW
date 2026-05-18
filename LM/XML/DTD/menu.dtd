@@ -1,0 +1,25 @@
+<!ELEMENT menu (entrantes, primeros, segundos, postres, bebidas)>
+
+<!ELEMENT entrantes (entrante*,bebida+)>
+<!ATTLIST bebida alcohol (si|no) #REQUIRED>
+<!ELEMENT alcohol (#PCDATA)>
+<!ELEMENT entrante (#PCDATA)>
+
+<!ELEMENT primeros (primero+, sorbete?)>
+<!ELEMENT primero (#PCDATA)>
+<!ELEMENT sorbete (#PCDATA)>
+<!ATTLIST sorbete alcohol (si|no) #REQUIRED>
+
+<!ELEMENT segundos (segundo)>
+<!ATTLIST segundos tipo (carne|perscado|vegetal) #REQUIRED>
+<!ELEMENT segundo (#PCDATA)>
+
+<!ELEMENT postres ((helado | macedonia), tarta)>
+<!ATTLIST helado sabor CDATA #REQUIRED>
+<!ELEMENT helado (#PCDATA)>
+<!ELEMENT tarta (#PCDATA)>
+
+<!ELEMENT bebidas (bebida, cafe?)*>
+<!ATTLIST bebida alcohol (si|no) #REQUIRED>
+<!ELEMENT cafe (#PCDATA)>
+<!ELEMENT bebida (#PCDATA)>

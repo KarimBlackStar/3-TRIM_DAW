@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE menu SYSTEM "DTD/menu.dtd">
+<menu>
+
+    <entrantes>
+
+        <entrante>Jamón ibérico</entrante>
+        <entrante>Queso manchego</entrante>
+
+        <bebida alcohol="si">Vino blanco</bebida>
+
+    </entrantes>
+
+    <primeros>
+
+        <primero>Ensalada de langostinos</primero>
+        <primero>Crema de calabaza</primero>
+
+        <sorbete alcohol="no">Sorbete de limón</sorbete>
+
+    </primeros>
+
+    <segundos tipo="carne">
+       <segundo>Solomillo al horno</segundo> 
+    </segundos>
+
+    <postres>
+
+        <helado sabor="vainilla">Helado artesanal</helado>
+        <tarta>Tarta nupcial</tarta>
+
+    </postres>
+
+    <bebidas>
+
+        <bebida alcohol="no">Agua mineral</bebida>
+        <bebida alcohol="si">Cerveza</bebida>
+
+        <cafe>Espresso</cafe>
+
+    </bebidas>
+
+</menu>

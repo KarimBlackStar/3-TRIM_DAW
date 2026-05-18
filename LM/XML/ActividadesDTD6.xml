@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listacompras SYSTEM "DTD/DTD6.dtd">
+
+<listacompras>
+    <venta>
+        <ventaacredito>
+            <fechafinpago>22-10-2021</fechafinpago>
+            <cantidad>21000</cantidad>
+        </ventaacredito>
+    </venta>
+    <venta>
+        <ventainmediata>
+            <cantidad>1800</cantidad>
+            <divisa>euros</divisa>
+        </ventainmediata>
+    </venta>
+    <venta>
+        <ventaacredito>
+            <cantidad>21000</cantidad>
+        </ventaacredito>
+    </venta>
+</listacompras>
