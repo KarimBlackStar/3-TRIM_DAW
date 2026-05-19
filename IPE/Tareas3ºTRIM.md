@@ -279,6 +279,48 @@ Como el salario es diario:
 75% desde el día siguiente
 ```
 
+## 3. IT — Rotura de codo
+
+### Datos
+- Baja: 7 febrero → 29 marzo  
+- Total días: 51  
+- Salario base diario: 40 €/día  
+- Plus peligrosidad: 6 €/día  
+- Antigüedad: 5 €/día  
+- 2 pagas extra de 30 días SB  
+- Base reguladora: 57,58 €/día  
+
+---
+
+## Accidente NO laboral
+
+### Prestación
+- Día 1-3 → 0 €
+- Día 4-20 → 60%
+- Desde día 21 → 75%
+
+---
+
+### Cálculo
+
+Día 4 al 20 (17 días):
+57,58 × 60% = 34,55 €/día  
+17 × 34,55 = 587,35 €
+
+Día 21 al 51 (31 días):
+57,58 × 75% = 43,19 €/día  
+31 × 43,19 = 1338,89 €
+
+---
+
+### Total prestación
+587,35 + 1338,89 = 1926,24 €
+
+---
+
+## Resultado final
+1.926,24 €
+
 ---
 
 ## 4. Apendicitis (Enfermedad común)
