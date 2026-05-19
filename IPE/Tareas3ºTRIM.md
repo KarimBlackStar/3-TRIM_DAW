@@ -13,9 +13,9 @@
 
 ---
 
-## a) ¿Cuánto percibirá por IT?
+### a) ¿Cuánto percibirá por IT?
 
-### Base de cotización mes anterior
+#### Base de cotización mes anterior
 Sale de sumar:
 - salario base
 - pagas extra prorrateadas
@@ -24,7 +24,7 @@ Sale de sumar:
 1400 + 200 = 1600 €
 ```
 
-### Base reguladora diaria
+#### Base reguladora diaria
 Como el salario es mensual:
 
 ```text
@@ -33,7 +33,7 @@ Como el salario es mensual:
 
 ---
 
-### Prestación por accidente NO laboral
+#### Prestación por accidente NO laboral
 
 - Días 1-3 → no cobra
 - Día 4 al 20 → 60%
@@ -41,9 +41,9 @@ Como el salario es mensual:
 
 ---
 
-### Cálculo
+#### Cálculo
 
-#### Día 4 al 20
+##### Día 4 al 20
 Se cobran 17 días al 60% de la BR:
 
 ```text
@@ -54,7 +54,7 @@ Se cobran 17 días al 60% de la BR:
 17 × 32,00 = 544,00 €
 ```
 
-#### Día 21 al 58
+##### Día 21 al 58
 Se cobran 38 días al 75%:
 
 ```text
@@ -75,7 +75,7 @@ Se cobran 38 días al 75%:
 
 ---
 
-## b) ¿Tiene derecho?
+### b) ¿Tiene derecho?
 
 Sí.
 
@@ -87,14 +87,14 @@ Más de 180 días cotizados en los últimos 5 años
 
 ---
 
-## c) Requisitos
+### c) Requisitos
 
 - Estar afiliado y en alta
 - Tener 180 días cotizados (enfermedad común o accidente no laboral)
 
 ---
 
-## d) Base reguladora
+### d) Base reguladora
 
 ```text
 53,33 €/día
@@ -102,13 +102,13 @@ Más de 180 días cotizados en los últimos 5 años
 
 ---
 
-## e) Quién paga y duración
+### e) Quién paga y duración
 
-### Pago
+#### Pago
 - Día 4 al 15 → empresa
 - Desde día 16 → INSS o Mutua
 
-### Duración máxima
+#### Duración máxima
 
 ```text
 365 días + prórroga de 180 días
@@ -161,7 +161,7 @@ Después se suman las horas extra:
 
 ---
 
-## Prestación
+### Prestación
 
 En accidente laboral cobra el:
 
@@ -177,7 +177,7 @@ En accidente laboral cobra el:
 
 ---
 
-## Días de prestación
+### Días de prestación
 
 Desde el día siguiente a la baja:
 
@@ -193,7 +193,7 @@ Total:
 
 ---
 
-## Total a percibir
+### Total a percibir
 
 ```text
 57 × 40,76 = 2323,32 €
@@ -215,7 +215,7 @@ Total:
 
 ---
 
-## Accidente NO laboral
+#### Accidente NO laboral
 
 ### Base diaria
 
@@ -253,11 +253,11 @@ Como el salario es diario:
 
 ---
 
-## Accidente laboral
+### Accidente laboral
 
-### BR
+#### BR
 
-#### Horas extra prorrateadas
+##### Horas extra prorrateadas
 
 Como el salario es diario:
 
@@ -273,7 +273,7 @@ Como el salario es diario:
 
 ---
 
-### Prestación
+#### Prestación
 
 ```text
 75% desde el día siguiente
@@ -292,16 +292,16 @@ Como el salario es diario:
 
 ---
 
-## Accidente NO laboral
+### Accidente NO laboral
 
-### Prestación
+#### Prestación
 - Día 1-3 → 0 €
 - Día 4-20 → 60%
 - Desde día 21 → 75%
 
 ---
 
-### Cálculo
+#### Cálculo
 
 Día 4 al 20 (17 días):
 57,58 × 60% = 34,55 €/día  
@@ -313,7 +313,7 @@ Día 21 al 51 (31 días):
 
 ---
 
-### Total prestación
+#### Total prestación
 587,35 + 1338,89 = 1926,24 €
 
 ---
@@ -334,7 +334,7 @@ Día 21 al 51 (31 días):
 
 ---
 
-## ¿Tiene derecho?
+#### ¿Tiene derecho?
 
 No.
 
@@ -357,7 +357,7 @@ No tiene 180 días cotizados en los últimos 5 años
 
 ---
 
-## Prestación
+### Prestación
 
 Tiene derecho a:
 
@@ -367,9 +367,9 @@ Incapacidad Permanente Parcial
 
 ---
 
-## Base reguladora
+### Base reguladora
 
-### BR diaria
+#### BR diaria
 
 En accidente laboral:
 - se restan las horas extra de la base mensual
@@ -379,7 +379,7 @@ En accidente laboral:
 (2668 - 246) / 28 = 86,50 €/día
 ```
 
-### Horas extra
+#### Horas extra
 
 Como el salario es diario:
 
@@ -387,7 +387,7 @@ Como el salario es diario:
 1200 / 365 = 3,29 €/día
 ```
 
-### Total BR
+#### Total BR
 
 ```text
 86,50 + 3,29 = 89,79 €/día
@@ -395,7 +395,7 @@ Como el salario es diario:
 
 ---
 
-## Cuantía
+#### Cuantía
 
 La incapacidad permanente parcial equivale a:
 
@@ -411,12 +411,6 @@ Cálculo:
 
 ---
 
-## Tipo de prestación
-
-Pago único.
-
----
-
 ## 6. Nacimiento y cuidado
 
 ### Datos
@@ -428,7 +422,7 @@ Pago único.
 
 ---
 
-## Derecho
+#### Derecho
 
 Sí.
 
@@ -440,7 +434,7 @@ Más de 180 días cotizados en los últimos 7 años
 
 ---
 
-## Duración
+#### Duración
 
 ```text
 16 semanas
@@ -451,13 +445,13 @@ Más de 180 días cotizados en los últimos 7 años
 
 ---
 
-## Cuantía
+#### Cuantía
 
 ```text
 100% de la base reguladora
 ```
 
-### BR
+#### BR
 
 Como el salario es mensual:
 
@@ -477,7 +471,7 @@ Como el salario es mensual:
 
 ---
 
-## ¿Tiene derecho a prestación?
+#### ¿Tiene derecho a prestación?
 
 Sí.
 
@@ -485,7 +479,7 @@ Porque la situación de riesgo durante el embarazo está protegida por la Seguri
 
 ---
 
-## Requisitos
+#### Requisitos
 
 - Estar afiliada y en alta
 - Existencia de riesgo para el embarazo acreditado médicamente
@@ -493,15 +487,15 @@ Porque la situación de riesgo durante el embarazo está protegida por la Seguri
 
 ---
 
-## Base reguladora
+#### Base reguladora
 
-### BCCP mensual
+#### BCCP mensual
 
 ```text
 1650 €/mes
 ```
 
-### BR diaria por contingencias profesionales
+#### BR diaria por contingencias profesionales
 
 Como el salario es mensual:
 
@@ -509,13 +503,13 @@ Como el salario es mensual:
 1650 / 30 = 55,00 €/día
 ```
 
-### Horas extra prorrateadas
+#### Horas extra prorrateadas
 
 ```text
 1250 / 365 = 3,42 €/día
 ```
 
-### BR total
+#### BR total
 
 ```text
 55,00 + 3,42 = 58,42 €/día
@@ -523,7 +517,7 @@ Como el salario es mensual:
 
 ---
 
-## Cuantía
+#### Cuantía
 
 La prestación es:
 
@@ -539,7 +533,7 @@ Por tanto cobrará:
 
 ---
 
-## Duración
+#### Duración
 
 Hasta:
 - el inicio del descanso por nacimiento y cuidado del menor
@@ -553,9 +547,9 @@ Hasta:
 
 ---
 
-## Base reguladora aproximada
+#### Base reguladora aproximada
 
-### Salario anual
+##### Salario anual
 
 Sale de:
 - salario mensual
@@ -566,19 +560,19 @@ Sale de:
 (1200 + 350) × 14 = 21700 €
 ```
 
-### Beneficios
+##### Beneficios
 
 ```text
 2500 €
 ```
 
-### Peligrosidad
+##### Peligrosidad
 
 ```text
 2000 €
 ```
 
-### Horas extra
+##### Horas extra
 
 ```text
 600 €
@@ -586,7 +580,7 @@ Sale de:
 
 ---
 
-## Total anual
+### Total anual
 
 ```text
 21700 + 2500 + 2000 + 600 = 26800 €
@@ -612,7 +606,7 @@ Sale de:
 
 ## 9. Desempleo — Pepe
 
-## ¿Tiene derecho?
+#### ¿Tiene derecho?
 
 No.
 
@@ -632,7 +626,7 @@ No genera situación legal de desempleo
 
 ## 10. Desempleo — Brais
 
-## Tiene derecho
+#### Tiene derecho
 
 Porque:
 - contrato finalizado
@@ -640,7 +634,7 @@ Porque:
 
 ---
 
-## Bases desempleo
+#### Bases desempleo
 
 La base reguladora sale de dividir las bases de cotización entre 180 días:
 
@@ -650,9 +644,9 @@ La base reguladora sale de dividir las bases de cotización entre 180 días:
 
 ---
 
-## Cuantía
+#### Cuantía
 
-### Primeros 180 días
+##### Primeros 180 días
 
 ```text
 70%
@@ -662,7 +656,7 @@ La base reguladora sale de dividir las bases de cotización entre 180 días:
 49,44 × 70% = 34,61 €/día
 ```
 
-### Mensual
+##### Mensual
 
 ```text
 34,61 × 30 = 1038,30 €/mes
@@ -670,7 +664,7 @@ La base reguladora sale de dividir las bases de cotización entre 180 días:
 
 ---
 
-## Duración
+#### Duración
 
 Con 6 meses cotizados:
 
