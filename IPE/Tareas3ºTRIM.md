@@ -1,4 +1,4 @@
-# 📘 TAREA — Prestaciones de la Seguridad Social
+# TAREA — Prestaciones de la Seguridad Social
 
 ---
 
