@@ -274,18 +274,64 @@ order by numsocio;
 
 > [!IMPORTANT] 
 > *Se suele utilizar como *testing*, verificar que antes de insertar/modifique/delete unos datos se comprueben*
+> Es importante poner como última linea del *trigger* y antes del *begin* --> **"for each row"**
 
 > [!NOTE]
 > De normal si verifico una *inserción(INSERT)*, también querré aplicar el Trigger en la *modificación(UPDATE)*
 
 <img width="793" height="629" alt="image" src="https://github.com/user-attachments/assets/9ed9c40e-0708-414b-ba2c-57e651f2df80" />
 
-1. Crear triggers para:
-   - Poner en mayúsculas nombre y apellidos al insertar o modificar  
+#### Cuando vaya a actualizar un dato puedo usar *NEW* o *OLD*
+new.nombre
+old.nombre
 
+#### En una inserción solo *NEW* 
+#### En un borrado solo *OLD*
+
+1. Crear triggers para:
+   - Poner en mayúsculas nombre y apellidos al insertar o modificar
+  
+```sql
+CREATE trigger ususarios_BIns 
+	BEFORE INSERT 
+	ON usuarios 
+	FOR EACH ROW
+BEGIN
+	set new.nombreusuario = upper(new.nombreusuario);
+    set new.apellidosusuario = upper(new.apellidosusuario);
+	
+END
+```
+```sql
+CREATE TRIGGER ejercicios
+BEFORE UPDATE
+ON usuarios
+FOR EACH ROW
+BEGIN
+	set new.nombreusuario = upper(new.nombreusuario);
+    set new.apellidosusuario = upper(new.apellidosusuario);
+END
+```
 2. Crear triggers para:
    - Mantener una copia actualizada de la tabla usuarios  
+```sql
+CREATE TRIGGER ActualizarCopiaInsert 
+AFTER INSERT 
+ON usuarios 
+FOR EACH ROW 
+BEGIN
+	insert into copiusu (numsocio, nombreusuario, apellidosusuario)
+    values (new.numsocio, new.nombreusuario, new.apellidosusuario);
+END
+```
 
+```sql
+
+```
+
+```sql
+
+```
 3. Crear triggers para:
    - Controlar y registrar cambios en la tabla departamentos  
 
