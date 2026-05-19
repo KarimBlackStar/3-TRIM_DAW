@@ -122,11 +122,81 @@ Más de 180 días cotizados en los últimos 5 años
 
 - Cobra desde el día siguiente a la baja
 - No necesita cotización mínima
+- La prestación la paga la Mutua o el INSS desde el día siguiente
+- La prestación es el 75% de la BR
 
-### Prestación
+---
+
+### Base reguladora
+
+En accidente laboral se utiliza la BCCP y se añaden las horas extra.
+
+#### Base mensual
 
 ```text
-75% de la BR desde el primer día
+1400 + 200 = 1600 €
+```
+
+#### Horas extra prorrateadas
+
+Como el salario es mensual:
+
+```text
+365 / 360 = 1,01 €/día
+```
+
+#### BR diaria
+
+Primero se calcula la base diaria:
+
+```text
+1600 / 30 = 53,33 €/día
+```
+
+Después se suman las horas extra:
+
+```text
+53,33 + 1,01 = 54,34 €/día
+```
+
+---
+
+## Prestación
+
+En accidente laboral cobra el:
+
+```text
+75% de la BR
+```
+
+### Cuantía diaria
+
+```text
+54,34 × 75% = 40,76 €/día
+```
+
+---
+
+## Días de prestación
+
+Desde el día siguiente a la baja:
+
+- Baja: 4 marzo 2025
+- Empieza a cobrar: 5 marzo 2025
+- Alta: 30 abril 2025
+
+Total:
+
+```text
+57 días
+```
+
+---
+
+## Total a percibir
+
+```text
+57 × 40,76 = 2323,32 €
 ```
 
 ---
