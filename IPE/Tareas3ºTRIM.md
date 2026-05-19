@@ -357,33 +357,39 @@ Como el salario es mensual:
 
 ## 7. Riesgo durante el embarazo
 
-## ¿Qué puede hacer el empresario?
+### ¿Qué puede hacer el empresario?
 
-- Adaptar puesto
-- Cambiar funciones
-- Suspender contrato si no es posible
+- Adaptar el puesto de trabajo
+- Cambiar temporalmente de funciones
+- Suspender el contrato si no puede eliminar el riesgo
 
 ---
 
-## Prestación
+## ¿Tiene derecho a prestación?
 
 Sí.
 
+Porque la situación de riesgo durante el embarazo está protegida por la Seguridad Social.
+
 ---
 
-## Cuantía
+## Requisitos
 
-```text
-100% de la BCCP
-```
+- Estar afiliada y en alta
+- Existencia de riesgo para el embarazo acreditado médicamente
+- Que la empresa no pueda adaptar el puesto ni recolocar a la trabajadora
 
-### BCCP
+---
+
+## Base reguladora
+
+### BCCP mensual
 
 ```text
 1650 €/mes
 ```
 
-### BR diaria
+### BR diaria por contingencias profesionales
 
 Como el salario es mensual:
 
@@ -391,15 +397,41 @@ Como el salario es mensual:
 1650 / 30 = 55,00 €/día
 ```
 
+### Horas extra prorrateadas
+
+```text
+1250 / 365 = 3,42 €/día
+```
+
+### BR total
+
+```text
+55,00 + 3,42 = 58,42 €/día
+```
+
+---
+
+## Cuantía
+
+La prestación es:
+
+```text
+100% de la base reguladora
+```
+
+Por tanto cobrará:
+
+```text
+58,42 €/día
+```
+
 ---
 
 ## Duración
 
 Hasta:
-- inicio maternidad
-- o desaparición del riesgo
-
----
+- el inicio del descanso por nacimiento y cuidado del menor
+- o la desaparición del riesgo
 
 ## 8. Muerte y supervivencia
 
