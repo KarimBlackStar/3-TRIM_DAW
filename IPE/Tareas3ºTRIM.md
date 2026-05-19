@@ -2,9 +2,9 @@
 
 ---
 
-# 1. :medical_symbol: Incapacidad Temporal (Accidente NO laboral)
+## 1. Incapacidad Temporal (Accidente NO laboral)
 
-## Datos
+### Datos
 - Inicio vida laboral: enero 2021
 - Baja: 4 marzo 2025 → 30 abril 2025
 - Salario base: 1400 €/mes
@@ -16,18 +16,24 @@
 ## a) ¿Cuánto percibirá por IT?
 
 ### Base de cotización mes anterior
+Sale de sumar:
+- salario base
+- pagas extra prorrateadas
+
 ```text
 1400 + 200 = 1600 €
 ```
 
 ### Base reguladora diaria
+Como el salario es mensual:
+
 ```text
 1600 / 30 = 53,33 €/día
 ```
 
 ---
 
-## Prestación por accidente NO laboral
+### Prestación por accidente NO laboral
 
 - Días 1-3 → no cobra
 - Día 4 al 20 → 60%
@@ -35,28 +41,36 @@
 
 ---
 
-## Cálculo
+### Cálculo
 
-### Día 4 al 20
-17 días × 60% × 53,33
+#### Día 4 al 20
+Se cobran 17 días al 60% de la BR:
 
 ```text
-17 × 31,998 = 543,97 €
+53,33 × 60% = 32,00 €/día
 ```
 
-### Día 21 al 58
-38 días × 75% × 53,33
+```text
+17 × 32,00 = 544,00 €
+```
+
+#### Día 21 al 58
+Se cobran 38 días al 75%:
 
 ```text
-38 × 39,9975 = 1519,91 €
+53,33 × 75% = 40,00 €/día
+```
+
+```text
+38 × 40,00 = 1520,00 €
 ```
 
 ---
 
-## Resultado total
+### Resultado total
 
 ```text
-543,97 + 1519,91 = 2063,88 €
+544,00 + 1520,00 = 2064,00 €
 ```
 
 ---
@@ -66,6 +80,7 @@
 Sí.
 
 Tiene:
+
 ```text
 Más de 180 días cotizados en los últimos 5 años
 ```
@@ -94,28 +109,31 @@ Más de 180 días cotizados en los últimos 5 años
 - Desde día 16 → INSS o Mutua
 
 ### Duración máxima
+
 ```text
 365 días + prórroga de 180 días
 ```
 
 ---
 
-# 2. :construction_worker: ¿Y si fuera accidente laboral?
+## 2. ¿Y si fuera accidente laboral?
 
-## Cambios importantes
+### Cambios importantes
 
 - Cobra desde el día siguiente a la baja
 - No necesita cotización mínima
-- Prestación:
+
+### Prestación
+
 ```text
 75% de la BR desde el primer día
 ```
 
 ---
 
-# 3. :bone: IT — Rotura de codo
+## 3. IT — Rotura de codo
 
-## Datos
+### Datos
 - Contrato eventual
 - Antigüedad: 3 años
 - Baja: 7 febrero → 29 marzo
@@ -127,27 +145,37 @@ Más de 180 días cotizados en los últimos 5 años
 
 ---
 
-# Accidente NO laboral
+## Accidente NO laboral
 
-## Base diaria
+### Base diaria
+
+Sale de sumar los conceptos salariales diarios:
 
 ```text
 40 + 6 + 5 = 51 €/día
 ```
 
-Pagas extra:
+### Pagas extra prorrateadas
+
+Como el salario es diario:
+
 ```text
-(40 × 60) / 365 = 6,57 €/día
+(40 × 60) / 365,25 = 6,57 €/día
 ```
 
-BR:
+- 40 → salario base diario
+- 60 → dos pagas extra de 30 días
+- 365,25 → salario diario
+
+### BR total
+
 ```text
 51 + 6,57 = 57,57 €/día
 ```
 
 ---
 
-## Prestación
+### Prestación
 
 - Día 1-3 → 0 €
 - Día 4-20 → 60%
@@ -155,22 +183,27 @@ BR:
 
 ---
 
-# Accidente laboral
+## Accidente laboral
 
-## BR
-Horas extra:
+### BR
+
+#### Horas extra prorrateadas
+
+Como el salario es diario:
+
 ```text
-460 / 365 = 1,26 €/día
+460 / 365,25 = 1,26 €/día
 ```
 
-BR:
+### BR total
+
 ```text
 57,57 + 1,26 = 58,83 €/día
 ```
 
 ---
 
-## Prestación
+### Prestación
 
 ```text
 75% desde el día siguiente
@@ -178,9 +211,9 @@ BR:
 
 ---
 
-# 4. :pill: Apendicitis (Enfermedad común)
+## 4. Apendicitis (Enfermedad común)
 
-## Datos
+### Datos
 - Contrato: 1 abril 2025
 - Baja: 20 junio → 30 julio
 - Salario base: 1100 €
@@ -194,15 +227,16 @@ BR:
 No.
 
 Porque:
+
 ```text
 No tiene 180 días cotizados en los últimos 5 años
 ```
 
 ---
 
-# 5. :wheelchair: Incapacidad Permanente Parcial
+## 5. Incapacidad Permanente Parcial
 
-## Datos
+### Datos
 - Alta en RGSS: 15 enero 2000
 - Accidente laboral: 7 marzo 2025
 - BC febrero: 2668 €
@@ -214,6 +248,7 @@ No tiene 180 días cotizados en los últimos 5 años
 ## Prestación
 
 Tiene derecho a:
+
 ```text
 Incapacidad Permanente Parcial
 ```
@@ -223,27 +258,40 @@ Incapacidad Permanente Parcial
 ## Base reguladora
 
 ### BR diaria
+
+En accidente laboral:
+- se restan las horas extra de la base mensual
+- se divide entre 28
+
 ```text
 (2668 - 246) / 28 = 86,50 €/día
 ```
 
 ### Horas extra
+
+Como el salario es diario:
+
 ```text
-1200 / 365 = 3,29 €/día
+1200 / 365,25 = 3,29 €/día
 ```
 
 ### Total BR
+
 ```text
-89,79 €/día
+86,50 + 3,29 = 89,79 €/día
 ```
 
 ---
 
 ## Cuantía
 
+La incapacidad permanente parcial equivale a:
+
 ```text
 24 mensualidades de la BR
 ```
+
+Cálculo:
 
 ```text
 89,79 × 30 × 24 = 64.648,80 €
@@ -257,9 +305,9 @@ Pago único.
 
 ---
 
-# 6. :baby: Nacimiento y cuidado
+## 6. Nacimiento y cuidado
 
-## Datos
+### Datos
 - 27 años
 - 2 años antigüedad
 - Inicio descanso: 13 marzo
@@ -273,6 +321,7 @@ Pago único.
 Sí.
 
 Tiene:
+
 ```text
 Más de 180 días cotizados en los últimos 7 años
 ```
@@ -296,14 +345,17 @@ Más de 180 días cotizados en los últimos 7 años
 100% de la base reguladora
 ```
 
-BR:
+### BR
+
+Como el salario es mensual:
+
 ```text
 1600 / 30 = 53,33 €/día
 ```
 
 ---
 
-# 7. :pregnant_woman: Riesgo durante el embarazo
+## 7. Riesgo durante el embarazo
 
 ## ¿Qué puede hacer el empresario?
 
@@ -325,14 +377,18 @@ Sí.
 100% de la BCCP
 ```
 
-BCCP:
+### BCCP
+
 ```text
 1650 €/mes
 ```
 
-BR diaria:
+### BR diaria
+
+Como el salario es mensual:
+
 ```text
-1650 / 30 = 55 €/día
+1650 / 30 = 55,00 €/día
 ```
 
 ---
@@ -345,9 +401,9 @@ Hasta:
 
 ---
 
-# 8. :coffin: Muerte y supervivencia
+## 8. Muerte y supervivencia
 
-## Beneficiarios
+### Beneficiarios
 - Viuda
 - 2 hijos
 
@@ -356,21 +412,30 @@ Hasta:
 ## Base reguladora aproximada
 
 ### Salario anual
+
+Sale de:
+- salario mensual
+- complementos
+- 14 pagas
+
 ```text
 (1200 + 350) × 14 = 21700 €
 ```
 
 ### Beneficios
+
 ```text
 2500 €
 ```
 
 ### Peligrosidad
+
 ```text
 2000 €
 ```
 
 ### Horas extra
+
 ```text
 600 €
 ```
@@ -378,45 +443,50 @@ Hasta:
 ---
 
 ## Total anual
+
 ```text
-26800 €
+21700 + 2500 + 2000 + 600 = 26800 €
 ```
 
 ---
 
-# Prestaciones
+### Prestaciones
 
-## Viudedad
+#### Viudedad
+
 ```text
 52% BR
 ```
 
-## Orfandad
+#### Orfandad
+
 ```text
 20% BR cada hijo
 ```
 
 ---
 
-# 9. :briefcase: Desempleo — Pepe
+## 9. Desempleo — Pepe
 
 ## ¿Tiene derecho?
 
 No.
 
 Porque:
+
 ```text
 Ha dimitido voluntariamente
 ```
 
 La baja voluntaria:
+
 ```text
 No genera situación legal de desempleo
 ```
 
 ---
 
-# 10. :office: Desempleo — Brais
+## 10. Desempleo — Brais
 
 ## Tiene derecho
 
@@ -428,6 +498,8 @@ Porque:
 
 ## Bases desempleo
 
+La base reguladora sale de dividir las bases de cotización entre 180 días:
+
 ```text
 8900 / 180 = 49,44 €/día
 ```
@@ -437,6 +509,7 @@ Porque:
 ## Cuantía
 
 ### Primeros 180 días
+
 ```text
 70%
 ```
@@ -445,9 +518,10 @@ Porque:
 49,44 × 70% = 34,61 €/día
 ```
 
-Mensual:
+### Mensual
+
 ```text
-1038,30 €/mes
+34,61 × 30 = 1038,30 €/mes
 ```
 
 ---
@@ -455,8 +529,7 @@ Mensual:
 ## Duración
 
 Con 6 meses cotizados:
+
 ```text
 120 días de prestación
 ```
-
----
