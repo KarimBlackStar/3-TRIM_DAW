@@ -160,17 +160,17 @@ Sale de sumar los conceptos salariales diarios:
 Como el salario es diario:
 
 ```text
-(40 × 60) / 365,25 = 6,57 €/día
+(40 × 60) / 365 = 6,58 €/día
 ```
 
 - 40 → salario base diario
 - 60 → dos pagas extra de 30 días
-- 365,25 → salario diario
+- 365 → salario diario
 
 ### BR total
 
 ```text
-51 + 6,57 = 57,57 €/día
+51 + 6,58 = 57,58 €/día
 ```
 
 ---
@@ -192,13 +192,13 @@ Como el salario es diario:
 Como el salario es diario:
 
 ```text
-460 / 365,25 = 1,26 €/día
+460 / 365 = 1,26 €/día
 ```
 
 ### BR total
 
 ```text
-57,57 + 1,26 = 58,83 €/día
+57,58 + 1,26 = 58,84 €/día
 ```
 
 ---
@@ -272,7 +272,7 @@ En accidente laboral:
 Como el salario es diario:
 
 ```text
-1200 / 365,25 = 3,29 €/día
+1200 / 365 = 3,29 €/día
 ```
 
 ### Total BR
