@@ -301,11 +301,31 @@ END
 ```
 
 ```sql
+CREATE TRIGGER ActualizarCopiaUpdate 
+AFTER UPDATE 
+ON usuarios 
+FOR EACH ROW 
+BEGIN
+	update copiusu 
 
+   set numsocio = new.numsocio
+   set nombreusuario = new.nombreusuario
+   set apellidosusuario = new.apellidosusuario
+   set dni = new.dni
+   --etc
+   
+
+END
 ```
 
 ```sql
-
+CREATE TRIGGER  ActualizarCopiaDelete
+AFTER DELETE
+ON usuarios
+FOR EACH ROW
+BEGIN
+   delete from copiusu (numsocio, nombreusuario, apellidosusuario)
+END
 ```
 3.	Crear los triggers necesarios para controlar y documentar todos los cambios producidos en la tabla departamentos.
 
