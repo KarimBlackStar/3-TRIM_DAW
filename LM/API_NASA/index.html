@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Astronómico - NASA APOD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Explorador del Espacio - NASA</h1>
+        
+        <div class="buscador">
+            <label for="fecha-buscar">Elige una fecha:</label>
+            <input type="date" id="fecha-buscar">
+            <button id="btn-buscar">Buscar en el pasado</button>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="zona-resultados" class="tarjeta-apod">
+            
+            <h2 id="apod-titulo">Cargando maravilla cósmica...</h2>
+            
+            <div id="apod-media"></div>
+            
+            <p id="apod-descripcion"></p>
+            
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Desarrollado para el proyecto Panel de Tiempo - DAW 2026</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
