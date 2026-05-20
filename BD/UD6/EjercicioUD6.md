@@ -1,5 +1,9 @@
 # EJERCICIOS U.D. 6 MySQL
 
+(B.D. Ejercicios)
+
+---
+
 ## Procedimientos
 
 1. Crear un procedimiento para añadir un usuario calculando la clave correspondiente y comprobando que el tipo de usuario es válido.  
@@ -236,41 +240,8 @@ from usuarios
    - Devuelve:
      - Nombre del departamento  
      - O "No es profesor"  
-
-```sql
-CREATE FUNCTION `Departamento` (miclave int)
-RETURNS varchar(50)
-deterministic
-BEGIN
-	declare resultado varchar(50);
-    
-	select d.nombredpto
-    into resultado
-    from departamentos d join areas a join profesores p join usuarios u
-    on d.numdpto=a.numdpto and a.codarea = p.codarea and p.numsocio = u.numsocio
-    where u.tipousuario = 'P' and u.numsocio=miclave;
-    
-    if resultado is null then
-		set resultado="No es profesor";
-	end if;
-    
-    return resultado;
-END
-```
-
-Comprobación:
-
-```sql
-select numsocio,NombreCompleto(numsocio), tipousuario, Departamento(numsocio)
-from usuarios
-order by numsocio;
-```
-
-<img width="553" height="578" alt="image" src="https://github.com/user-attachments/assets/51a3bcea-4c42-43fb-a960-3fded5ca84dd" />
-
----
-
-## Triggers 
+  
+   ## Triggers 
 
 > [!IMPORTANT] 
 > *Se suele utilizar como *testing*, verificar que antes de insertar/modifique/delete unos datos se comprueben*
@@ -279,6 +250,10 @@ order by numsocio;
 > De normal si verifico una *inserción(INSERT)*, también querré aplicar el Trigger en la *modificación(UPDATE)*
 
 <img width="793" height="629" alt="image" src="https://github.com/user-attachments/assets/9ed9c40e-0708-414b-ba2c-57e651f2df80" />
+
+---
+
+## Triggers
 
 1. Crear triggers para:
    - Poner en mayúsculas nombre y apellidos al insertar o modificar  
