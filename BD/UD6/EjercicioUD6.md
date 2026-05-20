@@ -313,7 +313,7 @@ BEGIN
    set apellidosusuario = new.apellidosusuario
    set dni = new.dni
    --etc
-   
+   where numsocio = old.numsocio;
 
 END
 ```
@@ -324,11 +324,44 @@ AFTER DELETE
 ON usuarios
 FOR EACH ROW
 BEGIN
-   delete from copiusu (numsocio, nombreusuario, apellidosusuario)
+   delete from copiusu 
+   where numsocio = old.numsocio;
 END
 ```
 3.	Crear los triggers necesarios para controlar y documentar todos los cambios producidos en la tabla departamentos.
 
+```sql
+CREATE TRIGGER departamentos_AFTER_INSERT 
+AFTER INSERT 
+ON departamentos 
+FOR EACH ROW 
+BEGIN
+	insert into audita_dep
+    values (now(), user(), "Insertar", new.numdpto);
+END
+```
+
+```sql
+CREATE TRIGGER departamentos_AFTER_UPDATE 
+AFTER UPDATE 
+ON departamentos 
+FOR EACH ROW 
+BEGIN
+	insert into audita_dep
+    values (now(), user(), "Modificar", old.numdpto);
+END
+```
+
+```sql
+CREATE TRIGGER departamentos_AFTER_DELETE 
+AFTER DELETE 
+ON departamentos 
+FOR EACH ROW
+BEGIN
+   insert into audit_dep 
+   values(curtime(), user(),"BORRAR", old.numdpto);
+END
+```
 
 4.	Crear un trigger que impida que se inserte un libro nuevo con un número de páginas inferior a 20 o superior a 1000.
  
