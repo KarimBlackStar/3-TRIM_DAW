@@ -273,6 +273,7 @@ BEGIN
 	
 END
 ```
+
 ```sql
 CREATE TRIGGER ejercicios
 BEFORE UPDATE
@@ -283,8 +284,11 @@ BEGIN
     set new.apellidosusuario = upper(new.apellidosusuario);
 END
 ```
+
 2. Crear triggers para:
+   
    - Mantener una copia actualizada de la tabla usuarios  
+
 ```sql
 CREATE TRIGGER ActualizarCopiaInsert 
 AFTER INSERT 
@@ -303,10 +307,8 @@ END
 ```sql
 
 ```
-3. Crear triggers para:
-   - Controlar y registrar cambios en la tabla departamentos  
+3.	Crear los triggers necesarios para controlar y documentar todos los cambios producidos en la tabla departamentos.
 
-4. Crear un trigger que:
-   - Impida insertar libros con:
-     - Menos de 20 páginas  
-     - Más de 1000 páginas  
+
+4.	Crear un trigger que impida que se inserte un libro nuevo con un número de páginas inferior a 20 o superior a 1000.
+ 
