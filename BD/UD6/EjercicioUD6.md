@@ -358,7 +358,7 @@ AFTER DELETE
 ON departamentos 
 FOR EACH ROW
 BEGIN
-   insert into audit_dep 
+   insert into audita_dep 
    values(curtime(), user(),"BORRAR", old.numdpto);
 END
 ```
