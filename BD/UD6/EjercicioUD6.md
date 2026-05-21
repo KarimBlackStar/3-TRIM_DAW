@@ -259,6 +259,19 @@ old.nombre
 #### En una inserción solo *NEW* 
 #### En un borrado solo *OLD*
 
+```sql
+	create trigger seguroTriggerLibros
+	before insert
+	on libros
+	for each row
+begin
+	if new.paginas < 20 or new.paginas > 1000 then
+		signal sqlstate "45000" --señal genérica
+			set message_text = "Número de páginas inválido"
+	end if;
+end
+```
+
 1. Crear triggers para:
    - Poner en mayúsculas nombre y apellidos al insertar o modificar
   
