@@ -44,6 +44,8 @@ public void agregar${Entidad}() throws SQLException {
 }
 ```
 
+---
+
 + Borrar Componente en DAO
 
 ```java
@@ -62,3 +64,20 @@ public boolean borrar(int id) {
         }
     }
 ```
+
++ Borrar Componente en Controlador
+
+```java
+public void borrar${Entidad}() {
+    int id = vista.pedirDatoInteger("Introduce el ID de la ${entidad_min} a borrar");
+    boolean exito = modelo.borrar(id);
+
+    if (exito) {
+        vista.mostrarMensaje("${Entidad} borrado con exito de la BD y de la cache.");
+    } else {
+        vista.mostrarMensajeError("Error: No se encontro ninguna ${entidad_min} con ese ID.");
+    }
+}
+```
+---
+
