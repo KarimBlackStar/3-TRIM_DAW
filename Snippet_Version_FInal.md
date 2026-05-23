@@ -678,31 +678,3 @@ src/
 └── database/
     └── ConexionBD.java
 ```
-
----
-
-## LO MÁS IMPORTANTE
-
-### ✔ PRIORIDAD ALTA
-- SELECT
-- ArrayList
-- ResultSet
-- PreparedStatement
-- foreach
-- filtros
-- guardar archivo
-- MVC básico
-
-### ✔ MUY POSIBLE EN EXAMEN
-- INSERT
-- DELETE
-- buscar por ID
-- mostrar listas
-
-### ❌ NO PIERDAS TIEMPO
-- rollback
-- transacciones
-- NIO complejo
-- Path
-- streams raros
-- múltiples capas innecesarias
