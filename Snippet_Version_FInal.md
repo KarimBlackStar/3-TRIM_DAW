@@ -678,3 +678,119 @@ src/
 └── database/
     └── ConexionBD.java
 ```
+---
+
+## HASHSET
+
+```java
+import java.util.HashSet;
+
+HashSet<String> nombres;
+
+nombres = new HashSet<>();
+
+nombres.add("Ana");
+nombres.add("Luis");
+nombres.add("Ana");
+
+for (String nombre : nombres) {
+
+    System.out.println(nombre);
+
+}
+```
+
+---
+
+## TREESET
+
+```java
+import java.util.TreeSet;
+
+TreeSet<String> nombres;
+
+nombres = new TreeSet<>();
+
+nombres.add("Carlos");
+nombres.add("Ana");
+nombres.add("Luis");
+
+for (String nombre : nombres) {
+
+    System.out.println(nombre);
+
+}
+```
+
+---
+
+## HASHMAP
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+HashMap<Integer, String> mapa;
+
+mapa = new HashMap<>();
+
+mapa.put(1, "Ana");
+mapa.put(2, "Luis");
+
+for (Map.Entry<Integer, String> entry : mapa.entrySet()) {
+
+    System.out.println(
+
+            entry.getKey()
+            + " - "
+            + entry.getValue()
+
+    );
+
+}
+```
+
+---
+
+## FILE EXISTS
+
+```java
+import java.io.File;
+
+File archivo;
+
+archivo = new File("${archivo}.txt");
+
+if (archivo.exists()) {
+
+    System.out.println("Existe");
+
+} else {
+
+    System.out.println("No existe");
+
+}
+```
+
+---
+
+## FILES EXISTS
+
+```java
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+Path ruta;
+
+ruta = Path.of("${archivo}.txt");
+
+if (Files.exists(ruta)) {
+
+    System.out.println("Existe");
+
+} else {
+
+    System.out.println("No existe");
+
+}
+```
