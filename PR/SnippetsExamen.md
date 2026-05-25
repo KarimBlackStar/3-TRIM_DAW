@@ -6,6 +6,8 @@
  * Muestra todos los registros almacenados.
  * Si no existen datos muestra un mensaje de error.
  */
+
+```java
 public void ${nombreMetodo}() {
 
     List<${Objeto}> ${objeto}s = modelo.obtenerTodos();
@@ -27,11 +29,15 @@ public void ${nombreMetodo}() {
     }
 
 }
+```
 
+---
 
 /*
  * Busca un objeto por ID y muestra sus datos.
  */
+
+```java
 public void ${nombreMetodo}() {
 
     int id = vista.pedirDatoInteger("Introduzca el ID: ");
@@ -49,11 +55,15 @@ public void ${nombreMetodo}() {
     }
 
 }
+```
 
+---
 
 /*
  * Busca registros usando un criterio indicado por el usuario.
  */
+
+```java
 public void ${nombreMetodo}() {
 
     String filtro = vista.pedirString("Introduzca el criterio de búsqueda: ");
@@ -77,11 +87,15 @@ public void ${nombreMetodo}() {
     }
 
 }
+```
 
+---
 
 /*
  * Solicita datos al usuario y registra un nuevo objeto.
  */
+
+```java
 public void ${nombreMetodo}() {
 
     double precio = 0.0;
@@ -113,11 +127,15 @@ public void ${nombreMetodo}() {
     }
 
 }
+```
 
+---
 
 /*
  * Modifica los datos de un objeto existente.
  */
+
+```java
 public void ${nombreMetodo}() {
 
     int id = vista.pedirDatoInteger("Introduce el ID: ");
@@ -159,8 +177,7 @@ public void ${nombreMetodo}() {
     }
 
 }
-
-
+```
 
 # ================================
 # MODELO
@@ -169,26 +186,36 @@ public void ${nombreMetodo}() {
 /*
  * Devuelve todos los objetos almacenados en el mapa.
  */
+
+```java
 public List<${Objeto}> ${nombreMetodo}() {
 
     return new ArrayList<>(mapa${Objeto}s.values());
 
 }
+```
 
+---
 
 /*
  * Busca y devuelve un objeto usando su ID.
  */
+
+```java
 public ${Objeto} ${nombreMetodo}(int id) {
 
     return mapa${Objeto}s.get(id);
 
 }
+```
 
+---
 
 /*
  * Busca objetos usando un filtro determinado.
  */
+
+```java
 public List<${Objeto}> ${nombreMetodo}(String filtro) {
 
     List<${Objeto}> resultado = new ArrayList<>();
@@ -206,11 +233,15 @@ public List<${Objeto}> ${nombreMetodo}(String filtro) {
     return resultado;
 
 }
+```
 
+---
 
 /*
  * Carga todos los registros desde la Base de Datos al mapa.
  */
+
+```java
 public void ${nombreMetodo}() throws SQLException {
 
     if (!mapa${Objeto}s.isEmpty()) {
@@ -238,11 +269,15 @@ public void ${nombreMetodo}() throws SQLException {
     }
 
 }
+```
 
+---
 
 /*
  * Inserta un nuevo objeto en la Base de Datos y en el mapa.
  */
+
+```java
 public void ${nombreMetodo}(${Objeto} o) throws SQLException {
 
     String sql = "INSERT INTO tabla VALUES (...)";
@@ -257,11 +292,15 @@ public void ${nombreMetodo}(${Objeto} o) throws SQLException {
     }
 
 }
+```
 
+---
 
 /*
  * Actualiza los datos de un objeto en BD y en el mapa.
  */
+
+```java
 public void ${nombreMetodo}(${Objeto} o) throws SQLException {
 
     String sql = "UPDATE tabla SET ... WHERE id = ?";
