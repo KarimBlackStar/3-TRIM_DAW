@@ -9,14 +9,27 @@ Vista de todos los socios con código, nombre, apellidos y número de préstamos
 ¿Es una vista actualizable?
 
 ```sql
-  create view v_socio_presa
+  create view v_socio_presta as
+    select s.cod, s.nombre, s.apell, count(p.numPrestamo) as X
+    from socios s left join prestamos p
+    on ...
+    order by X desc;
 ```
-
+    
 ---
 
 #### Ejercicio 2 — Vista `v_nuevo_socio` (0,5 puntos)
 Vista que permita dar de alta nuevos socios comprobando que la provincia sea válida (códigos del '01' al '52') y que el inicio del código postal coincida con la provincia.
 
+
+```sql
+    create view v_nuevo_socio as
+    select id, nombre, apellidos,  provincia, poblacion, tel, codPostal
+    from socios
+    where provincia between '01' and '52'
+    left(codPostal,2) = provincia
+    with check option
+```
 ---
 
 ### PARTE 2 — Base de datos VENTAS_TIENDAS
@@ -26,16 +39,47 @@ Función que devuelva la cantidad total de artículos vendidos en una tienda dad
 
 ¿Es determinística?
 
+```sql
+    create function fn_ventas(X int)
+    deterministic
+    return int
+    begin
+      declare total
+        select ifnull(sum(cantidadArt,0))
+        from ventas
+        where vent_tda = X
+      return total
+    end
+```
 ---
 
 #### Ejercicio 4 — Procedimiento `act_ventas` (1 punto)
 Procedimiento que actualice para todos los clientes la columna `clt_ventas`, contando el número de ventas que hay en la tabla `VENTAS` asociadas al cliente.
-
+```sql
+    create procedure act_ventas()
+      begin
+        update clientes c
+        set clt_ventas = 
+        (select count(*)
+        from ventas v 
+        where v.venCli = c.idCli)
+      end
+```
 ---
 
 #### Ejercicio 5 — Procedimiento `ventas_fecha` (0,5 puntos)
 Procedimiento para listar las ventas entre dos fechas dadas, visualizando número de tienda, fecha, nombre del cliente e importe de la venta.
 
+```sql
+  create porcedure ventas_fecha(fechaIni date, fechaFin date)
+
+begin
+  select v.numTienda, v.fecha, c.nombreCli, v.importe
+  from ventas v join clientes c
+  on ...
+  where fecha between fechaIni and fechaFin 
+end
+```
 ---
 
 #### Ejercicio 6 — Disparadores INSERT / DELETE / UPDATE (1,5 puntos)
