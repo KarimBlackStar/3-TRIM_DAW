@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Test BD · 3.ª Eval</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap');
+
+  :root {
+    --bg: #0e0e0e;
+    --surface: #181818;
+    --card: #1e1e1e;
+    --border: #2e2e2e;
+    --text: #f0f0f0;
+    --muted: #666;
+    --accent: #00e5a0;
+    --accent-dim: #00e5a018;
+    --wrong: #ff4d6d;
+    --wrong-dim: #ff4d6d18;
+    --correct: #00e5a0;
+    --correct-dim: #00e5a018;
+    --pending: #f5c542;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    min-height: 100vh;
+  }
+
+  /* ─── PANTALLA INICIO ─── */
+  #screen-start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 24px;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #003d2a 0%, #0e0e0e 65%);
+  }
+
+  .logo-badge {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    color: #0e0e0e;
+    margin-bottom: 24px;
+    box-shadow: 0 0 40px #00e5a055;
+  }
+
+  .start-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .start-title span { color: var(--accent); }
+
+  .start-sub {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .stat-box {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 8px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .btn-start {
+    width: 100%;
+    max-width: 320px;
+    padding: 18px;
+    background: var(--accent);
+    color: #0e0e0e;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px #00e5a044;
+  }
+  .btn-start:active { transform: scale(0.97); }
+
+  /* ─── PANTALLA QUIZ ─── */
+  #screen-quiz { display: none; flex-direction: column; min-height: 100vh; }
+
+  .quiz-header {
+    padding: 16px 16px 12px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+  }
+
+  .quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .q-counter {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+  }
+  .q-score {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .quiz-body {
+    flex: 1;
+    padding: 20px 16px;
+  }
+
+  .question-text {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text);
+    transition: all 0.15s;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .option:active { transform: scale(0.98); }
+  .option:not(.answered):hover {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .opt-letter {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+
+  .option.correct {
+    border-color: var(--correct);
+    background: var(--correct-dim);
+  }
+  .option.correct .opt-letter {
+    background: var(--correct);
+    color: #0e0e0e;
+  }
+  .option.wrong {
+    border-color: var(--wrong);
+    background: var(--wrong-dim);
+  }
+  .option.wrong .opt-letter {
+    background: var(--wrong);
+    color: #fff;
+  }
+  .option.disabled { cursor: default; opacity: 0.5; }
+
+  .feedback {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok { background: var(--correct-dim); border: 1px solid var(--correct); color: var(--correct); }
+  .feedback.ko { background: var(--wrong-dim); border: 1px solid var(--wrong); color: var(--wrong); }
+
+  .btn-next {
+    margin-top: 20px;
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: #0e0e0e;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+    transition: transform 0.1s;
+  }
+  .btn-next.show { display: block; }
+  .btn-next:active { transform: scale(0.97); }
+
+  /* ─── PANTALLA RESULTADO ─── */
+  #screen-result {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 24px;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #003d2a 0%, #0e0e0e 65%);
+  }
+
+  .result-emoji {
+    font-size: 56px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .result-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .result-score {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    color: var(--accent);
+    margin: 16px 0;
+    line-height: 1;
+  }
+  .result-score span { font-size: 22px; color: var(--muted); }
+
+  .result-msg {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .result-breakdown {
+    width: 100%;
+    max-width: 320px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 28px;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row .val { font-family: 'Archivo Black', sans-serif; }
+  .val.green { color: var(--correct); }
+  .val.red { color: var(--wrong); }
+  .val.yellow { color: var(--pending); }
+
+  .btn-retry {
+    width: 100%;
+    max-width: 320px;
+    padding: 18px;
+    background: var(--accent);
+    color: #0e0e0e;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 24px #00e5a044;
+  }
+  .btn-retry:active { transform: scale(0.97); }
+</style>
+</head>
+<body>
+
+<!-- ══════════ INICIO ══════════ -->
+<div id="screen-start">
+  <div class="logo-badge">BD</div>
+  <div class="start-title">Test <span>MySQL</span></div>
+  <div class="start-sub">3.ª Evaluación · Bases de Datos</div>
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num">35</div>
+      <div class="stat-label">preguntas</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-label">opciones</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">intentos</div>
+    </div>
+  </div>
+  <button class="btn-start" onclick="startQuiz()">EMPEZAR →</button>
+</div>
+
+<!-- ══════════ QUIZ ══════════ -->
+<div id="screen-quiz">
+  <div class="quiz-header">
+    <div class="quiz-meta">
+      <div class="q-counter" id="q-counter">1 / 20</div>
+      <div class="q-score" id="q-score">✓ 0 &nbsp; ✗ 0</div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:5%"></div>
+    </div>
+  </div>
+  <div class="quiz-body">
+    <div class="question-text" id="question-text"></div>
+    <div class="options" id="options-container"></div>
+    <div class="feedback" id="feedback"></div>
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">SIGUIENTE →</button>
+  </div>
+</div>
+
+<!-- ══════════ RESULTADO ══════════ -->
+<div id="screen-result">
+  <span class="result-emoji" id="result-emoji">🏆</span>
+  <div class="result-title" id="result-title">¡Resultado!</div>
+  <div class="result-score" id="result-score">0 <span>/ 20</span></div>
+  <div class="result-msg" id="result-msg"></div>
+  <div class="result-breakdown">
+    <div class="breakdown-row"><span>Correctas</span><span class="val green" id="res-correct">0</span></div>
+    <div class="breakdown-row"><span>Incorrectas</span><span class="val red" id="res-wrong">0</span></div>
+    <div class="breakdown-row"><span>Nota (sobre 10)</span><span class="val yellow" id="res-nota">0</span></div>
+  </div>
+  <button class="btn-retry" onclick="startQuiz()">REPETIR TEST →</button>
+</div>
+
+<script>
+const ALL_QUESTIONS = [
+  {
+    q: "¿Qué es un cursor en MySQL?",
+    opts: [
+      "Una variable para almacenar un único valor",
+      "Una estructura utilizada para almacenar en memoria los resultados de una consulta",
+      "Un tipo de trigger que recorre filas",
+      "Un índice especial para búsquedas rápidas"
+    ],
+    correct: 1,
+    exp: "Un cursor permite recorrer fila a fila los resultados de una SELECT almacenados en memoria."
+  },
+  {
+    q: "¿Cómo se ejecuta un procedimiento almacenado en MySQL?",
+    opts: [
+      "RUN nombre_procedimiento",
+      "EXEC nombre_procedimiento",
+      "CALL nombre_procedimiento",
+      "START nombre_procedimiento"
+    ],
+    correct: 2,
+    exp: "La sintaxis correcta es CALL nombre_procedimiento(parámetros)."
+  },
+  {
+    q: "¿Qué se necesita habilitar para que los eventos funcionen en MySQL?",
+    opts: [
+      "El modo estricto de MySQL",
+      "El Event Scheduler (programador de eventos)",
+      "El binary log",
+      "El modo de autocommit"
+    ],
+    correct: 1,
+    exp: "Hay que activar el EVENT SCHEDULER con: SET GLOBAL event_scheduler = ON;"
+  },
+  {
+    q: "¿Cuál es el tipo de parámetro de salida en un procedimiento MySQL?",
+    opts: [
+      "IN",
+      "RETURN",
+      "OUT",
+      "INOUT"
+    ],
+    correct: 2,
+    exp: "Los parámetros de salida se declaran con OUT. INOUT sirve para entrada y salida a la vez."
+  },
+  {
+    q: "¿Cuáles son los momentos válidos de ejecución para un trigger?",
+    opts: [
+      "START y END",
+      "BEFORE y AFTER",
+      "PRE y POST",
+      "INSERT y DELETE"
+    ],
+    correct: 1,
+    exp: "Un trigger se puede ejecutar BEFORE (antes) o AFTER (después) del evento DML."
+  },
+  {
+    q: "Las variables de usuario en MySQL son especiales porque...",
+    opts: [
+      "Solo existen dentro de una función",
+      "No es necesario definirlas y mantienen su valor toda la sesión",
+      "Se borran al ejecutar cada consulta",
+      "Solo pueden almacenar números"
+    ],
+    correct: 1,
+    exp: "Las variables de usuario (@var) no necesitan DECLARE y persisten durante toda la sesión de conexión."
+  },
+  {
+    q: "¿Qué diferencia principal hay entre un procedimiento y una función?",
+    opts: [
+      "Los procedimientos son más rápidos que las funciones",
+      "Las funciones solo aceptan parámetros IN",
+      "La función puede devolver un valor; el procedimiento no necesariamente",
+      "Un procedimiento no puede hacer SELECT"
+    ],
+    correct: 2,
+    exp: "Las funciones siempre devuelven un valor con RETURN. Los procedimientos pueden tener parámetros OUT pero no usan RETURN obligatoriamente."
+  },
+  {
+    q: "¿Cuál de estas NO es una ventaja de los programas almacenados respecto a los externos?",
+    opts: [
+      "Reducen el tráfico de red",
+      "Mayor mantenimiento de las aplicaciones",
+      "Mayor seguridad al centralizar la lógica",
+      "Mayor rendimiento en operaciones repetitivas"
+    ],
+    correct: 1,
+    exp: "Los programas almacenados pueden dificultar el mantenimiento al mezclar lógica de negocio con la BD."
+  },
+  {
+    q: "¿Cuántos triggers puede haber para controlar la inserción en una tabla?",
+    opts: [
+      "Dos: uno AFTER y uno BEFORE",
+      "Solo uno, el último creado",
+      "Ilimitados",
+      "Tres: BEFORE, AFTER y INSTEAD OF"
+    ],
+    correct: 0,
+    exp: "MySQL permite un trigger BEFORE INSERT y un trigger AFTER INSERT por tabla, es decir, dos en total para la inserción."
+  },
+  {
+    q: "¿Qué ocurre si no se cierra un cursor en MySQL?",
+    opts: [
+      "El servidor lanza un error fatal",
+      "La transacción queda en espera",
+      "Nada, se cierra automáticamente al finalizar el bloque BEGIN...END",
+      "El cursor sigue abierto hasta reiniciar MySQL"
+    ],
+    correct: 2,
+    exp: "MySQL cierra automáticamente los cursores al finalizar el procedimiento o función donde fueron abiertos."
+  },
+  {
+    q: "¿Qué ventaja tiene el uso de vistas?",
+    opts: [
+      "Permiten almacenar datos duplicados para mayor velocidad",
+      "Mejoran la seguridad de los datos ocultando columnas o filas",
+      "Eliminan la necesidad de índices",
+      "Hacen que las consultas sean siempre más rápidas"
+    ],
+    correct: 1,
+    exp: "Las vistas permiten mostrar solo las columnas y filas permitidas a cada usuario, mejorando la seguridad."
+  },
+  {
+    q: "¿Se puede insertar datos directamente en una vista?",
+    opts: [
+      "Nunca, las vistas son siempre de solo lectura",
+      "Siempre, cualquier vista admite INSERT",
+      "Depende de la definición de la vista",
+      "Solo si la vista tiene WITH CHECK OPTION"
+    ],
+    correct: 2,
+    exp: "Una vista es actualizable si no tiene GROUP BY, DISTINCT, funciones de agregado, UNION ni subconsultas en el FROM."
+  },
+  {
+    q: "Si queremos impedir borrar un cliente con facturas pendientes, el trigger debe ser de tipo:",
+    opts: [
+      "AFTER DELETE on clientes",
+      "BEFORE DELETE on clientes",
+      "BEFORE UPDATE on clientes",
+      "AFTER INSERT on facturas"
+    ],
+    correct: 1,
+    exp: "Debe ser BEFORE DELETE: así podemos lanzar SIGNAL y cancelar el borrado antes de que ocurra."
+  },
+  {
+    q: "¿Cuál es la secuencia correcta para usar un cursor?",
+    opts: [
+      "DECLARE → FETCH → CLOSE",
+      "OPEN → CLOSE → FETCH",
+      "OPEN → FETCH → CLOSE",
+      "FETCH → OPEN → CLOSE"
+    ],
+    correct: 2,
+    exp: "La secuencia es: DECLARE (definir), OPEN (abrir), FETCH (leer fila a fila), CLOSE (cerrar)."
+  },
+  {
+    q: "¿Cuál es la diferencia entre un procedimiento y un trigger?",
+    opts: [
+      "Un procedimiento puede ser llamado desde cualquier parte del código; un trigger solo se activa ante cierto evento",
+      "Un trigger puede recibir parámetros; un procedimiento no",
+      "Un procedimiento se ejecuta automáticamente; un trigger hay que llamarlo",
+      "No hay diferencia, son sinónimos"
+    ],
+    correct: 0,
+    exp: "Los procedimientos se invocan con CALL. Los triggers se disparan automáticamente ante eventos DML (INSERT, UPDATE, DELETE)."
+  },
+  {
+    q: "¿Cuándo se puede activar un trigger?",
+    opts: [
+      "Solo después de hacer SELECT",
+      "Antes o después de insertar, actualizar o eliminar",
+      "Solo al arrancar el servidor",
+      "Solo con operaciones de lectura"
+    ],
+    correct: 1,
+    exp: "Los triggers se activan con eventos DML: INSERT, UPDATE o DELETE, tanto BEFORE como AFTER."
+  },
+  {
+    q: "La cláusula FOR EACH ROW en un trigger significa que...",
+    opts: [
+      "El trigger se ejecuta una sola vez por sentencia",
+      "El trigger ignora las filas con NULL",
+      "El trigger se ejecuta una vez por cada fila afectada",
+      "El trigger se ejecutará por cada operación DML realizada sobre la tabla"
+    ],
+    correct: 2,
+    exp: "FOR EACH ROW indica que el cuerpo del trigger se ejecuta una vez por cada fila afectada por la operación."
+  },
+  {
+    q: "¿Qué es un evento en MySQL?",
+    opts: [
+      "Un tipo especial de trigger que reacciona a cambios de esquema",
+      "Una tarea programada que se ejecuta automáticamente en una fecha u hora determinada",
+      "Una función que se lanza al conectarse un usuario",
+      "Un log automático de las operaciones DML"
+    ],
+    correct: 1,
+    exp: "Los eventos (CREATE EVENT) son tareas programadas gestionadas por el Event Scheduler de MySQL."
+  },
+  {
+    q: "¿Cuál es la sintaxis correcta para crear un trigger en MySQL?",
+    opts: [
+      "CREATE TRIGGER nombre AFTER evento ON tabla FOR EACH ROW BEGIN ... END",
+      "MAKE TRIGGER nombre ON tabla WHEN evento DO BEGIN ... END",
+      "CREATE TRIGGER nombre FOR tabla ON evento BEGIN ... END",
+      "NEW TRIGGER nombre BEFORE/AFTER tabla.evento BEGIN ... END"
+    ],
+    correct: 0,
+    exp: "La sintaxis es: CREATE TRIGGER nombre {BEFORE|AFTER} {INSERT|UPDATE|DELETE} ON tabla FOR EACH ROW BEGIN ... END"
+  },
+  {
+    q: "Al crear una tabla a partir de una SELECT sin especificar nombres de columna nuevos...",
+    opts: [
+      "La operación falla con un error de sintaxis",
+      "Todas las columnas se llaman COL1, COL2...",
+      "Las columnas toman nombres aleatorios",
+      "Las columnas tomarán los nombres de la otra tabla o de los alias correspondientes"
+    ],
+    correct: 3,
+    exp: "Con CREATE TABLE ... AS SELECT, si no se especifican alias, las columnas de la nueva tabla heredan los nombres de las columnas de la consulta."
+  },
+
+  // ── JOINs ──
+  {
+    q: "¿Qué devuelve un INNER JOIN?",
+    opts: [
+      "Todas las filas de la tabla izquierda, aunque no haya coincidencia",
+      "Solo las filas que tienen coincidencia en ambas tablas",
+      "El producto cartesiano de ambas tablas",
+      "Todas las filas de ambas tablas sin filtrar"
+    ],
+    correct: 1,
+    exp: "INNER JOIN devuelve únicamente las filas donde existe coincidencia en la condición ON en las dos tablas."
+  },
+  {
+    q: "¿Cuál es la diferencia entre LEFT JOIN y RIGHT JOIN?",
+    opts: [
+      "No hay diferencia, son sinónimos",
+      "LEFT JOIN devuelve solo la tabla izquierda; RIGHT JOIN solo la derecha",
+      "LEFT JOIN devuelve todas las filas de la tabla izquierda aunque no haya coincidencia; RIGHT JOIN hace lo mismo con la derecha",
+      "LEFT JOIN es más rápido que RIGHT JOIN"
+    ],
+    correct: 2,
+    exp: "LEFT JOIN conserva todas las filas de la tabla de la izquierda poniendo NULL donde no hay coincidencia. RIGHT JOIN hace lo mismo con la tabla de la derecha."
+  },
+  {
+    q: "¿Qué resultado da un LEFT JOIN cuando no hay coincidencia en la tabla derecha?",
+    opts: [
+      "La fila se elimina del resultado",
+      "Se lanza un error",
+      "Los campos de la tabla derecha aparecen como NULL",
+      "Se duplica la fila de la tabla izquierda"
+    ],
+    correct: 2,
+    exp: "Cuando LEFT JOIN no encuentra coincidencia, rellena las columnas de la tabla derecha con NULL, pero mantiene la fila de la izquierda."
+  },
+  {
+    q: "¿Para qué se usa un CROSS JOIN?",
+    opts: [
+      "Para combinar filas que tienen la misma clave primaria",
+      "Para obtener el producto cartesiano: todas las combinaciones posibles entre dos tablas",
+      "Para unir dos tablas por una columna común",
+      "Para eliminar duplicados entre dos tablas"
+    ],
+    correct: 1,
+    exp: "CROSS JOIN genera el producto cartesiano: si la tabla A tiene 3 filas y B tiene 4, el resultado tiene 12 filas."
+  },
+  {
+    q: "¿Qué hace un SELF JOIN?",
+    opts: [
+      "Une una tabla con ella misma usando alias distintos",
+      "Une todas las tablas de la base de datos automáticamente",
+      "Es un JOIN sin condición ON",
+      "Permite unir una vista con su tabla base"
+    ],
+    correct: 0,
+    exp: "Un SELF JOIN une una tabla consigo misma usando dos alias diferentes, útil para relaciones jerárquicas como empleado-jefe."
+  },
+  {
+    q: "¿Cuál es la sintaxis correcta de un INNER JOIN en MySQL?",
+    opts: [
+      "SELECT * FROM A, B WHERE A.id = B.id",
+      "SELECT * FROM A JOIN B USING A.id = B.id",
+      "SELECT * FROM A INNER JOIN B ON A.id = B.id",
+      "SELECT * FROM A MERGE B ON A.id = B.id"
+    ],
+    correct: 2,
+    exp: "La sintaxis estándar es: SELECT ... FROM tabla1 INNER JOIN tabla2 ON tabla1.col = tabla2.col"
+  },
+  {
+    q: "¿Qué hace la cláusula USING en un JOIN?",
+    opts: [
+      "Especifica la condición de unión con una expresión libre",
+      "Se usa cuando ambas tablas tienen una columna con el mismo nombre como clave de unión",
+      "Sustituye al WHERE en cualquier consulta",
+      "Obliga a usar índices en el JOIN"
+    ],
+    correct: 1,
+    exp: "USING(columna) es un atajo cuando ambas tablas tienen la misma columna de unión: JOIN tabla2 USING(id) equivale a ON tabla1.id = tabla2.id"
+  },
+
+  // ── VISTAS ──
+  {
+    q: "¿Qué es una vista en MySQL?",
+    opts: [
+      "Una copia física de los datos de una tabla",
+      "Una consulta SELECT almacenada con nombre propio que se comporta como una tabla virtual",
+      "Un índice especial para búsquedas rápidas",
+      "Un archivo de exportación de datos"
+    ],
+    correct: 1,
+    exp: "Una vista es una consulta SELECT guardada con nombre. No almacena datos por sí misma; los obtiene de las tablas base cada vez que se consulta."
+  },
+  {
+    q: "¿Cuándo una vista NO es actualizable (no permite INSERT/UPDATE/DELETE)?",
+    opts: [
+      "Cuando tiene más de dos tablas en el FROM",
+      "Cuando usa GROUP BY, DISTINCT, funciones de agregado, UNION o subconsultas en el FROM",
+      "Cuando se crea con OR REPLACE",
+      "Cuando tiene la cláusula WITH CHECK OPTION"
+    ],
+    correct: 1,
+    exp: "MySQL no puede actualizar vistas que usen GROUP BY, DISTINCT, funciones de agregado (SUM, COUNT...), UNION o subconsultas en el FROM."
+  },
+  {
+    q: "¿Qué hace WITH CHECK OPTION en una vista?",
+    opts: [
+      "Verifica que la vista no tenga errores de sintaxis al crearla",
+      "Obliga a que los INSERT y UPDATE hechos a través de la vista sigan cumpliendo la condición WHERE de la vista",
+      "Hace que la vista se actualice automáticamente al cambiar la tabla base",
+      "Impide que otros usuarios consulten la vista"
+    ],
+    correct: 1,
+    exp: "WITH CHECK OPTION rechaza cualquier INSERT o UPDATE a través de la vista que no cumpla el WHERE de la vista, manteniendo la coherencia."
+  },
+  {
+    q: "¿Qué ocurre con los datos de una vista si se modifica la tabla base?",
+    opts: [
+      "La vista guarda una copia y no cambia",
+      "Hay que recrear la vista manualmente",
+      "La vista refleja automáticamente los cambios, ya que no almacena datos propios",
+      "La vista se elimina automáticamente"
+    ],
+    correct: 2,
+    exp: "Las vistas son virtuales: no almacenan datos. Cada vez que se consultan, ejecutan la SELECT subyacente sobre las tablas base en su estado actual."
+  },
+  {
+    q: "¿Cuál es la sintaxis para crear una vista en MySQL?",
+    opts: [
+      "MAKE VIEW nombre AS SELECT ...",
+      "CREATE VIEW nombre AS SELECT ...",
+      "NEW VIEW nombre FROM SELECT ...",
+      "CREATE TABLE nombre AS VIEW SELECT ..."
+    ],
+    correct: 1,
+    exp: "La sintaxis es: CREATE [OR REPLACE] VIEW nombre AS SELECT columnas FROM tabla [WHERE condición];"
+  },
+  {
+    q: "¿Para qué sirve CREATE OR REPLACE VIEW?",
+    opts: [
+      "Crea la vista solo si no existe; si existe lanza error",
+      "Borra y recrea la vista aunque ya exista, sin necesidad de DROP VIEW previo",
+      "Crea una copia de seguridad de la vista anterior",
+      "Solo funciona con vistas que tienen WITH CHECK OPTION"
+    ],
+    correct: 1,
+    exp: "CREATE OR REPLACE VIEW permite actualizar la definición de una vista existente sin tener que hacer DROP VIEW + CREATE VIEW."
+  }
+];
+
+let questions = [];
+let current = 0;
+let correct = 0;
+let wrong = 0;
+let answered = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz() {
+  questions = shuffle(ALL_QUESTIONS);
+  current = 0; correct = 0; wrong = 0;
+  show('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[current];
+  const total = questions.length;
+
+  document.getElementById('q-counter').textContent = `${current + 1} / ${total}`;
+  document.getElementById('q-score').innerHTML = `✓ ${correct} &nbsp; ✗ ${wrong}`;
+  document.getElementById('progress-fill').style.width = `${((current + 1) / total) * 100}%`;
+  document.getElementById('question-text').textContent = q.q;
+
+  // Shuffle options keeping track of correct index
+  const indices = shuffle([0, 1, 2, 3]);
+  const correctShuffled = indices.indexOf(q.correct);
+
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+
+  indices.forEach((origIdx, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.dataset.index = i;
+    btn.dataset.correct = (i === correctShuffled) ? '1' : '0';
+    btn.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${q.opts[origIdx]}</span>`;
+    btn.onclick = () => selectOption(btn, correctShuffled, q.exp);
+    container.appendChild(btn);
+  });
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  fb.textContent = '';
+
+  const btnNext = document.getElementById('btn-next');
+  btnNext.className = 'btn-next';
+  btnNext.textContent = current === questions.length - 1 ? 'VER RESULTADO →' : 'SIGUIENTE →';
+}
+
+function selectOption(btn, correctIdx, exp) {
+  if (answered) return;
+  answered = true;
+
+  const options = document.querySelectorAll('.option');
+  const chosen = parseInt(btn.dataset.index);
+  const isCorrect = btn.dataset.correct === '1';
+
+  options.forEach((opt, i) => {
+    if (i === correctIdx) opt.classList.add('correct');
+    else if (i === chosen && !isCorrect) opt.classList.add('wrong');
+    else opt.classList.add('disabled');
+  });
+
+  if (isCorrect) correct++; else wrong++;
+  document.getElementById('q-score').innerHTML = `✓ ${correct} &nbsp; ✗ ${wrong}`;
+
+  const fb = document.getElementById('feedback');
+  fb.textContent = (isCorrect ? '✓ Correcto. ' : '✗ Incorrecto. ') + exp;
+  fb.className = `feedback show ${isCorrect ? 'ok' : 'ko'}`;
+
+  document.getElementById('btn-next').classList.add('show');
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+function showResult() {
+  show('screen-result');
+  const total = questions.length;
+  const pct = Math.round((correct / total) * 100);
+  const nota = ((correct / total) * 10).toFixed(1);
+
+  let emoji = '😬', title = 'Sigue practicando';
+  if (pct >= 90) { emoji = '🏆'; title = '¡Brillante!'; }
+  else if (pct >= 70) { emoji = '🎯'; title = '¡Muy bien!'; }
+  else if (pct >= 50) { emoji = '📚'; title = 'Casi lo tienes'; }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-score').innerHTML = `${correct} <span>/ ${total}</span>`;
+  document.getElementById('result-msg').textContent = `Has acertado el ${pct}% de las preguntas.`;
+  document.getElementById('res-correct').textContent = correct;
+  document.getElementById('res-wrong').textContent = wrong;
+  document.getElementById('res-nota').textContent = nota;
+}
+
+function show(id) {
+  ['screen-start','screen-quiz','screen-result'].forEach(s => {
+    const el = document.getElementById(s);
+    el.style.display = s === id ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>
