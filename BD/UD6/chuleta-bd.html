@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Chuleta BD 2025</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #2a2a3a;
+    --accent: #7c6af7;
+    --accent2: #f7a06a;
+    --accent3: #6af7c8;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --code-bg: #0d0d15;
+    --tip: #f7e06a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    padding-bottom: 40px;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1a0a3a 0%, #0a1a3a 50%, #0a2a1a 100%);
+    padding: 28px 16px 20px;
+    border-bottom: 2px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .header-title span { color: var(--accent); }
+
+  .header-sub {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* NAV PILLS */
+  .nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav a {
+    flex-shrink: 0;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .nav a:hover, .nav a.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 16px;
+  }
+
+  .part-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 20px 0 10px;
+    padding-left: 2px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .badge {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+  }
+
+  .card:nth-child(2) .badge { background: #5a9ef7; }
+  .card:nth-child(3) .badge { background: var(--accent3); color: #0a2a1a; }
+  .card:nth-child(4) .badge { background: #f76a9e; }
+  .card:nth-child(5) .badge { background: var(--accent2); color: #1a0a00; }
+  .card:nth-child(6) .badge { background: #9ef76a; color: #0a1a00; }
+  .card:nth-child(7) .badge { background: #f7d06a; color: #1a0a00; }
+  .card:nth-child(8) .badge { background: #c06af7; }
+
+  .card-title {
+    flex: 1;
+  }
+  .card-title h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .card-title p {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .tab {
+    flex: 1;
+    padding: 9px 4px;
+    text-align: center;
+    font-size: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* CODE BLOCK */
+  pre {
+    background: var(--code-bg);
+    padding: 14px;
+    overflow-x: auto;
+    font-size: 11.5px;
+    line-height: 1.7;
+    border: none;
+  }
+  pre::-webkit-scrollbar { height: 4px; }
+  pre::-webkit-scrollbar-track { background: transparent; }
+  pre::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Syntax highlight */
+  .kw { color: #c792ea; font-weight: 700; }
+  .fn { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .num { color: #f78c6c; }
+  .cmt { color: #546e7a; font-style: italic; }
+  .op { color: #89ddff; }
+  .tbl { color: var(--accent2); }
+
+  /* TIPS */
+  .tips {
+    padding: 12px 14px;
+  }
+  .tip {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .tip:last-child { margin-bottom: 0; }
+  .tip-icon {
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .tip-text {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .tip-text strong {
+    color: var(--tip);
+    font-weight: 700;
+  }
+
+  /* UPDATE TRIGGER sub-tabs */
+  .sub-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sub-tabs::-webkit-scrollbar { display: none; }
+  .sub-tab {
+    flex-shrink: 0;
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sub-tab.active {
+    background: #2a1a0a;
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  /* CLAVES RÁPIDAS */
+  .quick {
+    background: linear-gradient(135deg, #1a0a2a, #0a1a2a);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 14px;
+    margin: 0 16px 20px;
+  }
+  .quick-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .quick-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid #1a1a2a;
+    gap: 8px;
+  }
+  .quick-row:last-child { border-bottom: none; }
+  .quick-key {
+    font-size: 11px;
+    color: var(--tip);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .quick-val {
+    font-size: 10.5px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    font-size: 10px;
+    color: var(--border);
+    padding: 20px 16px 0;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">Chuleta <span>BD</span> 2025</div>
+  <div class="header-sub">3.ª Evaluación · 8 ejercicios</div>
+</div>
+
+<div class="nav">
+  <a href="#ej1" class="active">E1</a>
+  <a href="#ej2">E2</a>
+  <a href="#ej3">E3</a>
+  <a href="#ej4">E4</a>
+  <a href="#ej5">E5</a>
+  <a href="#ej6">E6</a>
+  <a href="#ej7">E7</a>
+  <a href="#ej8">E8</a>
+</div>
+
+<div class="section">
+
+  <!-- CLAVES RÁPIDAS -->
+  <div class="quick">
+    <div class="quick-title">⚡ Claves rápidas</div>
+    <div class="quick-row"><span class="quick-key">NEW / OLD</span><span class="quick-val">INSERT→NEW · DELETE→OLD · UPDATE→ambos</span></div>
+    <div class="quick-row"><span class="quick-key">BEFORE</span><span class="quick-val">puede cancelar la operación</span></div>
+    <div class="quick-row"><span class="quick-key">AFTER</span><span class="quick-val">ya no puede cancelar, solo actuar</span></div>
+    <div class="quick-row"><span class="quick-key">SIGNAL 45000</span><span class="quick-val">lanzar error personalizado</span></div>
+    <div class="quick-row"><span class="quick-key">WITH CHECK</span><span class="quick-val">fuerza condición WHERE en vistas</span></div>
+    <div class="quick-row"><span class="quick-key">IFNULL(x,0)</span><span class="quick-val">convierte NULL en 0</span></div>
+    <div class="quick-row"><span class="quick-key">ON COMPLETION PRESERVE</span><span class="quick-val">evento no se borra al acabar</span></div>
+  </div>
+
+  <!-- PARTE 1 -->
+  <div class="part-label">📚 Parte 1 — BIBLIOTECA</div>
+
+  <!-- EJ 1 -->
+  <div class="card" id="ej1">
+    <div class="card-header">
+      <div class="badge">1</div>
+      <div class="card-title">
+        <h3>Vista v_socio_presta</h3>
+        <p>Socios + nº préstamos · ordenado DESC · 0,5 pts</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code1','sql1')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code1','tip1')">💡 Tips</button>
+    </div>
+    <div id="sql1" class="tab-content active">
+<pre><code><span class="kw">CREATE OR REPLACE VIEW</span> <span class="tbl">v_socio_presta</span> <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+    s.nsocio,
+    s.nombre,
+    s.apellidos,
+    <span class="fn">COUNT</span>(p.nprestamo) <span class="kw">AS</span> num_prestamos
+<span class="kw">FROM</span> <span class="tbl">SOCIOS</span> s
+<span class="kw">LEFT JOIN</span> <span class="tbl">PRESTAMOS</span> p
+    <span class="kw">ON</span> s.nsocio <span class="op">=</span> p.nsocio
+<span class="kw">GROUP BY</span> s.nsocio, s.nombre, s.apellidos
+<span class="kw">ORDER BY</span> num_prestamos <span class="kw">DESC</span>;</code></pre>
+    </div>
+    <div id="tip1" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">🔗</span><div class="tip-text"><strong>LEFT JOIN</strong>: incluye socios SIN préstamos (contador = 0). Con INNER JOIN se perderían.</div></div>
+      <div class="tip"><span class="tip-icon">🚫</span><div class="tip-text"><strong>NO es actualizable</strong>: usa COUNT() + GROUP BY → solo lectura. No se puede INSERT/UPDATE/DELETE.</div></div>
+    </div>
+  </div>
+
+  <!-- EJ 2 -->
+  <div class="card" id="ej2">
+    <div class="card-header">
+      <div class="badge">2</div>
+      <div class="card-title">
+        <h3>Vista v_nuevo_socio</h3>
+        <p>Alta socios con validación provincia/CP · 0,5 pts</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code2','sql2')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code2','tip2')">💡 Tips</button>
+    </div>
+    <div id="sql2" class="tab-content active">
+<pre><code><span class="kw">CREATE OR REPLACE VIEW</span> <span class="tbl">v_nuevo_socio</span> <span class="kw">AS</span>
+<span class="kw">SELECT</span> nsocio, nombre, apellidos,
+       direccion, c_postal, poblacion,
+       provincia, telefono
+<span class="kw">FROM</span> <span class="tbl">SOCIOS</span>
+<span class="kw">WHERE</span> provincia <span class="kw">BETWEEN</span> <span class="str">'01'</span> <span class="kw">AND</span> <span class="str">'52'</span>
+  <span class="kw">AND</span> <span class="fn">LEFT</span>(c_postal, <span class="num">2</span>) <span class="op">=</span> provincia
+<span class="kw">WITH CHECK OPTION</span>;</code></pre>
+    </div>
+    <div id="tip2" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">✅</span><div class="tip-text"><strong>WITH CHECK OPTION</strong>: obliga a que INSERT/UPDATE cumplan el WHERE. Si no, MySQL lanza error.</div></div>
+      <div class="tip"><span class="tip-icon">📮</span><div class="tip-text"><strong>LEFT(c_postal, 2)</strong>: extrae los 2 primeros dígitos del CP y los compara con la provincia.</div></div>
+      <div class="tip"><span class="tip-icon">✍️</span><div class="tip-text"><strong>SÍ es actualizable</strong>: sin GROUP BY ni funciones de agregado → permite INSERT/UPDATE.</div></div>
+    </div>
+  </div>
+
+  <!-- PARTE 2 -->
+  <div class="part-label">🛒 Parte 2 — VENTAS_TIENDAS</div>
+
+  <!-- EJ 3 -->
+  <div class="card" id="ej3">
+    <div class="card-header">
+      <div class="badge">3</div>
+      <div class="card-title">
+        <h3>Función fn_ventas</h3>
+        <p>Total artículos vendidos en una tienda · 0,5 pts</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code3','sql3')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code3','tip3')">💡 Tips</button>
+    </div>
+    <div id="sql3" class="tab-content active">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE FUNCTION</span> <span class="fn">fn_ventas</span>(p_tda_num <span class="kw">INT</span>)
+<span class="kw">RETURNS INT</span>
+<span class="kw">READS SQL DATA</span>
+<span class="kw">BEGIN</span>
+    <span class="kw">DECLARE</span> total <span class="kw">INT</span>;
+
+    <span class="kw">SELECT</span> <span class="fn">IFNULL</span>(<span class="fn">SUM</span>(ven_cant), <span class="num">0</span>)
+    <span class="kw">INTO</span> total
+    <span class="kw">FROM</span> <span class="tbl">VENTAS</span>
+    <span class="kw">WHERE</span> ven_tda <span class="op">=</span> p_tda_num;
+
+    <span class="kw">RETURN</span> total;
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="tip3" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">0️⃣</span><div class="tip-text"><strong>IFNULL(SUM(...), 0)</strong>: si la tienda no existe, SUM devuelve NULL → lo convierte en 0.</div></div>
+      <div class="tip"><span class="tip-icon">🔄</span><div class="tip-text"><strong>NO es determinística</strong>: mismos parámetros pueden dar resultados distintos (la tabla cambia). Por eso: READS SQL DATA, no DETERMINISTIC.</div></div>
+    </div>
+  </div>
+
+  <!-- EJ 4 -->
+  <div class="card" id="ej4">
+    <div class="card-header">
+      <div class="badge">4</div>
+      <div class="card-title">
+        <h3>Procedimiento act_ventas</h3>
+        <p>Actualiza clt_ventas de todos los clientes · 1 pt</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code4','sql4')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code4','tip4')">💡 Tips</button>
+    </div>
+    <div id="sql4" class="tab-content active">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE PROCEDURE</span> <span class="fn">act_ventas</span>()
+<span class="kw">BEGIN</span>
+    <span class="kw">UPDATE</span> <span class="tbl">CLIENTES</span> c
+    <span class="kw">SET</span> clt_ventas <span class="op">=</span> (
+        <span class="kw">SELECT</span> <span class="fn">COUNT</span>(<span class="op">*</span>)
+        <span class="kw">FROM</span> <span class="tbl">VENTAS</span> v
+        <span class="kw">WHERE</span> v.ven_clt <span class="op">=</span> c.clt_num
+    );
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="tip4" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">🔁</span><div class="tip-text"><strong>Subconsulta correlacionada</strong>: por cada fila de CLIENTES, cuenta sus ventas en VENTAS. Muy eficiente.</div></div>
+      <div class="tip"><span class="tip-icon">⚡</span><div class="tip-text">El UPDATE modifica TODOS los clientes de golpe, sin bucles.</div></div>
+    </div>
+  </div>
+
+  <!-- EJ 5 -->
+  <div class="card" id="ej5">
+    <div class="card-header">
+      <div class="badge">5</div>
+      <div class="card-title">
+        <h3>Procedimiento ventas_fecha</h3>
+        <p>Ventas entre dos fechas · 0,5 pts</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code5','sql5')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code5','tip5')">💡 Tips</button>
+    </div>
+    <div id="sql5" class="tab-content active">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE PROCEDURE</span> <span class="fn">ventas_fecha</span>(
+    p_fecha_ini <span class="kw">DATE</span>,
+    p_fecha_fin <span class="kw">DATE</span>
+)
+<span class="kw">BEGIN</span>
+    <span class="kw">SELECT</span>
+        v.ven_tda     <span class="kw">AS</span> tienda,
+        v.ven_fecha   <span class="kw">AS</span> fecha,
+        <span class="fn">CONCAT</span>(c.clt_nom,<span class="str">' '</span>,c.clt_apel)
+                      <span class="kw">AS</span> cliente,
+        v.ven_importe <span class="kw">AS</span> importe
+    <span class="kw">FROM</span> <span class="tbl">VENTAS</span> v
+    <span class="kw">JOIN</span> <span class="tbl">CLIENTES</span> c
+        <span class="kw">ON</span> v.ven_clt <span class="op">=</span> c.clt_num
+    <span class="kw">WHERE</span> v.ven_fecha
+        <span class="kw">BETWEEN</span> p_fecha_ini
+        <span class="kw">AND</span> p_fecha_fin
+    <span class="kw">ORDER BY</span> v.ven_fecha;
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="tip5" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">📅</span><div class="tip-text"><strong>BETWEEN</strong>: es inclusivo en ambos extremos (incluye fecha inicio y fecha fin).</div></div>
+      <div class="tip"><span class="tip-icon">👤</span><div class="tip-text"><strong>CONCAT</strong>: une nombre y apellidos del cliente en una sola columna de resultado.</div></div>
+    </div>
+  </div>
+
+  <!-- EJ 6 -->
+  <div class="card" id="ej6">
+    <div class="card-header">
+      <div class="badge">6</div>
+      <div class="card-title">
+        <h3>Disparadores INSERT/DELETE/UPDATE</h3>
+        <p>Stock + clt_ventas al cambiar VENTAS · 1,5 pts</p>
+      </div>
+    </div>
+    <div class="sub-tabs">
+      <button class="sub-tab active" onclick="switchSub(this,'trg6','ins6')">INSERT</button>
+      <button class="sub-tab" onclick="switchSub(this,'trg6','del6')">DELETE</button>
+      <button class="sub-tab" onclick="switchSub(this,'trg6','upd6')">UPDATE</button>
+      <button class="sub-tab" onclick="switchSub(this,'trg6','tip6')">💡 Tips</button>
+    </div>
+    <div id="ins6" class="tab-content active">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE TRIGGER</span> <span class="fn">trg_ventas_after_insert</span>
+<span class="kw">AFTER INSERT ON</span> <span class="tbl">VENTAS</span>
+<span class="kw">FOR EACH ROW</span>
+<span class="kw">BEGIN</span>
+  <span class="cmt">-- Reducir stock</span>
+  <span class="kw">UPDATE</span> <span class="tbl">ARTICULOS</span>
+  <span class="kw">SET</span> art_stock <span class="op">=</span> art_stock <span class="op">-</span> NEW.ven_cant
+  <span class="kw">WHERE</span> art_num <span class="op">=</span> NEW.ven_art;
+
+  <span class="cmt">-- Incrementar contador cliente</span>
+  <span class="kw">UPDATE</span> <span class="tbl">CLIENTES</span>
+  <span class="kw">SET</span> clt_ventas <span class="op">=</span> clt_ventas <span class="op">+</span> <span class="num">1</span>
+  <span class="kw">WHERE</span> clt_num <span class="op">=</span> NEW.ven_clt;
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="del6" class="tab-content">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE TRIGGER</span> <span class="fn">trg_ventas_after_delete</span>
+<span class="kw">AFTER DELETE ON</span> <span class="tbl">VENTAS</span>
+<span class="kw">FOR EACH ROW</span>
+<span class="kw">BEGIN</span>
+  <span class="cmt">-- Devolver stock</span>
+  <span class="kw">UPDATE</span> <span class="tbl">ARTICULOS</span>
+  <span class="kw">SET</span> art_stock <span class="op">=</span> art_stock <span class="op">+</span> OLD.ven_cant
+  <span class="kw">WHERE</span> art_num <span class="op">=</span> OLD.ven_art;
+
+  <span class="cmt">-- Decrementar contador cliente</span>
+  <span class="kw">UPDATE</span> <span class="tbl">CLIENTES</span>
+  <span class="kw">SET</span> clt_ventas <span class="op">=</span> clt_ventas <span class="op">-</span> <span class="num">1</span>
+  <span class="kw">WHERE</span> clt_num <span class="op">=</span> OLD.ven_clt;
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="upd6" class="tab-content">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE TRIGGER</span> <span class="fn">trg_ventas_after_update</span>
+<span class="kw">AFTER UPDATE ON</span> <span class="tbl">VENTAS</span>
+<span class="kw">FOR EACH ROW</span>
+<span class="kw">BEGIN</span>
+  <span class="cmt">-- Ajustar stock (mismo artículo)</span>
+  <span class="kw">UPDATE</span> <span class="tbl">ARTICULOS</span>
+  <span class="kw">SET</span> art_stock <span class="op">=</span>
+    art_stock <span class="op">+</span> OLD.ven_cant <span class="op">-</span> NEW.ven_cant
+  <span class="kw">WHERE</span> art_num <span class="op">=</span> OLD.ven_art;
+
+  <span class="cmt">-- Si cambió el artículo</span>
+  <span class="kw">IF</span> OLD.ven_art <span class="op">!=</span> NEW.ven_art <span class="kw">THEN</span>
+    <span class="kw">UPDATE</span> <span class="tbl">ARTICULOS</span>
+    <span class="kw">SET</span> art_stock <span class="op">=</span> art_stock <span class="op">+</span> OLD.ven_cant
+    <span class="kw">WHERE</span> art_num <span class="op">=</span> OLD.ven_art;
+
+    <span class="kw">UPDATE</span> <span class="tbl">ARTICULOS</span>
+    <span class="kw">SET</span> art_stock <span class="op">=</span> art_stock <span class="op">-</span> NEW.ven_cant
+    <span class="kw">WHERE</span> art_num <span class="op">=</span> NEW.ven_art;
+  <span class="kw">END IF</span>;
+
+  <span class="cmt">-- Si cambió el cliente</span>
+  <span class="kw">IF</span> OLD.ven_clt <span class="op">!=</span> NEW.ven_clt <span class="kw">THEN</span>
+    <span class="kw">UPDATE</span> <span class="tbl">CLIENTES</span>
+    <span class="kw">SET</span> clt_ventas <span class="op">=</span> clt_ventas <span class="op">-</span> <span class="num">1</span>
+    <span class="kw">WHERE</span> clt_num <span class="op">=</span> OLD.ven_clt;
+
+    <span class="kw">UPDATE</span> <span class="tbl">CLIENTES</span>
+    <span class="kw">SET</span> clt_ventas <span class="op">=</span> clt_ventas <span class="op">+</span> <span class="num">1</span>
+    <span class="kw">WHERE</span> clt_num <span class="op">=</span> NEW.ven_clt;
+  <span class="kw">END IF</span>;
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="tip6" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">🆕</span><div class="tip-text"><strong>NEW</strong>: valores tras el cambio. Solo en INSERT y UPDATE.</div></div>
+      <div class="tip"><span class="tip-icon">🗂️</span><div class="tip-text"><strong>OLD</strong>: valores anteriores. Solo en DELETE y UPDATE.</div></div>
+      <div class="tip"><span class="tip-icon">⚠️</span><div class="tip-text">En UPDATE: si cambia el artículo, hay que ajustar el stock de AMBOS artículos.</div></div>
+    </div>
+  </div>
+
+  <!-- EJ 7 -->
+  <div class="card" id="ej7">
+    <div class="card-header">
+      <div class="badge">7</div>
+      <div class="card-title">
+        <h3>Disparador stock negativo</h3>
+        <p>Impide stock &lt; 0 al insertar venta · 1 pt</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code7','sql7')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code7','tip7')">💡 Tips</button>
+    </div>
+    <div id="sql7" class="tab-content active">
+<pre><code><span class="kw">DELIMITER</span> $$
+
+<span class="kw">CREATE TRIGGER</span> <span class="fn">trg_check_stock_before_insert</span>
+<span class="kw">BEFORE INSERT ON</span> <span class="tbl">VENTAS</span>
+<span class="kw">FOR EACH ROW</span>
+<span class="kw">BEGIN</span>
+  <span class="kw">DECLARE</span> stock_actual <span class="kw">INT</span>;
+
+  <span class="kw">SELECT</span> art_stock <span class="kw">INTO</span> stock_actual
+  <span class="kw">FROM</span> <span class="tbl">ARTICULOS</span>
+  <span class="kw">WHERE</span> art_num <span class="op">=</span> NEW.ven_art;
+
+  <span class="kw">IF</span> stock_actual <span class="op">-</span> NEW.ven_cant <span class="op">&lt;</span> <span class="num">0</span> <span class="kw">THEN</span>
+    <span class="kw">SIGNAL SQLSTATE</span> <span class="str">'45000'</span>
+    <span class="kw">SET MESSAGE_TEXT</span> <span class="op">=</span>
+      <span class="str">'Error: El stock no puede ser negativo'</span>;
+  <span class="kw">END IF</span>;
+<span class="kw">END</span>$$
+
+<span class="kw">DELIMITER</span> ;</code></pre>
+    </div>
+    <div id="tip7" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">⏮️</span><div class="tip-text"><strong>BEFORE INSERT</strong>: se ejecuta ANTES de guardar → puede cancelar. Con AFTER ya sería tarde.</div></div>
+      <div class="tip"><span class="tip-icon">🚨</span><div class="tip-text"><strong>SIGNAL SQLSTATE '45000'</strong>: estándar MySQL para errores personalizados desde triggers/procedimientos.</div></div>
+    </div>
+  </div>
+
+  <!-- EJ 8 -->
+  <div class="card" id="ej8">
+    <div class="card-header">
+      <div class="badge">8</div>
+      <div class="card-title">
+        <h3>Evento limpieza ventas</h3>
+        <p>Borra ventas &gt;1 año · cada año · 4 años · 0,5 pts</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'code8','sql8')">SQL</button>
+      <button class="tab" onclick="switchTab(this,'code8','tip8')">💡 Tips</button>
+    </div>
+    <div id="sql8" class="tab-content active">
+<pre><code><span class="kw">CREATE EVENT</span> <span class="fn">evt_limpiar_ventas</span>
+<span class="kw">ON SCHEDULE EVERY</span> <span class="num">1</span> <span class="kw">YEAR</span>
+    <span class="kw">STARTS</span> <span class="str">'2026-01-01 00:00:00'</span>
+    <span class="kw">ENDS</span>   <span class="str">'2029-01-01 00:00:00'</span>
+<span class="kw">ON COMPLETION PRESERVE</span>
+<span class="kw">DO</span>
+    <span class="kw">DELETE FROM</span> <span class="tbl">VENTAS</span>
+    <span class="kw">WHERE</span> ven_fecha <span class="op">&lt;</span>
+        <span class="fn">DATE_SUB</span>(<span class="fn">CURDATE</span>(),
+            <span class="kw">INTERVAL</span> <span class="num">1</span> <span class="kw">YEAR</span>);</code></pre>
+    </div>
+    <div id="tip8" class="tab-content tips">
+      <div class="tip"><span class="tip-icon">📆</span><div class="tip-text"><strong>EVERY 1 YEAR</strong>: 4 ejecuciones → 2026, 2027, 2028, 2029.</div></div>
+      <div class="tip"><span class="tip-icon">💾</span><div class="tip-text"><strong>ON COMPLETION PRESERVE</strong>: al acabar, el evento queda desactivado pero NO se borra. Sin esto, MySQL lo elimina automáticamente.</div></div>
+      <div class="tip"><span class="tip-icon">📉</span><div class="tip-text"><strong>DATE_SUB(CURDATE(), INTERVAL 1 YEAR)</strong>: calcula la fecha de hace exactamente un año.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">CHULETA BD · 3.ª EVAL 2025</div>
+
+<script>
+  function switchTab(btn, groupId, contentId) {
+    const card = btn.closest('.card');
+    card.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(contentId).classList.add('active');
+  }
+
+  function switchSub(btn, groupId, contentId) {
+    const card = btn.closest('.card');
+    card.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+    card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(contentId).classList.add('active');
+  }
+
+  // Nav active highlight on scroll
+  const cards = document.querySelectorAll('.card');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    cards.forEach(card => {
+      if (window.scrollY + 120 >= card.offsetTop) current = card.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
