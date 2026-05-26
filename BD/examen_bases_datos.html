@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen · Bases de Datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #14171f;
+    --surface2: #1c202c;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --accent: #6ee7b7;
+    --accent-dim: rgba(110,231,183,0.12);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.12);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.12);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251,191,36,0.1);
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* grid bg */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(110,231,183,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110,231,183,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .logo span { color: var(--muted); display: block; font-size: 10px; margin-top: 2px; }
+
+  .meta-chips {
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;
+  }
+
+  .chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .chip-ud5 { color: var(--blue); border-color: rgba(96,165,250,0.35); background: var(--blue-dim); }
+  .chip-ud6 { color: var(--accent); border-color: rgba(110,231,183,0.3); background: var(--accent-dim); }
+
+  /* ── PROGRESS ── */
+  .progress-wrap { margin-bottom: 2rem; }
+
+  .progress-labels {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .progress-labels strong { color: var(--text); }
+
+  .progress-track {
+    height: 3px;
+    background: var(--border2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 0 8px rgba(110,231,183,0.5);
+  }
+
+  /* ── QUESTION CARD ── */
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.35s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 1.1rem;
+  }
+
+  .q-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .badge-ud5 { background: var(--blue-dim); color: var(--blue); }
+  .badge-ud6 { background: var(--accent-dim); color: var(--accent); }
+
+  .q-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  .q-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── OPTIONS ── */
+  .options { display: flex; flex-direction: column; gap: 8px; }
+
+  .opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    font-size: 14px;
+    color: var(--text);
+    text-align: left;
+    width: 100%;
+    font-family: var(--sans);
+    line-height: 1.5;
+  }
+
+  .opt:hover:not(:disabled) {
+    border-color: var(--border2);
+    background: #22263300;
+    background: rgba(255,255,255,0.04);
+    transform: translateX(2px);
+  }
+
+  .opt:active:not(:disabled) { transform: scale(0.99); }
+
+  .opt-letter {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 22px;
+    height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+
+  .opt.correct {
+    border-color: rgba(110,231,183,0.4);
+    background: rgba(110,231,183,0.07);
+  }
+  .opt.correct .opt-letter {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .opt.wrong {
+    border-color: rgba(248,113,113,0.4);
+    background: rgba(248,113,113,0.07);
+  }
+  .opt.wrong .opt-letter {
+    background: var(--red-dim);
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .opt:disabled { cursor: default; }
+
+  /* ── FEEDBACK ── */
+  .feedback {
+    margin-top: 1rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    line-height: 1.6;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    animation: fadeUp 0.2s ease both;
+  }
+  .feedback.ok {
+    background: rgba(110,231,183,0.08);
+    border: 1px solid rgba(110,231,183,0.25);
+    color: #9df0cd;
+  }
+  .feedback.ko {
+    background: rgba(248,113,113,0.08);
+    border: 1px solid rgba(248,113,113,0.25);
+    color: #fca5a5;
+  }
+  .feedback-icon {
+    font-size: 15px; flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ── NAVIGATION ── */
+  .nav {
+    display: flex; gap: 10px; align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+  .btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .btn:active:not(:disabled) { transform: scale(0.97); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .btn-primary {
+    background: var(--accent-dim);
+    border-color: rgba(110,231,183,0.4);
+    color: var(--accent);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: rgba(110,231,183,0.18);
+    border-color: rgba(110,231,183,0.6);
+  }
+
+  .nav-right { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* ── SCORE PAGE ── */
+  .score-page { text-align: center; animation: fadeUp 0.4s ease both; }
+
+  .score-ring-wrap {
+    display: flex; justify-content: center; margin-bottom: 2rem;
+  }
+
+  .score-ring {
+    position: relative;
+    width: 160px; height: 160px;
+  }
+  .score-ring svg { transform: rotate(-90deg); }
+
+  .score-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .score-pct {
+    font-family: var(--mono);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .score-pct-label { font-size: 11px; color: var(--muted); font-family: var(--mono); margin-top: 4px; }
+
+  .score-title {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .score-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); }
+
+  /* ── REVIEW ── */
+  .review-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .review-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .review-icon {
+    font-size: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .review-q { color: var(--text); margin-bottom: 4px; line-height: 1.5; }
+  .review-ans { color: var(--muted); font-size: 12px; }
+  .review-ans span { font-family: var(--mono); }
+  .review-ans .ok-ans { color: var(--accent); }
+  .review-ans .ko-ans { color: var(--red); }
+
+  .hidden { display: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 520px) {
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .q-card { padding: 1.25rem; }
+    .site-header { flex-direction: column; align-items: flex-start; }
+    .meta-chips { justify-content: flex-start; }
+  }
+
+  /* ── GLOW ACCENT ON CORRECT ── */
+  @keyframes pulse-green {
+    0%   { box-shadow: 0 0 0 0 rgba(110,231,183,0.3); }
+    70%  { box-shadow: 0 0 0 6px rgba(110,231,183,0); }
+    100% { box-shadow: 0 0 0 0 rgba(110,231,183,0); }
+  }
+  .opt.correct { animation: pulse-green 0.5s ease; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <div class="logo">
+      Bases de datos
+      <span>I.E.S. Armando Cotarelo Valledor — DAW</span>
+    </div>
+    <div class="meta-chips">
+      <span class="chip chip-ud5">UD5 · Consultas multitabla</span>
+      <span class="chip chip-ud6">UD6 · Programación BD</span>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-labels">
+      <span>Pregunta <strong id="cur-num">1</strong> de <strong>28</strong></span>
+      <span id="answered-count">0 respondidas</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="prog" style="width:3.57%"></div></div>
+  </div>
+
+  <div id="quiz"></div>
+  <div class="nav" id="nav"></div>
+
+</div>
+
+<script>
+const Qs = [
+  {t:"UD5",q:"¿Qué resultado produce el producto cartesiano de dos tablas con 9 y 4 filas respectivamente?",opts:["13 filas","36 filas","9 filas","4 filas"],ans:1,exp:"El producto cartesiano combina cada fila de una tabla con todas las de la otra: 9 × 4 = 36 filas."},
+  {t:"UD5",q:"¿Qué tipo de JOIN devuelve todas las filas de la tabla izquierda aunque no tengan correspondencia en la tabla derecha?",opts:["INNER JOIN","RIGHT JOIN","LEFT JOIN","CROSS JOIN"],ans:2,exp:"LEFT JOIN incluye todas las filas de la tabla izquierda; si no hay correspondencia en la derecha, las columnas de ésta aparecen como NULL."},
+  {t:"UD5",q:"En una combinación natural entre empleados y departamentos, ¿qué condición se usa habitualmente?",opts:["empleados.dep_no <> departamentos.dep_no","empleados.emp_no = departamentos.dep_no","empleados.dep_no = departamentos.dep_no","empleados.dep_no > departamentos.dep_no"],ans:2,exp:"La combinación natural une la clave ajena de una tabla con la clave primaria de la otra usando igualdad."},
+  {t:"UD5",q:"¿Cuándo es obligatorio usar alias de tabla en una consulta SQL?",opts:["Siempre que se use ORDER BY","Cuando se combina una tabla consigo misma","Cuando la tabla tiene más de 10 columnas","Cuando se usa GROUP BY"],ans:1,exp:"Al combinar una tabla consigo misma ambas referencias tienen el mismo nombre, por lo que el alias es imprescindible para diferenciar sus columnas."},
+  {t:"UD5",q:"¿Qué operador lógico comprueba si un valor coincide con alguno de los devueltos por una subconsulta?",opts:["ANY","ALL","EXISTS","IN"],ans:3,exp:"El operador IN comprueba si el valor de la consulta principal coincide con alguno de la lista devuelta por la subconsulta."},
+  {t:"UD5",q:"¿Cuál es la diferencia entre WHERE y HAVING?",opts:["WHERE filtra grupos; HAVING filtra filas individuales","WHERE filtra filas antes de agrupar; HAVING filtra grupos después de agrupar","HAVING es igual que WHERE pero solo para tablas con alias","Ambas son equivalentes e intercambiables"],ans:1,exp:"WHERE actúa sobre filas individuales antes de la agrupación; HAVING actúa sobre los grupos formados por GROUP BY."},
+  {t:"UD5",q:"En una subconsulta correlacionada, ¿qué ocurre con la subconsulta por cada fila procesada en la consulta principal?",opts:["Se ejecuta solo una vez al principio","Se cachea tras la primera ejecución","Se ejecuta de nuevo para cada fila","No se ejecuta si ya devolvió datos"],ans:2,exp:"La subconsulta se reejecuta para cada fila de la consulta principal, tomando los valores de esa fila concreta."},
+  {t:"UD5",q:"¿Qué hace el operador ALL en una subconsulta?",opts:["Devuelve verdadero si alguna comparación es cierta","Devuelve verdadero solo si TODAS las comparaciones son ciertas","Equivale siempre a IN","Elimina duplicados del resultado"],ans:1,exp:"ALL devuelve verdadero únicamente si la comparación es cierta para todos y cada uno de los valores devueltos por la subconsulta."},
+  {t:"UD5",q:"¿Qué limitación tiene una subconsulta respecto a la cláusula ORDER BY?",opts:["Puede tener ORDER BY solo si usa LIMIT","No puede contener ORDER BY, pues sus resultados son internos","Solo puede ordenar por una columna","ORDER BY en subconsultas es obligatorio"],ans:1,exp:"ORDER BY no tiene sentido en una subconsulta porque sus resultados no son visibles directamente al usuario; se usan internamente."},
+  {t:"UD5",q:"Para visualizar columnas de dos tablas distintas simultáneamente, ¿qué técnica SQL es necesaria?",opts:["Subconsulta","Función de grupo","Composición o combinación (JOIN) de tablas","Vista simple"],ans:2,exp:"Si se necesitan columnas de más de una tabla hay que usar una composición (JOIN). Con una subconsulta solo se muestran columnas de la tabla principal."},
+  {t:"UD5",q:"¿Qué almacena realmente una vista en la base de datos?",opts:["Las filas resultado de la consulta","Únicamente la definición de la consulta","Una copia física de la tabla","Los índices de la tabla base"],ans:1,exp:"Una vista solo almacena su definición (la SELECT); no guarda datos. El gestor ejecuta la consulta sobre las tablas originales en cada acceso."},
+  {t:"UD5",q:"¿Qué hace la cláusula WITH CHECK OPTION en una vista actualizable?",opts:["Evita inserciones o actualizaciones que violen el WHERE de la vista","Fuerza ORDER BY en la vista","Permite duplicados en la vista","Convierte la vista en de solo lectura"],ans:0,exp:"WITH CHECK OPTION impide insertar o actualizar filas que no cumplan la condición WHERE de la vista, evitando que datos invisibles entren a través de ella."},
+  {t:"UD6",q:"¿Cuál es la diferencia principal entre un procedimiento almacenado y una función almacenada en MySQL?",opts:["Los procedimientos no pueden tener parámetros","Las funciones devuelven varios valores; los procedimientos solo uno","Los procedimientos se llaman con CALL; las funciones devuelven un único valor y se pueden usar en SQL","No hay diferencia, son sinónimos"],ans:2,exp:"Los procedimientos se invocan con CALL y pueden tener parámetros OUT/INOUT. Las funciones devuelven un único valor y se usan directamente en sentencias SQL."},
+  {t:"UD6",q:"¿Para qué se usa el delimitador $$ al crear procedimientos en MySQL Workbench?",opts:["Para mejorar el rendimiento","Para indicar el final del nombre del procedimiento","Para que el ';' del cuerpo no sea interpretado como fin de sentencia por el cliente","Solo es necesario en funciones"],ans:2,exp:"MySQL usa ';' para terminar sentencias. El delimitador alternativo ($$) evita que el cliente interprete los ';' internos del cuerpo como el fin del CREATE PROCEDURE."},
+  {t:"UD6",q:"¿Qué tipo de parámetro NO modifica la variable original pasada desde fuera del procedimiento?",opts:["OUT","INOUT","IN","Los tres la modifican"],ans:2,exp:"IN pasa el valor por copia. El procedimiento trabaja con esa copia y no modifica la variable original del llamador."},
+  {t:"UD6",q:"¿En qué orden deben declararse los elementos dentro de un bloque BEGIN...END?",opts:["Manejadores → cursores → variables → código","Variables → cursores → manejadores → código","Código → variables → cursores → manejadores","No hay orden obligatorio"],ans:1,exp:"El orden obligatorio es: 1) variables y condiciones, 2) cursores, 3) manejadores de error, 4) código del programa. No respetarlo produce errores de compilación."},
+  {t:"UD6",q:"¿Qué hace la sentencia FETCH en el contexto de los cursores?",opts:["Abre el cursor y carga las filas en memoria","Recupera la siguiente fila apuntada por el cursor y avanza el puntero","Cierra el cursor y libera memoria","Declara el cursor asociado a una SELECT"],ans:1,exp:"FETCH recupera la fila a la que apunta el puntero del cursor y lo avanza una posición. Se usa dentro de un bucle para procesar filas una a una."},
+  {t:"UD6",q:"¿Qué error se produce cuando FETCH intenta leer más allá de la última fila de un cursor?",opts:["Error 1062 — Duplicate entry","Error 1329 — No data (NOT FOUND)","Error 1048 — Column cannot be null","Error 1050 — Table already exists"],ans:1,exp:"El error 1329 (SQLSTATE 02000 — NOT FOUND) se produce al intentar leer una fila de un cursor cuando ya se han agotado todas las filas disponibles."},
+  {t:"UD6",q:"En cursores anidados, ¿qué debe hacerse antes de leer cada nueva fila del cursor externo?",opts:["Cerrar el cursor interno","Declarar el cursor interno de nuevo","Resetear a 0 la variable de control del fin de cursor","No es necesario hacer nada especial"],ans:2,exp:"Al finalizar el cursor interno se activa la variable NOT FOUND. Si no se resetea a 0 antes de continuar el cursor externo, el manejador finalizará el bucle externo prematuramente."},
+  {t:"UD6",q:"¿Qué tipo de manejador de error hace que el programa continúe ejecutándose por la línea siguiente al error?",opts:["EXIT","UNDO","CONTINUE","SQLEXCEPTION"],ans:2,exp:"CONTINUE permite que la ejecución continúe por la línea siguiente a la que provocó el error, después de ejecutar las instrucciones del manejador."},
+  {t:"UD6",q:"¿Qué ocurre con un manejador de tipo EXIT cuando el error se produce en un bloque interno?",opts:["Finaliza todo el programa inmediatamente","Finaliza el bloque interno y devuelve el control al bloque externo","Ignora el error y continúa","Hace un rollback automático"],ans:1,exp:"EXIT finaliza el bloque donde fue declarado. Si está en un bloque interno, la ejecución salta al bloque externo; si es el único bloque, termina el programa."},
+  {t:"UD6",q:"¿Cuál es el orden de prioridad cuando varios manejadores pueden responder al mismo error?",opts:["SQLEXCEPTION → SQLSTATE → código MySQL","SQLSTATE → código MySQL → SQLEXCEPTION","Código MySQL → SQLSTATE → SQLEXCEPTION","Todos tienen la misma prioridad"],ans:2,exp:"Primero se evalúa el manejador con el código numérico MySQL específico; si no existe, el de SQLSTATE; y como último recurso el genérico SQLEXCEPTION."},
+  {t:"UD6",q:"¿Qué instrucción se usa para generar un error deliberadamente dentro de un trigger o procedimiento?",opts:["RAISE ERROR","THROW 1062","SIGNAL SQLSTATE '45000'","DECLARE ERROR"],ans:2,exp:"SIGNAL SQLSTATE permite provocar una situación de error programáticamente. El valor '45000' es el SQLSTATE genérico para excepciones definidas por el usuario."},
+  {t:"UD6",q:"¿En qué momento exacto se ejecuta un trigger BEFORE INSERT?",opts:["Justo antes de que la fila se inserte en la tabla","Inmediatamente después de insertar la fila","Solo si la inserción falla","Antes de abrir la transacción"],ans:0,exp:"BEFORE INSERT se dispara antes de que la fila sea insertada, lo que permite modificar valores con SET NEW.columna o abortar la operación generando un error."},
+  {t:"UD6",q:"Dentro de un trigger AFTER DELETE, ¿qué objeto tiene sentido usar: OLD o NEW?",opts:["NEW, porque contiene el nuevo valor","OLD, porque contiene los valores de la fila eliminada","Ambos están disponibles","Ninguno está disponible en DELETE"],ans:1,exp:"En DELETE no existe valor nuevo (la fila desaparece), por eso solo OLD tiene sentido; contiene los valores de la fila antes de ser borrada."},
+  {t:"UD6",q:"¿Cuántos triggers de cada tipo puede haber por tabla a partir de MySQL 8.0?",opts:["Exactamente 1 por tipo","Máximo 2 por tipo","Sin límite por tipo","Máximo 6 en total"],ans:2,exp:"A partir de MySQL 8.0 el número de triggers por tipo (p.ej. BEFORE INSERT) no está limitado. En versiones anteriores solo se permitía uno por tipo."},
+  {t:"UD6",q:"¿Cuál es la instrucción SQL para activar el planificador de eventos en MySQL?",opts:["START EVENT SCHEDULER","SET GLOBAL event_scheduler = ON","ENABLE EVENTS","ALTER SYSTEM EVENTS ON"],ans:1,exp:"SET GLOBAL event_scheduler = ON activa el proceso en segundo plano que busca y ejecuta los eventos programados. Por defecto su valor ya es ON."},
+  {t:"UD6",q:"¿Qué cláusula evita que un evento se elimine automáticamente al expirar?",opts:["KEEP EVENT","ON COMPLETION PRESERVE","DO NOT DROP","PERSISTENT"],ans:1,exp:"Sin ON COMPLETION PRESERVE un evento de ejecución única se borra automáticamente tras ejecutarse. Con esta cláusula su definición se conserva en el sistema."},
+  {t:"UD6",q:"¿Con qué instrucción se puede renombrar un evento y moverlo a otra base de datos?",opts:["RENAME EVENT …","ALTER EVENT … RENAME TO …","MOVE EVENT …","Hay que hacer DROP + CREATE"],ans:1,exp:"ALTER EVENT nombre RENAME TO nuevabd.nuevo_nombre permite cambiar el nombre y/o la base de datos del evento sin necesidad de eliminarlo y recrearlo."},
+];
+
+let cur = 0, answers = new Array(Qs.length).fill(null), finished = false;
+
+function render() {
+  const qEl  = document.getElementById('quiz');
+  const navEl = document.getElementById('nav');
+  const prog  = document.getElementById('prog');
+  const curNum = document.getElementById('cur-num');
+  const ansCount = document.getElementById('answered-count');
+
+  const done = answers.filter(a => a !== null).length;
+  prog.style.width = ((cur + 1) / Qs.length * 100) + '%';
+  curNum.textContent = cur + 1;
+  ansCount.textContent = done + ' respondidas';
+
+  if (finished) {
+    renderScore(qEl, navEl);
+    return;
+  }
+
+  const q = Qs[cur];
+  const answered = answers[cur] !== null;
+  const letters = ['A','B','C','D'];
+
+  let optsHtml = q.opts.map((o, i) => {
+    let cls = 'opt';
+    if (answered) {
+      if (i === q.ans) cls += ' correct';
+      else if (i === answers[cur]) cls += ' wrong';
+    }
+    return `<button class="${cls}" onclick="choose(${i})" ${answered ? 'disabled' : ''}>
+      <span class="opt-letter">${letters[i]}</span>
+      <span>${o}</span>
+    </button>`;
+  }).join('');
+
+  let feedHtml = '';
+  if (answered) {
+    const ok = answers[cur] === q.ans;
+    feedHtml = `<div class="feedback ${ok ? 'ok' : 'ko'}">
+      <span class="feedback-icon">${ok ? '✓' : '✗'}</span>
+      <span>${ok ? '<strong>Correcto.</strong> ' : '<strong>Incorrecto.</strong> '}${q.exp}</span>
+    </div>`;
+  }
+
+  qEl.innerHTML = `<div class="q-card">
+    <div class="q-header">
+      <span class="q-badge ${q.t === 'UD5' ? 'badge-ud5' : 'badge-ud6'}">${q.t}</span>
+      <span class="q-num">${cur + 1} / ${Qs.length}</span>
+    </div>
+    <div class="q-text">${q.q}</div>
+    <div class="options">${optsHtml}</div>
+    ${feedHtml}
+  </div>`;
+
+  navEl.innerHTML = `
+    <button class="btn" onclick="prev()" ${cur === 0 ? 'disabled' : ''}>← Anterior</button>
+    ${cur < Qs.length - 1
+      ? `<button class="btn btn-primary" onclick="next()" ${!answered ? 'disabled' : ''}>Siguiente →</button>`
+      : `<button class="btn btn-primary" onclick="finish()" ${!answered ? 'disabled' : ''}>Ver resultado →</button>`
+    }
+    <span class="nav-right">${done} / ${Qs.length} respondidas</span>
+  `;
+}
+
+function renderScore(qEl, navEl) {
+  const correct = answers.filter((a, i) => a === q_ans(i)).length;
+  const wrong   = answers.filter((a, i) => a !== null && a !== q_ans(i)).length;
+  const skip    = Qs.length - correct - wrong;
+  const pct     = Math.round(correct / Qs.length * 100);
+  const color   = pct >= 90 ? '#6ee7b7' : pct >= 70 ? '#60a5fa' : pct >= 50 ? '#fbbf24' : '#f87171';
+  const msg     = pct >= 90 ? '¡Excelente dominio!' : pct >= 70 ? 'Buen resultado.' : pct >= 50 ? 'Aprobado, sigue repasando.' : 'Hay que repasar más.';
+  const circumference = 2 * Math.PI * 54;
+  const offset  = circumference - (pct / 100) * circumference;
+
+  const reviewItems = Qs.map((q, i) => {
+    const ok = answers[i] === q.ans;
+    const letters = ['A','B','C','D'];
+    return `<div class="review-item">
+      <span class="review-icon">${ok ? '✓' : '✗'}</span>
+      <div>
+        <div class="review-q">${q.q}</div>
+        <div class="review-ans">
+          Correcta: <span class="ok-ans">${letters[q.ans]}. ${q.opts[q.ans]}</span>
+          ${!ok && answers[i] !== null ? ` · Tu respuesta: <span class="ko-ans">${letters[answers[i]]}. ${q.opts[answers[i]]}</span>` : ''}
+          ${answers[i] === null ? ' · <span style="color:var(--amber)">Sin responder</span>' : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  qEl.innerHTML = `<div class="score-page">
+    <div class="score-ring-wrap">
+      <div class="score-ring">
+        <svg width="160" height="160" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
+          <circle cx="60" cy="60" r="54" fill="none" stroke="${color}" stroke-width="8"
+            stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
+            stroke-linecap="round" style="transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 0 6px ${color}88)"/>
+        </svg>
+        <div class="score-inner">
+          <div class="score-pct" style="color:${color}">${pct}%</div>
+          <div class="score-pct-label">${correct}/${Qs.length}</div>
+        </div>
+      </div>
+    </div>
+    <div class="score-title" style="color:${color}">${msg}</div>
+    <div class="score-sub">Examen de Bases de Datos · ${Qs.length} preguntas</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" style="color:#6ee7b7">${correct}</div>
+        <div class="stat-label">Correctas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:#f87171">${wrong}</div>
+        <div class="stat-label">Incorrectas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:#fbbf24">${skip}</div>
+        <div class="stat-label">Sin responder</div>
+      </div>
+    </div>
+    <div class="review-title">Repaso de respuestas</div>
+    ${reviewItems}
+  </div>`;
+
+  navEl.innerHTML = `<button class="btn btn-primary" onclick="restart()">↺ Reiniciar examen</button>`;
+}
+
+function q_ans(i) { return Qs[i].ans; }
+
+function choose(i) {
+  if (answers[cur] !== null) return;
+  answers[cur] = i;
+  render();
+}
+function next()    { if (cur < Qs.length - 1) { cur++; render(); window.scrollTo({top:0,behavior:'smooth'}); } }
+function prev()    { if (cur > 0) { cur--; render(); window.scrollTo({top:0,behavior:'smooth'}); } }
+function finish()  { finished = true; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function restart() { cur = 0; answers = new Array(Qs.length).fill(null); finished = false; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+render();
+</script>
+</body>
+</html>
