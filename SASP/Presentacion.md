@@ -29,7 +29,7 @@
 ## <span style="color:#2563eb;">Diapositiva 6 (Karim - Par): Eficiencia y Compromiso con Renovables</span>
 
 - <span style="color:#2563eb;">**Karim:**  
-  "Como respuesta a ese reto, los datos son contundentes. Si comparamos los sistemas tradicionales con el 'Superchip Grace Hopper', vemos que consume un 25% menos de energía y es un 45% más rápido. Lo más destacable es que, para el año fiscal 2025, NVIDIA ya ha logrado equiparar el 100% de su consumo eléctrico global con energía renovable, alcanzando un hito de más de 779.000 Megavatios-hora limpios."</span>
+  "Como respuesta a ese reto, los datos son contundentes. Si comparamos los sistemas tradicionales con el 'Superchip Grace Hopper', vemos que consume un 25% menos de energía y es 7 veces más rápido. Lo más destacable es que, para el año fiscal 2025, NVIDIA ya ha logrado equiparar el 100% de su consumo eléctrico global con energía renovable, alcanzando un hito de más de 779.000 Megavatios-hora limpios."</span>
 
 ---
 
