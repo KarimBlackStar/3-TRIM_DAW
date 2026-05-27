@@ -47,14 +47,14 @@
 
 ---
 
-## Diapositiva 11 (Cristian - Impar): Indicadores ASG y Certificaciones
+## Diapositiva 9 (Cristian - Impar): Indicadores ASG y Certificaciones
 
 - **Cristian:**  
   "Todo lo que hemos dicho está respaldado por estándares internacionales. Medimos nuestra huella de carbono bajo la ISO 14064, el ciclo de vida del producto con la ISO 14040 y la gestión energética de los nuevos chips Blackwell bajo la ISO 50001. No son solo palabras; son métricas auditadas que demuestran que la eficiencia de las GPUs Hopper y Blackwell es el estándar de oro de la industria."
 
 ---
 
-## <span style="color:#2563eb;">Diapositiva 12 (Karim - Par): Conclusión</span>
+## <span style="color:#2563eb;">Diapositiva 10 (Karim - Par): Conclusión</span>
 
 - <span style="color:#2563eb;">**Karim:**  
   "Para finalizar, queremos dejarlos con esta reflexión: la respuesta a los desafíos ambientales que plantea la inteligencia artificial no es frenar la tecnología, sino acelerar la innovación. La computación acelerada, unida a una gobernanza estricta, es la única forma de garantizar un futuro donde la IA sea nuestra mejor herramienta contra el cambio climático. Muchas gracias."</span>
