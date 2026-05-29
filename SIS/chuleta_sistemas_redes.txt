@@ -1,0 +1,101 @@
+======================================================================
+GUÍA DE REFERENCIA RÁPIDA / CHULETA: SISTEMAS Y REDES (LID5 & LID6)
+======================================================================
+
+----------------------------------------------------------------------
+BLOQUE 1: REDES, CLASES IP Y VLSM (LID5)
+----------------------------------------------------------------------
+* CLASES DE DIRECCIONES IP (PÚBLICAS / PRIVADAS):
+  - Clase A:   1.0.0.0 a 126.255.255.255   (Máscara /8  -> 255.0.0.0)
+  - Clase B: 128.0.0.0 a 191.255.255.255   (Máscara /16 -> 255.255.0.0)
+  - Clase C: 192.0.0.0 a 223.255.255.255   (Máscara /24 -> 255.255.255.0)
+
+* RANGOS DE DIRECCIONES IP PRIVADAS (IMPORTANTES):
+  - Clase A: 10.0.0.0    a 10.255.255.255
+  - Clase B: 172.16.0.0  a 172.31.255.255
+  - Clase C: 192.168.0.0 a 192.168.255.255
+
+* VLSM (Variable Length Subnet Mask):
+  Fórmula para hosts necesarios: 2^n - 2 >= Nº de Hosts
+  Donde 'n' es el número de bits de host libres (ceros en la máscara).
+  Pasos obligatorios para cálculo:
+  1. Ordenar los requerimientos de subredes de MAYOR a MENOR número de hosts.
+  2. Empezar con la dirección de red base asignada.
+  3. Determinar cuántos bits 'n' cumplen la fórmula para esa subred.
+  4. La nueva máscara será: /M = 32 - n.
+  5. El salto de red para la siguiente subred es 2^n.
+  6. Para cada subred detallar: IP de Red, Primera IP útil (+1), Última IP útil, Broadcast e IP del salto.
+
+----------------------------------------------------------------------
+BLOQUE 2: WINDOWS SERVER & ACTIVE DIRECTORY (LID6)
+----------------------------------------------------------------------
+* PREPARACIÓN DE CONFIGURACIÓN PREVIA:
+  1. Cambiar el nombre del equipo servidor (Ej: ServidorAD) y reiniciar.
+  2. Configurar IP estática en IPv4 (Ej: 192.168.10.10, Máscara: 255.255.255.0).
+  3. En "Servidor DNS Preferido", configurar la propia IP del servidor (192.168.10.10) o bucle local (127.0.0.1).
+
+* INSTALACIÓN DE ROLES (CONTROLADOR DE DOMINIO):
+  1. Servidor -> Administrador del Servidor -> "Agregar roles y características".
+  2. Tipo de instalación: "Instalación basada en características o en roles".
+  3. Marcar el rol: "Servicios de dominio de Active Directory" (AD DS).
+  4. Aceptar la ventana flotante que añade las herramientas de administración y continuar hasta instalar.
+
+* PROMOVER A CONTROLADOR DE DOMINIO:
+  1. Al finalizar, pulsar sobre el icono de la bandera de notificaciones (alerta amarilla).
+  2. Seleccionar: "Promover este servidor a controlador de dominio".
+  3. Operación de implementación: Marcar "Agregar un nuevo bosque".
+  4. Nombre de dominio raíz: Escribir un nombre de dominio (Ej: examen.local o miempresa.lan).
+  5. Introducir la contraseña para el Modo de restauración de servicios de directorio (DSRM).
+  6. Continuar los pasos por defecto (DNS/NetBIOS) e instalar. El sistema se reiniciará automáticamente.
+
+* GESTIÓN DE AD Y CREAR UNIDADES ORGANIZATIVAS (OU):
+  1. Herramientas -> "Usuarios y equipos de Active Directory".
+  2. Clic secundario sobre el nombre del dominio creado -> Nuevo -> "Unidad organizativa".
+  3. Introducir nombre (Ej: "Informatica", "Contabilidad"). Desmarcar protección si se desea borrar fácil.
+  4. Dentro de la OU: Clic secundario -> Nuevo -> "Usuario" (Asignar nombre, login y contraseña).
+
+* UNIR MÁQUINA CLIENTE WINDOWS AL DOMINIO:
+  1. En el Windows Cliente, configurar IP estática en el mismo rango (Ej: 192.168.10.20).
+  2. CRÍTICO: En "Servidor DNS Preferido" del cliente, poner OBLIGATORIAMENTE la IP del Windows Server (192.168.10.10).
+  3. Sistema -> Configuración avanzada del sistema -> Pestaña "Nombre de equipo" -> Botón "Cambiar".
+  4. Modificar Miembro de: "Grupo de trabajo" a "Dominio" e introducir el nombre del dominio (Ej: examen.local).
+  5. Introducir credenciales del Administrador del Windows Server. Reiniciar el cliente.
+
+----------------------------------------------------------------------
+BLOQUE 3: COMPARTIR ARCHIVOS CON SAMBA (LINUX UBUNTU -> WINDOWS)
+----------------------------------------------------------------------
+* INSTALACIÓN DEL SERVICIO:
+  sudo apt update
+  sudo apt install samba samba-common-bin -y
+
+* CREACIÓN DEL RECURSO LOCAL Y PERMISOS:
+  sudo mkdir -p /home/usuario/compartida
+  sudo chmod 777 /home/usuario/compartida  (Permite lectura/escritura a nivel de sistema operativo)
+
+* CONFIGURACIÓN EN EL ARCHIVO DE CONFIGURACIÓN DE SAMBA:
+  sudo nano /etc/samba/smb.conf
+  Añadir este bloque exactamente al final del archivo de texto:
+
+  [CompartidoSamba]
+     comment = Carpeta Compartida para Examen
+     path = /home/usuario/compartida
+     browseable = yes
+     read only = no
+     guest ok = no
+     valid users = examenuser
+
+* CREACIÓN DEL USUARIO DE ACCESO EN SAMBA:
+  1. Crear usuario en Ubuntu (si no existe): sudo adduser examenuser
+  2. Establecer contraseña exclusiva de red en Samba: sudo smbpasswd -a examenuser
+
+* GESTIÓN DEL SERVICIO Y VERIFICACIÓN:
+  sudo systemctl restart smbd
+  sudo systemctl restart nmbd
+  sudo systemctl enable smbd
+  sudo systemctl status smbd  (Verificar que aparezca en verde "active (running)")
+
+* CONEXIÓN DESDE LA MÁQUINA WINDOWS:
+  1. Pulsar combinación de teclas: Windows + R.
+  2. Escribir la dirección UNC usando la dirección IP de Ubuntu: \<IP_DE_UBUNTU>\CompartidoSamba
+  3. Introducir las credenciales creadas: Usuario (examenuser) y la contraseña asignada en smbpasswd.
+======================================================================
