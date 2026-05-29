@@ -1,0 +1,71 @@
+content = """======================================================================
+GUÍA DEFINITIVA: COMPARTIR ARCHIVOS ENTRE LINUX Y WINDOWS (SAMBA/CIFS)
+======================================================================
+
+----------------------------------------------------------------------
+PARTE 1: DE LINUX A WINDOWS (Linux comparte, Windows accede)
+----------------------------------------------------------------------
+1. PREPARAR LA CARPETA EN LINUX:
+   Abre la terminal y crea el directorio dándole permisos totales (para pruebas):
+   sudo mkdir -p /samba/publico
+   sudo chmod 777 /samba/publico
+
+2. EDITAR LA CONFIGURACIÓN DE SAMBA:
+   Abre el archivo de configuración:
+   sudo nano /etc/samba/smb.conf
+   
+   Añade esto exactamente al final del archivo:
+   [Publico]
+   path = /samba/publico
+   browsable = yes
+   writable = yes
+   guest ok = yes
+   read only = no
+
+3. APLICAR CAMBIOS Y REINICIAR:
+   Para que Linux lea la nueva configuración, ejecuta:
+   sudo systemctl restart smbd
+   sudo systemctl restart nmbd
+
+4. CONECTARSE DESDE WINDOWS:
+   - Pulsa la combinación de teclas: Windows + R.
+   - Escribe la IP de tu Linux con barras invertidas: \\\\192.168.x.x
+   - Pulsa Enter. Se abrirá el explorador mostrando la carpeta "Publico".
+
+
+----------------------------------------------------------------------
+PARTE 2: DE WINDOWS A LINUX (Windows comparte, Linux monta)
+----------------------------------------------------------------------
+1. CREAR Y COMPARTIR CARPETA EN WINDOWS:
+   - Crea una carpeta nueva (Ej: "CompartidaWin" - mejor sin espacios).
+   - Clic derecho en la carpeta -> Propiedades -> Pestaña "Compartir".
+   - Clic en el botón "Uso compartido avanzado...".
+   - Marca la casilla "Compartir esta carpeta". (Fíjate en el nombre).
+   - Clic en el botón "Permisos" -> Selecciona "Todos" y marca Permitir "Leer".
+   - Acepta todas las ventanas.
+
+2. CREAR EL PUNTO DE MONTAJE EN LINUX:
+   Ve a Ubuntu y crea la carpeta donde vas a "volcar" los archivos de Windows:
+   sudo mkdir -p /media/win_compartido
+
+3. LANZAR EL COMANDO DE CONEXIÓN (CIFS):
+   Sustituye la IP por la de tu Windows. FÍJATE BIEN en los espacios de separación 
+   y usa las comillas si tu usuario de Windows tiene espacios en el nombre:
+   
+   sudo mount.cifs //192.168.x.x/CompartidaWin /media/win_compartido -o user="Nombre Usuario"
+   
+   - 1º pedirá la contraseña de 'sudo' (la de Ubuntu).
+   - 2º pedirá la contraseña de red de tu usuario de Windows.
+
+4. COMPROBAR QUE FUNCIONA:
+   Lista el contenido de la carpeta en Linux para ver los archivos de Windows:
+   ls /media/win_compartido
+======================================================================
+"""
+
+# Save the file to disk
+file_path = "guia_samba_cifs_bidireccional.txt"
+with open(file_path, "w", encoding="utf-8") as file:
+    file.write(content)
+
+print(f"File saved successfully at {file_path}")
