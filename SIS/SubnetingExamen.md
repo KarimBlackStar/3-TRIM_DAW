@@ -1,21 +1,53 @@
 # UNIDADES DEL 3° TRIMESTRE
 ## UNIDAD 5: CONEXIÓN DE SISTEMAS EN REDE
 
-### PARTE PRÁCTICA (8 pts)
-
-#### Actividad 1: [1 pto]
-1. Dadas las siguientes direcciones IP en notación CIDR, identificar qué 2 IPs pertenecen a la misma subred:
+### Actividad 1: [1 pto] Dadas las siguientes direcciones IP en notación CIDR, identificar qué 2 IPs pertenecen a la misma subred:
    * **Grupo 1:** 10.100.134.115/11
    * **Grupo 2:** 10.126.138.113/11
    * **Grupo 3:** 10.136.135.179/11
 
-#### Actividad 2: [2 pts]
-2. Supongamos que tenemos asignada la IP `172.16.0.0/16` a una red que es preciso dividir en 4 subredes. Indica:
-   * **Nº Bits para el nº de red:** _________________
-   * **Nº Bits para el nº de subred:** ______________
-   * **Nº Bits para el nº de equipo:** ______________
-   * **Máscara de subred que tendremos que usar en formato decimal separado por puntos:** _________________
-   * **¿Cuántos ordenadores admitirá cada una de las subredes?** _________________
+/11 = 11111111.11100000.00000000.00000000
+
+11100000=224
+
+256-224=32 bloques
+
+0,32,64,96,128
+
++ 100 está entre 96 y 128
+
++ 126 está entre 96 y 128
+
++ 136 NO está entre 96 y 128
+
+*El grupo 1 y 2 pertenecen a la misma subred!*
+
+### Actividad 2: [2 pts] Supongamos que tenemos asignada la IP `172.16.0.0/16` a una red que es preciso dividir en 4 subredes. Indica:
+   * **Nº Bits para el nº de red:** --> 16 (La pista nos la da la máscara)
+   * **Nº Bits para el nº de subred:** --> 2
+     
+2<sup>n</sup> = 4
+
+n?
+
+2<sup>2</sup> = 4
+
+n=2
+
+   * **Nº Bits para el nº de equipo:** --> 14 bits
+
+32-(BR+BS) = 32-(16+2) = 14
+   * **Máscara de subred que tendremos que usar en formato decimal separado por puntos:** --> 225.225.192.0
+
+16+2=18
+
+11111111.11111111.11000000.00000000
+
+    8  +    8    +    2    +  0  =  18
+    
+   * **¿Cuántos ordenadores admitirá cada una de las subredes?** --> 16382
+
+$$\text{Ordenadores} = 2^{14} - 2 = 16384 - 2 = \mathbf{16382}$$
 
 ---
 
@@ -29,11 +61,11 @@
 
 | Red | Host | Dir de red | Máscara | Dir de Broadcast | Rango de direcciones válidas |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Red A** | 128 hosts | | | | |
-| **Red B** | 300 hosts | | | | |
-| **Red C** | 35 hosts | | | | |
-| **Red D** | | | | | |
-| **Red E** | | | | | |
+|  |   | | | | |
+|  |   | | | | |
+|  |  | | | | |
+|  | | | | | |
+|  | | | | | |
 
 ##### b) Completa la tabla de enrutamiento:
 
