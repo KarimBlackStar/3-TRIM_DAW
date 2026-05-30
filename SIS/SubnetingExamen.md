@@ -49,6 +49,36 @@ n=2
 
 $$\text{Ordenadores} = 2^{14} - 2 = 16384 - 2 = \mathbf{16382}$$
 
+## 🧮 Fórmulas de Subnetting (IPv4)
+
+### 1. Identificación de Bits Iniciales
+Los bits de la red principal vienen dados directamente por la notación CIDR original del enunciado:
+
+$$\text{Bits de Red (BR)} = X \quad \text{(de la IP base } /X\text{)}$$
+
+### 2. Cálculo de Bits de Subred
+Para calcular cuántos bits ($n$) necesitamos pedir prestados, buscamos la potencia de 2 que iguale o supere el número de subredes deseadas:
+
+$$2^n \ge \text{Subredes Requeridas}$$
+
+$$\text{Bits de Subred (BS)} = n$$
+
+### 3. Cálculo de Bits de Host (Equipos)
+Como una dirección IPv4 tiene un tamaño fijo de 32 bits, el resto de bits disponibles se asignan a los equipos:
+
+$$\text{Bits de Host (BH)} = 32 - (\text{BR} + \text{BS})$$
+
+### 4. Número de Hosts Disponibles por Subred
+Calculamos las combinaciones posibles con los bits de host y restamos $2$ (la dirección de red y la dirección de broadcast, que no se pueden asignar a ningún equipo):
+
+$$\text{Hosts Útiles} = 2^{\text{BH}} - 2$$
+
+### 5. Nueva Máscara de Subred
+La nueva máscara total en formato CIDR es la suma de los bits de red y subred:
+
+$$\text{Nueva Máscara (CIDR)} = /(\text{BR} + \text{BS})$$
+
+> 💡 **Para pasar a formato decimal:** Escribe tantos `1` seguidos como indique la suma $(\text{BR} + \text{BS})$ hasta completar los 4 octetos (32 bits), rellena el resto con `0` y traduce cada bloque de 8 bits a decimal.
 ---
 
 #### Actividad 3: [5 pts]
@@ -61,11 +91,14 @@ $$\text{Ordenadores} = 2^{14} - 2 = 16384 - 2 = \mathbf{16382}$$
 
 | Red | Host | Dir de red | Máscara | Dir de Broadcast | Rango de direcciones válidas |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-|  |   | | | | |
-|  |   | | | | |
-|  |  | | | | |
-|  | | | | | |
-|  | | | | | |
+| Red B | 300 | 172.16.0.0 | 255.255.254.0 /23 | 172.16.1.255 | 172.16.0.1 - 172.16.1.254 |
+| Red A | 128 | 172.16.2.0 | 255.255.255.0 /24 | 172.16.2.255 | 172.16.2.1 - 172.16.2.254 |
+| Red C | 35 | 172.16.3.0 | 255.255.255.192 /26 | 172.16.3.63 | 172.16.3.1 - 172.16.3.62 |
+| Red D | 2 | 172.16.3.64 | 255.255.255.252 /30 | 172.16.3.67 | 172.16.3.65 - 172.16.3.66 |
+| Red E | 2 | 172.16.3.68 | 255.255.255.252 /30 | 172.16.3.71 | 172.16.3.69 - 172.16.3.70 |
+
+<img width="793" height="227" alt="image" src="https://github.com/user-attachments/assets/1d15fba9-9b2d-4879-a09d-b722973d03ec" />
+
 
 ##### b) Completa la tabla de enrutamiento:
 
