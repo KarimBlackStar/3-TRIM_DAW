@@ -138,3 +138,6 @@ $$\text{Nueva Máscara (CIDR)} = /(\text{BR} + \text{BS})$$
    **a)** Comparte la carpeta `Compartir_[tu nombre]` para que **solo tu usuario pueda leer**. Muestra cómo la compartes desde el equipo Debian.
    
    **b)** Accede al recurso compartido desde W10. ¿Qué sucede si intentas crear un nuevo contenido en la carpeta o modificar el fichero `soy_[tu nombre]`? ¿Por qué? Muestra captura de cómo accedes al recurso compartido.
+
+---
+
