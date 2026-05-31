@@ -37,7 +37,7 @@ n=2
    * **Nº Bits para el nº de equipo:** --> 14 bits
 
 32-(BR+BS) = 32-(16+2) = 14
-   * **Máscara de subred que tendremos que usar en formato decimal separado por puntos:** --> 225.225.192.0
+   * **Máscara de subred que tendremos que usar en formato decimal separado por puntos:** --> 255.255.192.0
 
 16+2=18
 
