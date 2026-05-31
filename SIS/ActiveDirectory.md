@@ -117,3 +117,11 @@ Añadimos el usuario nuevo
 
 <img width="526" height="321" alt="image" src="https://github.com/user-attachments/assets/f70c7267-81bd-4b2c-9d45-9e52de561ddf" />
 <img width="378" height="178" alt="image" src="https://github.com/user-attachments/assets/080f6996-b281-4029-be52-da7523b99fea" />
+
+---
+
+## GPO 
+
+REVISAR ENTREGABLE
+
+<img width="425" height="67" alt="image" src="https://github.com/user-attachments/assets/a27c79e8-ca9b-4d81-90a7-6d813f398c76" />
