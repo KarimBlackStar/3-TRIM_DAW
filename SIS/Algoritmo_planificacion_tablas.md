@@ -8,7 +8,7 @@
 | Proceso B |  |  |  |  |
 | Proceso C |  |  |  |  |
 | Proceso D |  |  |  |  |
-| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO_______ |  |  |  |  |
+| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___FCFS____ |  |  |  |  |
 
 
 ## Tabla 2 FCFS
@@ -30,7 +30,7 @@
 | Proceso B |  |  |  |  |
 | Proceso C |  |  |  |  |
 | Proceso D |  |  |  |  |
-| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO_______ |  |  |  |  |
+| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___SRT____ |  |  |  |  |
 
 
 ## Tabla 2 SRT
@@ -52,7 +52,7 @@
 | Proceso B |  |  |  |  |
 | Proceso C |  |  |  |  |
 | Proceso D |  |  |  |  |
-| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO_______ |  |  |  |  |
+| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___SJF___ |  |  |  |  |
 
 
 ## Tabla 2 SJF
@@ -66,7 +66,7 @@
 
 ---
 
-## Tabla 1 RR
+## Tabla 1 RR - 
 
 |  | Llegada | Tiempo de CPU | Tiempo Espera | Tiempo respuesta |
 |---|---|---|---|---|
@@ -74,7 +74,7 @@
 | Proceso B |  |  |  |  |
 | Proceso C |  |  |  |  |
 | Proceso D |  |  |  |  |
-| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO_______ |  |  |  |  |
+| PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___RR (Q=2)____ |  |  |  |  |
 
 
 ## Tabla 2 RR
