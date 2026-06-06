@@ -4,10 +4,12 @@
 
 |  | Llegada | Tiempo de CPU | Tiempo Espera | Tiempo respuesta |
 |---|---|---|---|---|
-| Proceso A |  |  |  |  |
-| Proceso B |  |  |  |  |
-| Proceso C |  |  |  |  |
-| Proceso D |  |  |  |  |
+| Proceso P1 | 0 | 7 | 0 | 7-0=7 |
+| Proceso P2 | 1 | 4 | 7-1=6 | 11-1=10 |
+| Proceso P3 | 3 | 3 | 11-3=8 | 14-3=11 |
+| Proceso P4 | 4 | 2 | 14-4=10 | 16-4=12 |
+| Proceso P5 | 7 | 2 | 16-7=9 | 18-7=11 |
+| Promedio | | | 6,6 | 10,2 |
 | PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___FCFS____ |  |  |  |  |
 
 
@@ -15,21 +17,22 @@
 
 | Procesos | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| A |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| B |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| C |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| D |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-
+| P1 | X | X | X | X | X | X | X |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| P2 |  | 0 | 0 | 0 | 0 | 0 | 0 | X | X | X | X |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| P3 |  |  |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | X | X | X |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| P4 |  |  |  |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | X | X |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| P5 |  |  |  |  |  |  |  | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | X | X |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 ---
 
 ## Tabla 1 SRT
 
 |  | Llegada | Tiempo de CPU | Tiempo Espera | Tiempo respuesta |
 |---|---|---|---|---|
-| Proceso A |  |  |  |  |
-| Proceso B |  |  |  |  |
-| Proceso C |  |  |  |  |
-| Proceso D |  |  |  |  |
+| Proceso P1 | 0 | 7 |  |  |
+| Proceso P2 | 1 | 4 |  |  |
+| Proceso P3 | 3 | 3 |  |  |
+| Proceso P4 | 4 | 2 |  |  |
+| Proceso P5 | 7 | 2 |  |  |
 | PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___SRT____ |  |  |  |  |
 
 
@@ -48,10 +51,11 @@
 
 |  | Llegada | Tiempo de CPU | Tiempo Espera | Tiempo respuesta |
 |---|---|---|---|---|
-| Proceso A |  |  |  |  |
-| Proceso B |  |  |  |  |
-| Proceso C |  |  |  |  |
-| Proceso D |  |  |  |  |
+| Proceso P1 | 0 | 7 |  |  |
+| Proceso P2 | 1 | 4 |  |  |
+| Proceso P3 | 3 | 3 |  |  |
+| Proceso P4 | 4 | 2 |  |  |
+| Proceso P5 | 7 | 2 |  |  |
 | PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___SJF___ |  |  |  |  |
 
 
@@ -70,10 +74,11 @@
 
 |  | Llegada | Tiempo de CPU | Tiempo Espera | Tiempo respuesta |
 |---|---|---|---|---|
-| Proceso A |  |  |  |  |
-| Proceso B |  |  |  |  |
-| Proceso C |  |  |  |  |
-| Proceso D |  |  |  |  |
+| Proceso P1 | 0 | 7 |  |  |
+| Proceso P2 | 1 | 4 |  |  |
+| Proceso P3 | 3 | 3 |  |  |
+| Proceso P4 | 4 | 2 |  |  |
+| Proceso P5 | 7 | 2 |  |  |
 | PECiclo PreparadoCiclo EjecuciónEjercicio FIFO___RR (Q=2)____ |  |  |  |  |
 
 
