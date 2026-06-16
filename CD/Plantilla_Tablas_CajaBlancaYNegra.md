@@ -2,21 +2,18 @@
 
 ---
 
-## 1. PRUEBAS DE CAJA BLANCA (Estructurales)
+# 🟦 PLANTILLA DE EXAMEN: PRUEBAS DE CAJA BLANCA
 
-> **Cálculos Previos:** > • Número de Nodos ($N$): ______  
-> • Número de Aristas ($E$): ______  
-> • Complejidad Ciclomática ($V(G) = E - N + 2$): ______ caminos mínimos.
-
-| CAMINO | RECORRIDO DETALLADO (Secuencia de Nodos y Descripción) | DATOS DE ENTRADA (Valores Explícitos) | RESULTADO ESPERADO (Salida / Efecto) | RESULTADO OBTENIDO | ¿PASA / FALLA? |
-| :---: | :--- | :--- | :--- | :--- | :---: |
-| **C1** | | | | | |
-| **C2** | | | | | |
-| **C3** | | | | | |
-| **C4** | | | | | |
-| **C5** | | | | | |
-
----
+| CAMINO | RECORRIDO<br>(Nodos) | DESCRIPCIÓN<br>(Lógica del camino) | | CASO | CAMINO | entrada valores EXPLÍCITOS<br>(Variables) | salida del resultado<br>(esperado: true, false, operación...) |
+| :---: | :--- | :--- | :---: | :---: | :---: | :--- | :--- |
+| **C1** | | | | **CP1** | **C1** | | |
+| **C2** | | | | **CP2** | **C2** | | |
+| **C3** | | | | **CP3** | **C3** | | |
+| **C4** | | | | **CP4** | **C4** | | |
+| **C5** | | | | **CP5** | **C5** | | |
+| **C6** | | | | **CP6** | **C6** | | |
+| **C7** | | | | **CP7** | **C7** | | |
+| **C8** | | | | **CP8** | **C8** | | |
 
 ## 2. PRUEBAS DE CAJA NEGRA (Funcionales)
 
