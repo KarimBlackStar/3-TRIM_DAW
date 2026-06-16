@@ -48,6 +48,27 @@ public class PlanticaTestCajaBlanca {
     }
 
 }
+
+@ParameterizedTest
+ @CsvSource({
+ "PATINETE, 30, 5.0, false, false, 4.90",
+ "PATINETE, 30, 5.0, false, true, 5.88",
+ "PATINETE, 45, 10.0, false, false, 6.4175",
+ "BICI, 120, 8.5, true, false, 8.91",
+ "BICI, 60, 0.0, false, true, 5.04"
+ })
+ void testCalcularPrecioAlquiler_parametrizado(
+ String tipo,
+ int minutos,
+ double km,
+ boolean esNocturno,
+ boolean esFestivo,
+ double esperado) {
+ double precio = gestor.calcularPrecioAlquiler(tipo, minutos, km, esNocturno,
+esFestivo);
+ assertEquals(esperado, precio, 1e-2);
+ }
+
 ```
 
 ## PLANTILLA CAJA NEGRA
