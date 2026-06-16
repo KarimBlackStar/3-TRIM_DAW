@@ -17,23 +17,24 @@
 
 ## 2. PRUEBAS DE CAJA NEGRA (Funcionales)
 
-### A. Identificación de Clases de Equivalencia y Valores Límite
+| Condición de entrada | Clase de equiv | Clases válidas | COD | Clases no válidas | COD |
+| :--- | :--- | :--- | :---: | :--- | :---: |
+| | | | **V1** | | **NV1** |
+| | | | **V2** | | **NV2** |
+| | | | **V3** | | **NV3** |
+| | | | | | **NV4** |
+| | | | | | **NV5** |
+| | | | | | **NV6** |
+| | | | | | **NV7** |
 
-| CONDICIÓN / VARIABLE (if / restricciones) | CLASE EQUIVALENCIA VÁLIDA | VALOR LÍMITE VÁLIDA | COD_CV | CLASE EQUIVALENCIA NO VÁLIDA | VALOR LÍMITE INVÁLIDA | COD_CNV |
-| :--- | :--- | :---: | :---: | :--- | :---: | :---: |
-| | | | **CV1** | | | **CNV1** |
-| | | | **CV2** | | | **CNV2** |
-| | | | **CV3** | | | **CNV3** |
-| | | | **CV4** | | | **CNV4** |
-
-### B. Diseño de Casos de Prueba (Matriz de Cobertura)
-
-> **Comprobación Matemática:** Nº de Casos de Prueba $\ge$ Nº de clases no válidas ($CNV$) + 1.
-
-| CASO PRUEBA | CÓDIGOS CUBIERTOS (CV / CNV) | ENTRADA DE VALORES EXPLÍCITOS | RESULTADO ESPERADO (Salida) | RESULTADO REAL | ESTADO (Pasa/Falla) |
-| :---: | :--- | :--- | :--- | :--- | :---: |
-| **CP1** | | | | | |
-| **CP2** | | | | | |
-| **CP3** | | | | | |
-| **CP4** | | | | | |
-| **CP5** | | | | | |
+| Caso de prueba | Códigos | Condiciones de entrada<br>(variables) | Resultado esperado | Descripción |
+| :---: | :---: | :--- | :---: | :--- |
+| **CP101** | | | | |
+| **CP102** | | | | |
+| **CP103** | | | | |
+| **CP104** | | | | |
+| **CP105** | | | | |
+| **CP106** | | | | |
+| **CP107** | | | | |
+| **CP108** | | | | |
+| **CP109** | | | | |
